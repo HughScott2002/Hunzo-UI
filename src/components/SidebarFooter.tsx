@@ -1,12 +1,10 @@
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/AuthContext";
 
 //TODO: Add Avatar Default FallBack
 
 const SidebarFooter = ({ type = "desktop" }: FooterProps) => {
-  const router = useRouter();
   const { logout } = useAuth();
   const { user } = useAuth();
 
@@ -35,9 +33,9 @@ const SidebarFooter = ({ type = "desktop" }: FooterProps) => {
         </p>
       </div>
 
-      <div className="footer_image" onClick={handleLogOut}>
+      {/* <div className="footer_image" onClick={handleLogOut}>
         <Image src="icons/logout.svg" fill alt="profile footer image" />
-      </div>
+      </div> */}
       {/* 
       <Avatar>
           <AvatarImage src="https://github.com/shadcn.png" />

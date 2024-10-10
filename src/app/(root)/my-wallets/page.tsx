@@ -3,6 +3,7 @@ import HeaderBox from "@/components/HeaderBox";
 import TransactionsTable from "@/components/TransactionsTable";
 import React from "react";
 import { TestUser } from "@/constants";
+import WalletCard from "@/components/WalletCard";
 const MyBanks = () => {
   const accounts = {
     id: "123",
@@ -37,6 +38,7 @@ const MyBanks = () => {
             />
           </div>
         </div>
+        {/* <WalletCard /> */}
       </div>
     </section>
   );

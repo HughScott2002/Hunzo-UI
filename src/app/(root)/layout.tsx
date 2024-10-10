@@ -8,8 +8,10 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import ProtectedRouteWrapper from "@/components/ProtectedRouteWrapper";
 import AccountAlerts from "@/components/AccountAlerts";
-
-//TODO: Fix the app name on the moblie and the desktop version of the layout
+import NewSidebar from "@/components/NewSidebar";
+import New2Sidebar from "@/components/New2Sidebar";
+import HeaderSearch from "@/components/HeaderSearch";
+//TODO: fix the Seach bar up top
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,15 +22,16 @@ export default function RootLayout({
   return (
     <ProtectedRouteWrapper>
       <main className="flex h-screen w-full font-inter">
-        <Sidebar user={TestUser}></Sidebar>
-        <AccountAlerts />
+        {/* <Sidebar user={TestUser} /> */}
+        <NewSidebar />
+        {/* <New2Sidebar /> */}
+        {/* <AccountAlerts /> */}
         <div className="flex size-full flex-col">
-          <div className="root-layout">
-            <Image src={"/icons/logo.svg"} width={30} height={30} alt="Logo" />
-            <div>
-              <MoblieSidebar user={TestUser} />
+          {/* <div className="">
+            <div className="w-full ">
+              <HeaderSearch />
             </div>
-          </div>
+          </div> */}
           {children}
         </div>
         <CommandPalette />

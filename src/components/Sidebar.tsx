@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import SearchInput from "./SearchInput";
 import SidebarFooter from "./SidebarFooter";
 
-const Sidebar = ({ user }: SiderbarProps) => {
+const Sidebar = () => {
   const pathname = usePathname();
 
   return (
