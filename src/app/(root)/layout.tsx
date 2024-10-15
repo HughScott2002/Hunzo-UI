@@ -11,6 +11,7 @@ import AccountAlerts from "@/components/AccountAlerts";
 import NewSidebar from "@/components/NewSidebar";
 import New2Sidebar from "@/components/New2Sidebar";
 import HeaderSearch from "@/components/HeaderSearch";
+import { cn } from "@/lib/utils";
 //TODO: fix the Seach bar up top
 export default function RootLayout({
   children,
@@ -18,22 +19,59 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   // Render the layout and children if authenticated
+  const [isExpanded, setIsExpanded] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("sidebarExpanded");
+      return saved !== null ? JSON.parse(saved) : true;
+    }
+    return true;
+  });
+  const [isMobile, setIsMobile] = useState(false);
 
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (mobile) {
+        setIsExpanded(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Call it initially
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("sidebarExpanded", JSON.stringify(isExpanded));
+  }, [isExpanded]);
+
+  const toggleSidebar = () => {
+    setIsExpanded((prev: any) => !prev);
+  };
   return (
     <ProtectedRouteWrapper>
       <main className="flex h-screen w-full font-inter">
         {/* <Sidebar user={TestUser} /> */}
-        <NewSidebar />
         {/* <New2Sidebar /> */}
         {/* <AccountAlerts /> */}
-        <div className="flex size-full flex-col">
+        <NewSidebar
+          isExpanded={isExpanded}
+          isMobile={isMobile}
+          toggleSidebar={toggleSidebar}
+        />
+        <div className="w-screen gap-2">
           {/* <div className="">
             <div className="w-full ">
               <HeaderSearch />
             </div>
           </div> */}
-          {children}
+          <div className={cn("transition-all", isExpanded ? "ml-60" : "ml-20")}>
+            {children}
+          </div>
         </div>
+
         <CommandPalette />
       </main>
     </ProtectedRouteWrapper>

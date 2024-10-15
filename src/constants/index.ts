@@ -1,7 +1,7 @@
 export const appName = "Hunzo";
 export const appShortName = "Hunzo";
 export const appDescription = `${appName} is a fintech that provides a seamless experience for managing your finances.`;
-export const loginHeaderSubtext = "Link your account to get started.";
+export const loginHeaderSubtext = "Login to your account to get started.";
 export const registerHeaderSubtext = "Create an account to get started.";
 
 //TODO: Add siderbar auth so that the user can only see some things in the siderbar

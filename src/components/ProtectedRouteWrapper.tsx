@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/AuthContext";
+import { Loader2 } from "lucide-react";
 
 const ProtectedRouteWrapper: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -25,7 +26,11 @@ const ProtectedRouteWrapper: React.FC<{ children: React.ReactNode }> = ({
   }, [user, router, refreshToken]);
 
   if (isLoading) {
-    return <div>Loading...</div>; // or a loading spinner
+    return (
+      <div className="w-screen h-screen text-2xl flex items-center align-middle justify-center">
+        <Loader2 size={20} className="animate-spin" /> &nbsp; Loading...
+      </div>
+    ); // or a loading spinner
   }
 
   if (!user) {

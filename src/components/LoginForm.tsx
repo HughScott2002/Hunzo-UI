@@ -37,9 +37,9 @@ const LoginForm = () => {
     setIsLoading(true);
     try {
       await login(data.email, data.password);
-      toast({ title: `Welcome` });
+      // toast({ title: `Welcome ${user?.firstName}` });
     } catch (error) {
-      console.error("Login error:", error);
+      // console.error("Login error:", error);
       toast({ title: "Login failed" });
     } finally {
       setIsLoading(false);
@@ -66,7 +66,7 @@ const LoginForm = () => {
         </div>
       </header>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <CustomInput
             control={form.control}
             name="email"

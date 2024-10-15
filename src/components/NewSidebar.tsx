@@ -21,6 +21,10 @@ import {
   ChevronLeft,
   PanelRightOpen,
   PanelRightClose,
+  Moon,
+  ChevronsUpDown,
+  ChevronsDown,
+  ChevronDown,
 } from "lucide-react";
 import {
   AlertDialog,
@@ -47,70 +51,58 @@ const sidebarLinks = [
   { icon: SendHorizontal, route: "/payment-transfer", label: "Transfer Funds" },
   { icon: LinkIcon, route: "/connect-bank", label: "Connect Bank" },
 ];
-
+//TODO: Fix the logo wallet and account selector
 const user = {
   name: "Hugh",
   email: "hughscott2002@msila.coooooooooooooooooooooooooooooooooooooom",
   image: "https://github.com/shadcn.png",
 };
 
-const NewSidebar = () => {
+const NewSidebar = ({ isExpanded, isMobile, toggleSidebar }: any) => {
   const pathname = usePathname();
   const { logout } = useAuth();
-  const [isExpanded, setIsExpanded] = useState(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("sidebarExpanded");
-      return saved !== null ? JSON.parse(saved) : true;
-    }
-    return true;
-  });
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const mobile = window.innerWidth < 768;
-      setIsMobile(mobile);
-      if (mobile) {
-        setIsExpanded(false);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    handleResize(); // Call it initially
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("sidebarExpanded", JSON.stringify(isExpanded));
-  }, [isExpanded]);
-
-  const toggleSidebar = () => {
-    setIsExpanded((prev: any) => !prev);
-  };
 
   return (
     <motion.div
       className={cn(
-        "flex flex-col h-screen bg-white border-r border-gray-100 shadow-sm relative",
+        "flex flex-col h-screen bg-white border-r border-gray-100 shadow-sm fixed",
         isExpanded ? "w-64" : "w-20"
       )}
       animate={{ width: isExpanded ? 256 : 80 }}
       transition={{ duration: 0.3 }}
     >
-      <div className={cn("p-6", isExpanded ? "px-6" : "px-4")}>
-        <Link href="/" className="flex items-center space-x-2">
-          <Image
-            src="/icons/logo.svg"
-            width={32}
-            height={32}
-            alt="Logo"
-            className="w-8 h-8"
-          />
-          {isExpanded && (
-            <span className="text-xl font-semibold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
-              {appName}
-            </span>
+      <div className={cn("p-6 ", isExpanded ? "px-4" : "px-4")}>
+        <Link
+          href="/"
+          className={cn(
+            "grid md:grid-rows-1  sm:grid-rows-2 border-2 border-white hover:border-blue-50 rounded-lg p-2 hover:bg-blue-50 transition-ease"
+          )}
+        >
+          <div className="flex items-center space-x-2">
+            <Image
+              src="/icons/logo.svg"
+              width={32}
+              height={32}
+              alt="Logo"
+              className="w-8 h-8"
+            />
+            {isExpanded && (
+              <span className="text-xl font-semibold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                {appName}
+              </span>
+            )}
+            {isExpanded && (
+              <div className="flex items-center justify-end text-gray-500 w-full group-hover:text-blue-600">
+                {/* <ChevronsUpDown />
+                 */}
+                <ChevronDown className="" />
+              </div>
+            )}
+          </div>
+          {!isExpanded && (
+            <div className="flex items-center justify-end text-gray-500 pt-2 w-full group-hover:text-blue-600">
+              <ChevronDown />
+            </div>
           )}
         </Link>
       </div>
@@ -140,7 +132,7 @@ const NewSidebar = () => {
         </nav>
       </ScrollArea>
       <Separator />
-      <div className={cn("p-6 pt-4", !isExpanded && "p-2")}>
+      <div className={cn("p-6 pt-4 transition-all", !isExpanded && "p-2")}>
         <div className="space-y-1">
           {/* <SidebarFooter /> */}
 
@@ -167,6 +159,16 @@ const NewSidebar = () => {
               {isExpanded && "Toggle Siderbar"}
             </Button>
           )}
+          <Button
+            variant="ghost"
+            className={cn(
+              "w-full justify-start text-gray-600 hover:text-blue-600 hover:bg-blue-50",
+              !isExpanded && "px-3"
+            )}
+          >
+            <Moon className={cn("w-5 h-5", isExpanded && "mr-3")} />
+            {isExpanded && "Dark Mode"}
+          </Button>
           <Button
             variant="ghost"
             className={cn(

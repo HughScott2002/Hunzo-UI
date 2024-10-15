@@ -81,7 +81,7 @@ declare type Transaction = {
   receiverBankId: string;
 };
 
-declare type Bank = {
+declare type Wallet = {
   $id: string;
   accountId: string;
   bankId: string;
@@ -216,7 +216,7 @@ declare interface FooterProps {
 declare interface RightSidebarProps {
   user: User;
   transactions: Transaction[];
-  banks: Bank[] & Account[];
+  wallet: Wallet[] & Account[];
 }
 
 declare interface SiderbarProps {

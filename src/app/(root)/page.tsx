@@ -304,7 +304,7 @@ const Home = ({ searchParams: { id, page } }: SearchParamProps) => {
       </div>
       <RightSidebar
         transactions={transactionsTestData}
-        banks={[{ currentBalance: 23000.3 }, { currentBalance: 2200.2 }]}
+        wallet={[{ currentBalance: 23000.3 }, { currentBalance: 2200.2 }]}
       />
     </section>
   );

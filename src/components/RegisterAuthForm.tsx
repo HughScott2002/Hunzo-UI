@@ -143,7 +143,7 @@ const registerSchema = z.object({
 
 const RegisterAuthForm = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState<number>(0);
   const [isStepValid, setIsStepValid] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
@@ -221,7 +221,7 @@ const RegisterAuthForm = () => {
       if (isLastStep) {
         form.handleSubmit(onSubmit)();
       } else {
-        setStep((prevStep) => prevStep + 1);
+        setStep((prevStep: number) => prevStep + 1);
       }
     }
   };
@@ -262,29 +262,34 @@ const RegisterAuthForm = () => {
               transition={{ duration: 0.3 }}
             >
               {step === 0 && (
-                <div className="grid grid-cols-2 sm:grid-col-2 gap-2">
-                  <CustomInput
-                    control={form.control}
-                    name="firstName"
-                    label="First Name"
-                    placeholder="John"
-                    type="text"
-                  />
-                  <CustomInput
-                    control={form.control}
-                    name="lastName"
-                    label="Last Name"
-                    placeholder="Doe"
-                    type="text"
-                  />
-                  <CustomInput
-                    control={form.control}
-                    name="phone"
-                    label="Phone"
-                    placeholder="+1234567890"
-                    type="tel"
-                  />
-                </div>
+                <>
+                  <div className="grid grid-cols-2 sm:grid-col-2 gap-2">
+                    <CustomInput
+                      control={form.control}
+                      name="firstName"
+                      label="First Name"
+                      placeholder="John"
+                      type="text"
+                    />
+                    <CustomInput
+                      control={form.control}
+                      name="lastName"
+                      label="Last Name"
+                      placeholder="Doe"
+                      type="text"
+                    />
+                  </div>
+                  <div className="mt-4">
+                    <CustomInput
+                      control={form.control}
+                      name="phone"
+                      label="Phone"
+                      placeholder="+1234567890"
+                      type="tel"
+                      className="col-span-2"
+                    />
+                  </div>
+                </>
               )}
               {step === 1 && (
                 <>
@@ -295,13 +300,15 @@ const RegisterAuthForm = () => {
                     placeholder="johndoe@mail.com"
                     type="email"
                   />
-                  <CustomInput
-                    control={form.control}
-                    name="password"
-                    label="Password"
-                    placeholder="Enter your password"
-                    type="password"
-                  />
+                  <div className="mt-4">
+                    <CustomInput
+                      control={form.control}
+                      name="password"
+                      label="Password"
+                      placeholder="Enter your password"
+                      type="password"
+                    />
+                  </div>
                 </>
               )}
               {step === 2 && (
@@ -415,7 +422,7 @@ const RegisterAuthForm = () => {
               )}
             </motion.div>
           </AnimatePresence>
-          <div className="flex justify-between mt-4">
+          <div className="flex justify-between mt-4 ">
             {step > 0 && (
               <Button
                 type="button"
