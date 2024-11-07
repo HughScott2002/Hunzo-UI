@@ -12,7 +12,7 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#fff",
     icons: [
       {
-        src: "@/public/icons/logo.svg",
+        src: "/icons/Hunzo-Logo.svg",
         sizes: "any",
         // type: "image/x-icon",
       },
