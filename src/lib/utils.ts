@@ -195,25 +195,27 @@ export const getTransactionStatus = (date: Date) => {
   return date > twoDaysAgo ? "Processing" : "Success";
 };
 
-export const authformSchema = (type: string) => {
-  const baseSchema = {
-    email: z.string().email(),
-    password: z.string().min(8),
-  };
+export const LoginSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
+});
 
-  if (type === "login") {
-    return z.object(baseSchema);
-  }
+export const RegisterSchema = LoginSchema.extend({
+  firstName: z.string().min(2, "First name must be at least 2 characters"),
+  lastName: z.string().min(2, "Last name must be at least 2 characters"),
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
+  address: z.string().min(5, "Address must be at least 5 characters"),
+  city: z.string().min(2, "City must be at least 2 characters"),
+  state: z.string().length(2, "State must be 2 characters"),
+  postalCode: z.string().min(5, "Postal code must be at least 5 characters"),
+  dob: z.string().min(5, "Date of birth must be at least 5 characters"),
+  ssn: z.string().length(9, "SSN must be 9 characters"),
+});
+export type AuthFormType = "login" | "register";
 
-  return z.object({
-    ...baseSchema,
-    firstName: z.string().min(2),
-    lastName: z.string().min(2),
-    address: z.string().min(5),
-    city: z.string().min(2),
-    state: z.string().length(2),
-    postalCode: z.string().min(5),
-    dob: z.string().min(5),
-    ssn: z.string().length(9),
-  });
+export const authFormSchema = (type: AuthFormType) => {
+  return type === "login" ? LoginSchema : RegisterSchema;
 };
+export type LoginFormData = z.infer<typeof LoginSchema>;
+export type RegisterFormData = z.infer<typeof RegisterSchema>;

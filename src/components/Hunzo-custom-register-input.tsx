@@ -1,14 +1,21 @@
 "use client";
-import React, { useState } from "react";
-import { Input } from "./input";
-import { Button } from "./button";
+import React, { useRef, useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { Eye, EyeOff } from "lucide-react";
 import { z } from "zod";
 import { Control, FieldPath } from "react-hook-form";
-import { authformSchema, cn } from "@/lib/utils";
-import { FormControl, FormField, FormItem, FormMessage } from "./form";
+import { RegisterSchema, cn } from "@/lib/utils";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
 
-const formSchema = authformSchema("login");
+//TODO: Fix the data Icon
+
+const formSchema = RegisterSchema;
 
 interface HunzoCustomInputProps {
   control: Control<z.infer<typeof formSchema>>;
@@ -21,7 +28,7 @@ interface HunzoCustomInputProps {
   className?: string;
   isHidden: boolean;
 }
-const HunzoCustomInput: React.FC<HunzoCustomInputProps> = ({
+const HunzoCustomRegisterInput: React.FC<HunzoCustomInputProps> = ({
   control,
   name,
   placeholder,
@@ -67,19 +74,34 @@ const HunzoCustomInput: React.FC<HunzoCustomInputProps> = ({
             <div className="relative">
               <FormControl>
                 <Input
-                  className={`pl-10 pr-10 placeholder:text-hunzo-text-grey rounded-xl h-16 text-base bg-[#F5F5F5] font-semibold font-poppins px-20 ${className}`}
+                  className={`pl-10 pr-10 placeholder:text-hunzo-text-grey rounded-xl h-16 text-base bg-hunzo-background-grey font-semibold font-poppins px-20 ${className} ${
+                    isHidden ? "hidden" : ""
+                  } `}
                   placeholder={placeholder}
                   type={inputType}
                   hidden={isHidden}
+                  style={{
+                    WebkitAppearance: "none",
+                    MozAppearance: "none",
+                    appearance: "none",
+                  }}
                   {...field}
                 />
               </FormControl>
-              <div className="absolute left-6 top-5 text-hunzo-text-grey">
+              <div
+                className={cn(
+                  "absolute left-6 top-5 text-hunzo-text-grey",
+                  isHidden ? "hidden" : ""
+                )}
+              >
                 {icon}
               </div>
               {(initialType === "password" || rightIcon) && (
                 <Button
-                  className="absolute right-2 top-[20%]"
+                  className={cn(
+                    "absolute right-2 top-[20%]",
+                    isHidden ? "hidden" : ""
+                  )}
                   onClick={handleRightIconClick}
                   type="button"
                 >
@@ -87,7 +109,12 @@ const HunzoCustomInput: React.FC<HunzoCustomInputProps> = ({
                 </Button>
               )}
             </div>
-            <FormMessage className="mt-4 font-poppins text-base text-hunzo-red" />
+            <FormMessage
+              className={cn(
+                "mt-4 font-poppins text-base text-hunzo-red",
+                isHidden ? "hidden" : ""
+              )}
+            />
           </FormItem>
         )}
       />
@@ -95,4 +122,4 @@ const HunzoCustomInput: React.FC<HunzoCustomInputProps> = ({
   );
 };
 
-export default HunzoCustomInput;
+export default HunzoCustomRegisterInput;

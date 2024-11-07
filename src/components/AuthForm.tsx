@@ -480,7 +480,7 @@ const AuthForm = ({ type }: { type: string }) => {
                     {isLoading ? (
                       <>
                         <Loader2 size={20} className="animate-spin" /> &nbsp;
-                        Loading...
+                        Loading AUTH FORM TSX 11111111111...
                       </>
                     ) : isLastStep ? (
                       "Submit"
@@ -519,7 +519,7 @@ const AuthForm = ({ type }: { type: string }) => {
                   {isLoading ? (
                     <>
                       <Loader2 size={20} className="animate-spin" /> &nbsp;
-                      Loading...
+                      Loading Loading AUTH FORM TSX 22222222......
                     </>
                   ) : (
                     "Login"

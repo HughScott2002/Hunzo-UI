@@ -4,6 +4,7 @@ import "./globals.css";
 import { appName, appDescription } from "@/constants";
 import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from "@/components/AuthContext";
+// import { HunzoAuthProvider } from "@/components/HunzoAuthProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -39,14 +40,23 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // TODO: FIX THE AUTH
+  // TODO: 1) It doesn't keep the state on a reload
+  // TODO: 2) It sends too much data to the backend
+  // TODO: 3) It doesn't provide the global state to get the user and its attributes
+  // TODO: 4) I dont think it sends the token on each request
+  // TODO: 4) Token Updates should be silent
+
+  // TODO: ADD POLYGLOT SUPPORT
+  //TODO: FIX THE GODDAMN FONTS
   return (
-    // TODO: Add Polyglot support
     <html
       lang="en"
       className={`${inter.className} ${poppins.className} ${manrope.className}`}
     >
       <body>
         <AuthProvider>{children}</AuthProvider>
+        {/* <HunzoAuthProvider>{children}</HunzoAuthProvider> */}
         <Toaster />
       </body>
     </html>

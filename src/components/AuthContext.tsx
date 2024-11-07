@@ -2,6 +2,8 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface User {
   id: string;
@@ -31,6 +33,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const router = useRouter();
 
   const REFRESH_INTERVAL = 14 * 60 * 1000; // 14 minutes in milliseconds
+  const MIN_LOADING_TIME = 2000;
 
   const shouldRefresh = () => {
     return Date.now() - lastRefresh > REFRESH_INTERVAL;
@@ -38,6 +41,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     const checkSession = async () => {
+      const startTime = Date.now();
       try {
         const response = await fetch(
           "http://localhost/api/users/auth/check-session",
@@ -53,7 +57,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       } catch (error) {
         console.error("Failed to check session:", error);
       } finally {
-        setLoading(false);
+        const elapsedTime = Date.now() - startTime;
+        const remainingTime = Math.max(0, MIN_LOADING_TIME - elapsedTime);
+        setTimeout(() => setLoading(false), remainingTime);
       }
     };
 
@@ -186,15 +192,53 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       throw error;
     }
   };
-  if (loading) {
-    return <div>Loading...</div>; // Or any loading component
-  }
+
+  // if (loading) {
+  //   return (
+  //     <div className="w-full h-screen flex justify-center items-center transition">
+  //       <Loader2 size={20} className="animate-spin text-hunzo-blue w-6 h-6" />{" "}
+  //       &nbsp;
+  //       <span className="font-poppins text-hunzo-blue text-lg ">
+  //         Loading...
+  //       </span>
+  //     </div>
+  //   ); // Or any loading component
+  // }
 
   return (
     <AuthContext.Provider
       value={{ user, login, logout, register, refreshToken, dump }}
     >
-      {children}
+      <AnimatePresence mode="wait">
+        {loading ? (
+          <motion.div
+            key="loading"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="w-full h-screen flex justify-center items-center"
+          >
+            <Loader2
+              size={20}
+              className="animate-spin text-hunzo-blue w-6 h-6"
+            />
+            <span className="font-poppins text-hunzo-blue text-lg ml-2">
+              Loading...
+            </span>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            {children}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </AuthContext.Provider>
   );
 };

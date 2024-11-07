@@ -1,21 +1,19 @@
-import React from "react";
-import HunzoCustomInput from "./ui/hunzo-custom-input";
+"use client";
 import { LockKeyhole, Mail } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
-import { appName, loginHeaderSubtext } from "@/constants";
 import { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import CustomInput from "./CustomInput";
 import { Loader2 } from "lucide-react";
-// import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/components/AuthContext";
+// import { useAuth } from "./HunzoAuthProvider";
 import AuthFooter from "./AuthFooter";
+import HunzoCustomLoginInput from "@/components/Hunzo-custom-login-input";
+import HunzoLoader from "./HunzoLoader";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -23,7 +21,6 @@ const loginSchema = z.object({
 });
 const HunzoLoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
-  // const router = useRouter();
   const { login } = useAuth();
   const { toast } = useToast();
 
@@ -58,7 +55,7 @@ const HunzoLoginForm = () => {
           <form onSubmit={form.handleSubmit(onSubmit)}>
             <div className="space-y-4">
               <div className="space-y-2">
-                <HunzoCustomInput
+                <HunzoCustomLoginInput
                   control={form.control}
                   name="email"
                   placeholder={"EMAIL"}
@@ -68,7 +65,7 @@ const HunzoLoginForm = () => {
                 />
               </div>
               <div className="space-y-2">
-                <HunzoCustomInput
+                <HunzoCustomLoginInput
                   control={form.control}
                   name="password"
                   placeholder={"PASSWORD"}

@@ -147,7 +147,6 @@ const RegisterAuthForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState<number>(0);
   const [isStepValid, setIsStepValid] = useState(false);
-  const router = useRouter();
   const { toast } = useToast();
   const { register } = useAuth();
 

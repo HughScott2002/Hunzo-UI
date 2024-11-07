@@ -1,14 +1,10 @@
-"use client";
+import HunzoAuthRightSide from "@/components/HunzoAuthRightSide";
+import HunzoLoader from "@/components/HunzoLoader";
 import Image from "next/image";
 import Link from "next/link";
-import HunzoLoginForm from "@/components/HunzoLoginForm";
-import HunzoAuthRightSide from "@/components/HunzoAuthRightSide";
+import React from "react";
 
-export default function Component() {
-  // TODO: Fix the font
-  // TODO: Fix the xl size thing
-  // TODO: Fix
-
+const Forgot = () => {
   return (
     <div className="grid h-screen lg:grid-cols-2">
       {/* This is the left side */}
@@ -25,7 +21,10 @@ export default function Component() {
           </div>
           <div className="w-full flex-auto  flex flex-col gap-4 justify-center items-center">
             {/* uhewriuytwe     */}
-            <HunzoLoginForm />
+            {/* <HunzoLoginForm /> */}
+            <span className="h-full w-full flex justify-center items-center bg-black-1">
+              Forgot
+            </span>
           </div>
           <footer className="h-fit w-full">
             <div className="flex justify-between space-x-56 text-md text-gray-500 font-poppins">
@@ -41,4 +40,9 @@ export default function Component() {
       <HunzoAuthRightSide />
     </div>
   );
-}
+};
+// const Forgot = () => {
+//   return <HunzoLoader />;
+// };
+
+export default Forgot;
