@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/AuthContext";
-import { Loader2 } from "lucide-react";
 import HunzoLoader from "./HunzoLoader";
 
 const ProtectedRouteWrapper: React.FC<{ children: React.ReactNode }> = ({
@@ -21,17 +20,6 @@ const ProtectedRouteWrapper: React.FC<{ children: React.ReactNode }> = ({
     return aString;
   }
   useEffect(() => {
-    console.log("HERE ARE THE COOKIES");
-    console.log("HERE ARE THE COOKIES");
-    console.log("HERE ARE THE COOKIES");
-    console.log("HERE ARE THE COOKIES");
-    console.log("HERE ARE THE COOKIES");
-    console.log("HERE ARE THE COOKIES");
-    console.log("HERE ARE THE COOKIES");
-    console.log("HERE ARE THE COOKIES");
-    console.log("HERE ARE THE COOKIES");
-    console.log("HERE ARE THE COOKIES");
-    console.log("HERE ARE THE COOKIES");
     console.log(listCookies());
     const checkAuth = async () => {
       console.log(user || "NONE");
@@ -49,10 +37,9 @@ const ProtectedRouteWrapper: React.FC<{ children: React.ReactNode }> = ({
   if (isLoading) {
     return (
       <div className="w-screen h-screen text-2xl flex items-center align-middle justify-center">
-        {/* <Loader2 size={20} className="animate-spin" /> &nbsp; Loading... */}
         <HunzoLoader />
       </div>
-    ); // or a loading spinner
+    );
   }
 
   if (!user) {

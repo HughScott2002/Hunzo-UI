@@ -46,6 +46,8 @@ export default function RootLayout({
   // TODO: 3) It doesn't provide the global state to get the user and its attributes
   // TODO: 4) I dont think it sends the token on each request
   // TODO: 4) Token Updates should be silent
+  // TODO: 5) If your token is valid auto sign you in, quickly. If your token is valid and you try to login it should check for a valid token first then auto
+
 
   // TODO: ADD POLYGLOT SUPPORT
   //TODO: FIX THE GODDAMN FONTS
