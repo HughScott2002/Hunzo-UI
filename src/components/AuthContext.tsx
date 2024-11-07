@@ -17,6 +17,7 @@ interface AuthContextType {
   logout: () => Promise<void>;
   register: (userData: any) => Promise<void>;
   refreshToken: () => Promise<void>;
+  dump: (data: any) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -25,6 +26,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
   const [lastRefresh, setLastRefresh] = useState<number>(0);
   const router = useRouter();
 
@@ -44,12 +46,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           }
         );
         if (response.ok) {
-          const userData = await response.json();
-          setUser(userData.user);
+          // const userData = await response.json();
+          // setUser(userData.user);
           setLastRefresh(Date.now());
         }
       } catch (error) {
         console.error("Failed to check session:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -85,24 +89,28 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const login = async (email: string, password: string) => {
     try {
-      const response = await fetch("http://localhost/api/users/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-        credentials: "include",
-      });
+      const response = await fetch(
+        "http://localhost/api/users/auth/account/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+          credentials: "include",
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
         if (data.user) {
           setUser(data.user);
+          setLastRefresh(Date.now());
           router.push("/");
         } else {
           console.log("User data not received");
           throw new Error("User data not received");
         }
       } else {
-        console.log("Login faileed");
+        console.log("Login failed");
         throw new Error("Login failed");
       }
     } catch (error) {
@@ -113,11 +121,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const logout = async () => {
     try {
-      await fetch("http://localhost/api/users/auth/logout", {
+      await fetch("http://localhost/api/users/auth/account/logout", {
         method: "POST",
         credentials: "include",
       });
       setUser(null);
+      setLastRefresh(0);
       router.push("/login");
     } catch (error) {
       console.error("Logout error:", error);
@@ -126,24 +135,28 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const register = async (userData: any) => {
     try {
-      const response = await fetch("http://localhost/api/users/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userData),
-        credentials: "include",
-      });
+      const response = await fetch(
+        "http://localhost/api/users/auth/account/register",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(userData),
+          credentials: "include",
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
         if (data.user) {
           setUser(data.user);
+          setLastRefresh(Date.now());
           router.push("/");
         } else {
           console.log("User data not received - Registration");
           throw new Error("User data not received");
         }
       } else {
-        console.log("Registration faileed");
+        console.log("Registration failed");
         throw new Error("Registration failed");
       }
     } catch (error) {
@@ -152,9 +165,34 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
+  const dump = async (data: any) => {
+    try {
+      const response = await fetch("http://localhost/api/users/dump", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+        credentials: "include",
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+      } else {
+        console.log("Dump failed");
+        throw new Error("Dump failed");
+      }
+    } catch (error) {
+      console.error("Dump error:", error);
+      throw error;
+    }
+  };
+  if (loading) {
+    return <div>Loading...</div>; // Or any loading component
+  }
+
   return (
     <AuthContext.Provider
-      value={{ user, login, logout, register, refreshToken }}
+      value={{ user, login, logout, register, refreshToken, dump }}
     >
       {children}
     </AuthContext.Provider>

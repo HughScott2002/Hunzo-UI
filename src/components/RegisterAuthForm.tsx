@@ -24,6 +24,7 @@ import { useToast } from "@/hooks/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import AuthFooter from "./AuthFooter";
 import { useAuth } from "./AuthContext";
+import { Label } from "./ui/label";
 
 //TODO: If the spaceing of the feilds
 //TODO: Add Optional Notifation Radio button
@@ -126,19 +127,20 @@ const registerSchema = z.object({
   city: z.string().min(2, "City must be at least 2 characters"),
   country: z.string().min(2, "Please select a country"),
   currency: z.string().min(3, "Currency must be 3 characters"),
-  stateProvince: z
-    .string()
-    .min(2, "State/Province must be at least 2 characters"),
+  state: z.string().min(2, "State/Province must be at least 2 characters"),
   postalCode: z
     .string()
     .min(2, "Postal/Zip code must be at least 2 characters"),
-  dateOfBirth: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Invalid date format"),
+  dob: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Invalid date format"),
   govId: z.string().min(4, "Government ID must be at least 4 characters"),
   email: z.string().email("Invalid email address"),
   password: z.string().min(8, "Password must be at least 8 characters"),
-  authorization: z
+  dataAuthorization: z
     .boolean()
-    .refine((val) => val === true, "You must agree to the terms"),
+    .refine(
+      (val) => val === true,
+      "You must agree to the terms to gain access"
+    ),
 });
 
 const RegisterAuthForm = () => {
@@ -161,11 +163,11 @@ const RegisterAuthForm = () => {
       city: "",
       country: "",
       currency: "",
-      stateProvince: "",
+      state: "",
       postalCode: "",
-      dateOfBirth: "",
+      dob: "",
       govId: "",
-      authorization: false,
+      dataAuthorization: false,
     },
   });
 
@@ -186,8 +188,8 @@ const RegisterAuthForm = () => {
     ["firstName", "lastName", "phone"],
     ["email", "password"],
     ["address", "city", "country", "currency"],
-    ["stateProvince", "postalCode", "dateOfBirth"],
-    ["govId", "authorization"],
+    ["state", "postalCode", "dob"],
+    ["govId", "dataAuthorization"],
   ];
 
   const totalSteps = formSteps.length;
@@ -312,7 +314,7 @@ const RegisterAuthForm = () => {
                 </>
               )}
               {step === 2 && (
-                <>
+                <div className="">
                   <CustomInput
                     control={form.control}
                     name="address"
@@ -327,31 +329,35 @@ const RegisterAuthForm = () => {
                     placeholder="New York"
                     type="text"
                   />
-                  <Select
-                    onValueChange={(value) => {
-                      form.setValue("country", value);
-                      form.setValue("currency", currencies[value] || "");
-                    }}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select Country" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {allCountries.map((country) => (
-                        <SelectItem key={country} value={country}>
-                          {country}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  {form.watch("country") &&
-                    !["United States", "United Kingdom", "Jamaica"].includes(
-                      form.watch("country")
-                    ) && (
-                      <p className="text-yellow-600">
-                        Service is not yet available in your country.
-                      </p>
-                    )}
+                  <div className="mt-4 mb-4">
+                    <Label>Country</Label>
+
+                    <Select
+                      onValueChange={(value) => {
+                        form.setValue("country", value);
+                        form.setValue("currency", currencies[value] || "");
+                      }}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select Country" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-white">
+                        {allCountries.map((country) => (
+                          <SelectItem key={country} value={country}>
+                            {country}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    {form.watch("country") &&
+                      !["United States", "United Kingdom", "Jamaica"].includes(
+                        form.watch("country")
+                      ) && (
+                        <p className="text-yellow-600">
+                          Service is not yet available in your country.
+                        </p>
+                      )}
+                  </div>
                   <CustomInput
                     control={form.control}
                     name="currency"
@@ -359,14 +365,15 @@ const RegisterAuthForm = () => {
                     placeholder="USD"
                     type="text"
                     disabled
+                    isHidden={true}
                   />
-                </>
+                </div>
               )}
               {step === 3 && (
                 <div className="grid grid-cols-2 sm:grid-col-2 gap-2">
                   <CustomInput
                     control={form.control}
-                    name="stateProvince"
+                    name="state"
                     label="State/Province"
                     placeholder="NY"
                     type="text"
@@ -384,9 +391,10 @@ const RegisterAuthForm = () => {
                         : "text"
                     }
                   />
+
                   <CustomInput
                     control={form.control}
-                    name="dateOfBirth"
+                    name="dob"
                     label="Date of Birth"
                     placeholder="MM/DD/YYYY"
                     type="date"
@@ -404,19 +412,21 @@ const RegisterAuthForm = () => {
                   />
                   <div className="flex items-center space-x-2">
                     <Checkbox
-                      id="authorization"
-                      checked={form.watch("authorization")}
+                      id="dataAuthorization"
+                      checked={form.watch("dataAuthorization")}
                       onCheckedChange={(checked) =>
-                        form.setValue("authorization", checked as boolean)
+                        form.setValue("dataAuthorization", checked as boolean)
                       }
                     />
-                    <label
-                      htmlFor="authorization"
-                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      I authorize the collection and processing of my data for
-                      KYC purposes and agree to the terms of service.
-                    </label>
+                    <div className="mt-5">
+                      <label
+                        htmlFor="dataAuthorization"
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        I authorize the collection and processing of my data for
+                        KYC purposes and agree to the terms of service.
+                      </label>
+                    </div>
                   </div>
                 </>
               )}

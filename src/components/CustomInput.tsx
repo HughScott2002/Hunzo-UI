@@ -7,7 +7,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { authformSchema } from "@/lib/utils";
+import { authformSchema, cn } from "@/lib/utils";
 import { Control, FieldPath } from "react-hook-form";
 import { z } from "zod";
 
@@ -19,6 +19,7 @@ interface CustomInputProps {
   label: string;
   placeholder: string;
   type: string;
+  isHidden: Boolean;
 }
 
 const CustomInput = ({
@@ -27,6 +28,7 @@ const CustomInput = ({
   label,
   placeholder,
   type,
+  isHidden = false,
 }: CustomInputProps) => {
   return (
     <FormField
@@ -34,10 +36,10 @@ const CustomInput = ({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <div className="form-label">
+          <div className={cn("form-label", isHidden ? "hidden" : "")}>
             <FormLabel>{label}</FormLabel>
           </div>
-          <div className="flex w-full">
+          <div className={cn("flex w-full", isHidden ? "hidden" : "")}>
             <FormControl>
               <Input
                 placeholder={placeholder}
@@ -50,7 +52,7 @@ const CustomInput = ({
           {/* <FormDescription>
         This is your public display name.
       </FormDescription> */}
-          <FormMessage className="form-message mt-2" />
+          <FormMessage className="form-message mt-4" />
         </FormItem>
       )}
     />

@@ -7,6 +7,26 @@
   padding: 0;
   box-sizing: border-box;
 }
+:root {
+  --font-inter: var(--font-inter);
+  --font-poppins: var(--font-poppins);
+  --font-manrope: var(--font-manrope);
+}
+
+/* Add these base font classes */
+@layer base {
+  .font-poppins {
+    font-family: var(--font-poppins);
+  }
+
+  .font-inter {
+    font-family: var(--font-inter);
+  }
+
+  .font-manrope {
+    font-family: var(--font-manrope);
+  }
+}
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {

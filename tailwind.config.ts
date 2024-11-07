@@ -1,10 +1,9 @@
 import type { Config } from "tailwindcss";
 
-
 // Design System
 const config = {
   // Dark Mode Configuration
-  darkMode: ["class"], 
+  darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -23,6 +22,14 @@ const config = {
     },
     extend: {
       colors: {
+        "hunzo-red": "#EF476F",
+        "hunzo-yellow": "#FFD166",
+        "hunzo-green": "#06D6A0",
+        "hunzo-blue": "#118AB2",
+        "hunzo-dark-blue": "#073B4C",
+        "hunzo-text-grey": "#718096",
+        "hunzo-pitch-black": "#000000",
+        "hunzo-background-grey": "#F5F5F5",
         fill: {
           1: "rgba(255, 255, 255, 0.10)",
         },
@@ -77,6 +84,7 @@ const config = {
         "gradient-mesh": "url('/icons/gradient-mesh.svg')",
         "bank-green-gradient":
           "linear-gradient(90deg, #01797A 0%, #489399 100%)",
+        "auth-right-bg": "url('/auth/auth-right-bg.png')",
       },
       boxShadow: {
         form: "0px 1px 2px 0px rgba(16, 24, 40, 0.05)",
@@ -87,8 +95,16 @@ const config = {
         creditCard: "8px 10px 16px 0px rgba(0, 0, 0, 0.05)",
       },
       fontFamily: {
-        inter: "var(--font-inter)",
-        "ibm-plex-serif": "var(--font-ibm-plex-serif)",
+        inter: ["var(--font-inter)"],
+        poppins: ["var(--font-poppins)"],
+        manrope: ["var(--font-manrope)"],
+      },
+      fontWeight: {
+        thin: "100",
+        normal: "400",
+        medium: "500",
+        semibold: "600",
+        bold: "700",
       },
       keyframes: {
         "accordion-down": {
