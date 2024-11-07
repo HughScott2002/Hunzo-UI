@@ -55,74 +55,54 @@ const HunzoLoginForm = () => {
           </h1>
         </header>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}></form>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <HunzoCustomInput
+                  control={form.control}
+                  name="email"
+                  placeholder={"EMAIL"}
+                  type={"email"}
+                  icon={<Mail className="h-5 w-5" />}
+                  isHidden={false}
+                />
+              </div>
+              <div className="space-y-2">
+                <HunzoCustomInput
+                  control={form.control}
+                  name="password"
+                  placeholder={"PASSWORD"}
+                  type={"password"}
+                  icon={<LockKeyhole className="h-5 w-5" />}
+                  isHidden={false}
+                />
+              </div>
+              <div className="text-right">
+                <Link
+                  className="text-sm text-gray-500 hover:text-hunzo-green font-poppins"
+                  href="/forgot-password"
+                >
+                  Forget Password?
+                </Link>
+              </div>
+              <Button
+                className="w-full bg-hunzo-blue text-white hover:text-hunzo-pitch-black hover:bg-hunzo-green/90 rounded-xl h-14 text-base font-poppins"
+                size="lg"
+                disabled={isLoading}
+                type="submit"
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 size={20} className="animate-spin" /> &nbsp;
+                    Loading...
+                  </>
+                ) : (
+                  "SIGN IN"
+                )}
+              </Button>
+            </div>
+          </form>
         </Form>
-        <div className="space-y-2">
-          <div className="relative">
-            <HunzoCustomInput
-              id={"email"}
-              placeholder={"EMAIL"}
-              type={"email"}
-              icon={<Mail className="h-5 w-5" />}
-            />
-            {/* <Input
-        className="pl-10 pr-10 placeholder:text-[#718096] rounded-xl h-16 text-base bg-[#F5F5F5] font-semibold font-poppins px-20"
-        id="email"
-        placeholder="EMAIL"
-        type="email"
-      />
-      <Mail className="absolute left-6 top-5 h-5 w-5  text-gray-500 " /> */}
-          </div>
-        </div>
-        <div className="space-y-2">
-          {/* <div className="relative">
-      <Input
-        className="pl-10 pr-10 placeholder:text-[#718096] rounded-xl h-16 text-base font-semibold font-poppins bg-[#F5F5F5] px-20"
-        id="password"
-        placeholder="PASSWORD"
-        type={showPassword ? "text" : "password"}
-      />
-      <LockKeyhole className="text-gray-500 absolute left-6 top-5 h-5 w-5" />
-      <Button
-        className="absolute right-2 top-[20%]"
-        onClick={() => setShowPassword(!showPassword)}
-        type="button"
-      >
-        {showPassword ? (
-          <EyeOff className="h-6 w-6 text-gray-500" />
-        ) : (
-          <Eye className="h-6 w-6 text-gray-500" />
-        )}
-      </Button>
-    </div> */}
-          <HunzoCustomInput
-            id={"password"}
-            placeholder={"PASSWORD"}
-            type={"password"}
-            icon={<LockKeyhole className="h-5 w-5" />}
-          />
-        </div>
-        <div className="text-right">
-          <Link
-            className="text-sm text-gray-500 hover:text-hunzo-green font-poppins"
-            href="/forgot-password"
-          >
-            Forget Password?
-          </Link>
-        </div>
-        <Button
-          className="w-full bg-hunzo-blue text-white hover:text-hunzo-pitch-black hover:bg-hunzo-green/90 rounded-xl h-14 text-base font-poppins"
-          size="lg"
-          type="submit"
-        >
-          {isLoading ? (
-            <>
-              <Loader2 size={20} className="animate-spin" /> &nbsp; Loading...
-            </>
-          ) : (
-            "SIGN IN"
-          )}
-        </Button>
       </div>
 
       <AuthFooter type="login" />
