@@ -85,6 +85,7 @@ const config = {
         "bank-green-gradient":
           "linear-gradient(90deg, #01797A 0%, #489399 100%)",
         "auth-right-bg": "url('/auth/auth-right-bg.png')",
+        "auth-bg-check": "url('/auth/checker.png')",
       },
       boxShadow: {
         form: "0px 1px 2px 0px rgba(16, 24, 40, 0.05)",

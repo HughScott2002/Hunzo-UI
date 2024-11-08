@@ -12,6 +12,7 @@ import NewSidebar from "@/components/NewSidebar";
 import New2Sidebar from "@/components/New2Sidebar";
 import HeaderSearch from "@/components/HeaderSearch";
 import { cn } from "@/lib/utils";
+import HunzoSiderbar from "@/components/HunzoSiderbar";
 //TODO: fix the Seach bar up top
 export default function RootLayout({
   children,
@@ -56,21 +57,18 @@ export default function RootLayout({
         {/* <Sidebar user={TestUser} /> */}
         {/* <New2Sidebar /> */}
         {/* <AccountAlerts /> */}
-        <NewSidebar
+        {/* <NewSidebar
           isExpanded={isExpanded}
           isMobile={isMobile}
           toggleSidebar={toggleSidebar}
-        />
-        <div className="w-screen gap-2">
-          {/* <div className="">
-            <div className="w-full ">
-              <HeaderSearch />
-            </div>
-          </div> */}
+        /> */}
+        {/* <HunzoSiderbar /> */}
+        {/* <div className="w-screen gap-2">
           <div className={cn("transition-all", isExpanded ? "ml-60" : "ml-20")}>
             {children}
           </div>
-        </div>
+        </div> */}
+        {children}
 
         <CommandPalette />
       </main>
