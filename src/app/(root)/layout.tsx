@@ -19,6 +19,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   // Render the layout and children if authenticated
   const [isExpanded, setIsExpanded] = useState(() => {
     if (typeof window !== "undefined") {

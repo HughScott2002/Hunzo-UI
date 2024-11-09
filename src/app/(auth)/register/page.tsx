@@ -1,19 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Eye, EyeOff, LockKeyhole, Mail } from "lucide-react";
-import { useState } from "react";
-
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import HunzoCustomInput from "@/components/ui/hunzo-custom-input";
-import HunzoLoginForm from "@/components/HunzoLoginForm";
 import HunzoAuthRightSide from "@/components/HunzoAuthRightSide";
 import HunzoRegisterForm from "@/components/HunzoRegisterForm";
 
 export default function Component() {
-  // TODO: Fix the font
-  // TODO: Fix the xl size thing
-  // TODO: Fix
+  // FIXME: Fix the font
+  // FIXME: Fix the xl size thing
   return (
     <div className="grid h-screen lg:grid-cols-2">
       {/* This is the left side */}

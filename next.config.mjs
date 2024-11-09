@@ -12,6 +12,7 @@ const nextConfig = {
       "banner2.cleanpng.com",
     ],
   },
+  optimizeFonts: true,
 };
 
 export default nextConfig;
