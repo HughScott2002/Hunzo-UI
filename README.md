@@ -14,6 +14,18 @@
 
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
   
+   
+<div align="center">
+ <div style="display: inline-flex; align-items: center; gap: 12px; background-color: #FFF2CF; padding: 8px 16px; border-radius: 6px; border: 1px solid #FFE69C;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.7)); transform: scale(1.2);" class="lucide lucide-octagon-alert">
+      <path d="M12 16h.01"/>
+      <path d="M12 8v4"/>
+      <path d="M15.312 2a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586l-4.688-4.688A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2z"/>
+    </svg>
+    <strong style="color: #FFD166; font-family: system-ui; letter-spacing: 2px; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; font-size: 14px;">IN ACTIVE DEVELOPMENT</strong>
+</div>
+</div>
+
   </div>
 </div>
 
