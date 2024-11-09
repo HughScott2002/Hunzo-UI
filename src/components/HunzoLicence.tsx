@@ -1,24 +1,27 @@
+import { Copyright } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const HunzoLicence = () => {
   return (
-    <p className="flex items-center flex-wrap gap-2">
-      <Link
-        href="https://github.com/HughScott2002/Hunzo-UI"
-        className="text-blue-600 hover:text-blue-800"
-      >
-        Hunzo UI
-      </Link>
-      {" by "}
-      <Link
-        href="https://github.com/HughScott2002/"
-        className="text-blue-600 hover:text-blue-800"
-      >
-        Hugh Scott
-      </Link>
-      {" is licensed under "}
+    <p className="flex items-center flex-wrap gap-2 text-sm text-hunzo-text-grey flex-col">
+      <div className="">
+        <Link
+          href="https://github.com/HughScott2002/Hunzo-UI"
+          className="text-hunzo-blue hover:text-blue-800"
+        >
+          Hunzo
+        </Link>
+        <span> by </span>
+        <Link
+          href="https://github.com/HughScott2002/"
+          className="text-hunzo-blue hover:text-blue-800"
+        >
+          Hugh Scott
+        </Link>
+        <span> is licensed under </span>
+      </div>
       <Link
         href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1"
         target="_blank"
@@ -54,6 +57,7 @@ const HunzoLicence = () => {
           height={22}
           className="inline-block"
         /> */}
+        {/* <Copyright /> */}
         <CcIcon />
         <ByIcon />
         <NcIcon />
@@ -67,8 +71,8 @@ export default HunzoLicence;
 export const CcIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="22"
-    height="22"
+    width="16"
+    height="16"
     viewBox="0 0 96.1 96.1"
   >
     <path d="M48.1 0C21.5 0 0 21.5 0 48.1s21.5 48 48.1 48 48-21.5 48-48.1S74.6 0 48.1 0zm0 86.5c-21.3 0-38.5-17.3-38.5-38.5S26.8 9.5 48.1 9.5s38.5 17.3 38.5 38.5-17.3 38.5-38.5 38.5z" />
@@ -79,8 +83,8 @@ export const CcIcon = () => (
 export const ByIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="22"
-    height="22"
+    width="16"
+    height="16"
     viewBox="0 0 96.1 96.1"
   >
     <path d="M48.1 0C21.5 0 0 21.5 0 48.1s21.5 48 48.1 48 48-21.5 48-48.1S74.6 0 48.1 0zm0 86.5c-21.3 0-38.5-17.3-38.5-38.5S26.8 9.5 48.1 9.5s38.5 17.3 38.5 38.5-17.3 38.5-38.5 38.5z" />
@@ -91,8 +95,8 @@ export const ByIcon = () => (
 export const NcIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="22"
-    height="22"
+    width="16"
+    height="16"
     viewBox="0 0 96.1 96.1"
   >
     <path d="M48.1 0C21.5 0 0 21.5 0 48.1s21.5 48 48.1 48 48-21.5 48-48.1S74.6 0 48.1 0zm0 86.5c-21.3 0-38.5-17.3-38.5-38.5S26.8 9.5 48.1 9.5s38.5 17.3 38.5 38.5-17.3 38.5-38.5 38.5z" />
@@ -104,8 +108,8 @@ export const NcIcon = () => (
 export const NdIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="22"
-    height="22"
+    width="16"
+    height="16"
     viewBox="0 0 96.1 96.1"
   >
     <path d="M48.1 0C21.5 0 0 21.5 0 48.1s21.5 48 48.1 48 48-21.5 48-48.1S74.6 0 48.1 0zm0 86.5c-21.3 0-38.5-17.3-38.5-38.5S26.8 9.5 48.1 9.5s38.5 17.3 38.5 38.5-17.3 38.5-38.5 38.5z" />

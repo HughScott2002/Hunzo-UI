@@ -26,13 +26,13 @@ export default function RootLayout({
       <AppSidebar />
       <main className=" h-screen w-full flex flex-col">
         <SidebarInset className="flex flex-col h-full">
-          <header className="flex h-28 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-20 sticky top-0 z-10 px-10 bg-black-1">
+          <header className="flex h-28 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-20 sticky top-0 z-10 px-10 ">
             <div className="flex flex-1 items-center justify-between w-full h-full">
               <div className="flex flex-col items-start justify-center gap-2 ">
                 <h1 className="font-poppins font-semibold text-2xl">
-                  Page Name
+                  Dashboard
                 </h1>
-                <div className="flex items-center gap-2">
+                {/* <div className="flex items-center gap-2">
                   <Separator orientation="vertical" className="mr-2 h-4" />
                   <Breadcrumb>
                     <BreadcrumbList>
@@ -45,7 +45,7 @@ export default function RootLayout({
                       </BreadcrumbItem>
                     </BreadcrumbList>
                   </Breadcrumb>
-                </div>
+                </div> */}
               </div>
               <div className="flex justify-end items-center gap-4 ">
                 <div className="w-fit h-fit bg-[#FAFAFA] rounded-full">

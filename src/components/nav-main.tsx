@@ -17,6 +17,8 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
+import React from "react";
 
 export function NavMain({
   items,
@@ -24,7 +26,7 @@ export function NavMain({
   items: {
     title: string;
     url: string;
-    icon?: LucideIcon;
+    icon?: LucideIcon | React.FC;
     isActive?: boolean;
     items?: {
       title: string;
@@ -33,8 +35,8 @@ export function NavMain({
   }[];
 }) {
   return (
-    <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+    <SidebarGroup className="mt-6 h-fit w-full ">
+      {/* <SidebarGroupLabel>Platform</SidebarGroupLabel> */}
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible
@@ -43,27 +45,38 @@ export function NavMain({
             defaultOpen={item.isActive}
             className="group/collapsible"
           >
-            <SidebarMenuItem>
+            <SidebarMenuItem className="">
               <CollapsibleTrigger asChild>
-                <SidebarMenuButton tooltip={item.title}>
-                  {item.icon && <item.icon />}
-                  <span>{item.title}</span>
-                  <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                <SidebarMenuButton
+                  tooltip={item.title}
+                  className={`flex pl-5 py-7 gap-4  rounded-xl w-full hover:bg-hunzo-blue transition-all ease-in-out ${
+                    item.isActive ? "bg-hunzo-blue" : "bg-hunzo-text-grey"
+                  }`}
+                >
+                  {item.icon && <item.icon className="text-white" />}
+                  <span className="font-manrope font-bold text-base text-white">
+                    {item.title}
+                  </span>
+                  {item.items && (
+                    <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 text-white" />
+                  )}
                 </SidebarMenuButton>
               </CollapsibleTrigger>
-              <CollapsibleContent>
-                <SidebarMenuSub>
-                  {item.items?.map((subItem) => (
+              {item.items?.map((subItem) => (
+                <CollapsibleContent className="">
+                  <SidebarMenuSub className="">
                     <SidebarMenuSubItem key={subItem.title}>
                       <SidebarMenuSubButton asChild>
-                        <a href={subItem.url}>
-                          <span>{subItem.title}</span>
-                        </a>
+                        <Link href={subItem.url}>
+                          <span className="text-hunzo-text-grey ml-4 text-base font-bold hover:text-hunzo-blue">
+                            {subItem.title}
+                          </span>
+                        </Link>
                       </SidebarMenuSubButton>
                     </SidebarMenuSubItem>
-                  ))}
-                </SidebarMenuSub>
-              </CollapsibleContent>
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              ))}
             </SidebarMenuItem>
           </Collapsible>
         ))}
