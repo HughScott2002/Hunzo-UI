@@ -10,6 +10,7 @@ const nextConfig = {
       "www.w3.org",
       "github.com",
       "banner2.cleanpng.com",
+      "mirrors.creativecommons.org",
     ],
   },
   optimizeFonts: true,

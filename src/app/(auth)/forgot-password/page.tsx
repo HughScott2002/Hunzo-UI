@@ -1,4 +1,5 @@
 import HunzoAuthRightSide from "@/components/HunzoAuthRightSide";
+import HunzoLicence from "@/components/HunzoLicence";
 import HunzoLoader from "@/components/HunzoLoader";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,6 +25,7 @@ const Forgot = () => {
             {/* <HunzoLoginForm /> */}
             <span className="h-full w-full flex justify-center items-center bg-black-1">
               Forgot
+              <HunzoLicence />
             </span>
           </div>
           <footer className="h-fit w-full">
