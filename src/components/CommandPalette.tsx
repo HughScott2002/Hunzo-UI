@@ -27,9 +27,9 @@ export function CommandPalette() {
   }, []);
 
   return (
-    <div className="bg-black">
+    <div className="bg-hunzo-text-grey">
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." />
+        <CommandInput  placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Suggestions">

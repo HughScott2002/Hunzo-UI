@@ -36,7 +36,11 @@ const HunzoLoginForm = () => {
       // toast({ title: `Welcome ${user?.firstName}` });
     } catch (error) {
       // console.error("Login error:", error);
-      toast({ title: "Login failed" });
+      toast({
+        title: "Login failed",
+        variant: "destructive",
+        
+      });
     } finally {
       setIsLoading(false);
     }

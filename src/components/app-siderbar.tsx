@@ -1,48 +1,39 @@
 "use client";
-
-import * as React from "react";
 import {
   AudioWaveform,
-  BookOpen,
-  Bot,
+  BadgePoundSterling,
   CircleHelp,
   Command,
-  Frame,
   GalleryVerticalEnd,
   House,
   LogOut,
-  Map,
-  PanelLeftClose,
-  PieChart,
   Settings,
-  Settings2,
-  SquareTerminal,
   Wallet,
   Workflow,
 } from "lucide-react";
-
 import { NavMain } from "@/components/nav-main";
-import { NavProjects } from "@/components/nav-projects";
-import { NavUser } from "@/components/nav-user";
-import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
   SidebarRail,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import Image from "next/image";
-import { Separator } from "./ui/separator";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { SidebarMenuButton, useSidebar } from "@/components/ui/sidebar";
+import { TeamSwitcher } from "./team-switcher";
 
 // This is sample data.
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
+  // user: {
+  //   name: "shadcn",
+  //   email: "m@example.com",
+  //   avatar: "/avatars/shadcn.jpg",
+  // },
   teams: [
     {
       name: "Acme Inc",
@@ -66,20 +57,6 @@ const data = {
       url: "/test",
       icon: House,
       isActive: true,
-      // items: [
-      //   {
-      //     title: "History",
-      //     url: "#",
-      //   },
-      //   {
-      //     title: "Starred",
-      //     url: "#",
-      //   },
-      //   {
-      //     title: "Settings",
-      //     url: "#",
-      //   },
-      // ],
     },
     {
       title: "Activity",
@@ -97,91 +74,60 @@ const data = {
       ],
     },
     {
-      title: "My Wallet",
+      title: "My Wallets",
       url: "#",
       icon: Wallet,
-      // items: [
-      //   {
-      //     title: "General",
-      //     url: "#",
-      //   },
-      //   {
-      //     title: "Team",
-      //     url: "#",
-      //   },
-      //   {
-      //     title: "Billing",
-      //     url: "#",
-      //   },
-      //   {
-      //     title: "Limits",
-      //     url: "#",
-      //   },
-      // ],
-    },
-    {
-      title: "Analytics",
-      url: "#",
-      icon: HunzoChartSVG,
       items: [
         {
-          title: "Introduction",
+          title: "New Wallet",
           url: "#",
         },
         {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
+          title: "Manage Wallets",
           url: "#",
         },
       ],
     },
-  ],
-  projects: [
     {
-      name: "Design Engineering",
+      title: "FX Exchange",
       url: "#",
-      icon: Frame,
+      icon: BadgePoundSterling,
     },
     {
-      name: "Sales & Marketing",
+      title: "Financial Planning",
       url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
+      icon: HunzoChartSVG,
     },
   ],
+  // projects: [
+  //   {
+  //     name: "Design Engineering",
+  //     url: "#",
+  //     icon: Frame,
+  //   },
+  //   {
+  //     name: "Sales & Marketing",
+  //     url: "#",
+  //     icon: PieChart,
+  //   },
+  //   {
+  //     name: "Travel",
+  //     url: "#",
+  //     icon: Map,
+  //   },
+  // ],
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar collapsible="icon" className="bg-hunzo-background-grey" {...props}>
       <div className="px-4 py-2  w-full h-full flex flex-col">
         <SidebarHeader className="">
           <TeamSwitcher teams={data.teams} />
         </SidebarHeader>
-        {/* <header className="flex items-end bg-black-1 space-x-2 pb-4">
-          <Image
-            src="/icons/Hunzo-Logo.svg"
-            alt="Hunzo Logo"
-            width={56}
-            height={56}
-            className="h-10 w-10"
-          />
-          <h1 className="text-2xl font-semibold -tracking-wide text-hunzo-blue font-poppins">
-            Hunzo
-          </h1>
-        </header> */}
-        <hr className="font-extrabold text-hunzo-text-grey text-2xl w-full" />
+        <hr />
+        <hr />
+        <hr className="text-hunzo-pitch-black" />
         <SidebarContent className="">
           <NavMain items={data.navMain} />
           {/* <NavProjects projects={data.projects} /> */}
@@ -189,18 +135,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         {/* <SidebarFooter>
           <NavUser user={data.user} />
         </SidebarFooter> */}
-        <footer className="flex flex-col items-center gap-1">
-          <HunzoFooterItem label="Toogle Sidebar">
-            <SidebarTrigger className=" w-6 h-6" />
+        <footer className="flex flex-col items-center gap-1 ">
+          <HunzoFooterItem label="Toggle Sidebar">
+            <SidebarTrigger className="size-6" />
           </HunzoFooterItem>
           <HunzoFooterItem label="Help">
-            <CircleHelp className="w-6 h-6" />
+            <CircleHelp className="size-6" />
           </HunzoFooterItem>
           <HunzoFooterItem label="Settings">
-            <Settings className="w-6 h-6" />
+            <Settings className="size-6" />
           </HunzoFooterItem>
           <HunzoFooterItem label="Logout" className="text-hunzo-red">
-            <LogOut className="w-6 h-6" />
+            <LogOut className="size-6" />
           </HunzoFooterItem>
         </footer>
         <SidebarRail />
@@ -218,12 +164,40 @@ function HunzoFooterItem({
   label: string;
   className?: string;
 }) {
-  return (
-    <div className={`flex space-x-2 p-4 w-full  ${className}`}>
+  const { state } = useSidebar();
+  const isCollapsed = state === "collapsed";
+
+  const button = (
+    <SidebarMenuButton
+      className={`flex items-center justify-start px-4 py-6 ${
+        isCollapsed ? "w-full" : "w-full"
+      } ${className}`}
+    >
       {children}
-      <span className="font-manrope font-semibold">{label}</span>
-    </div>
+      {!isCollapsed && (
+        <span className="ml-2 font-manrope font-semibold text-base">
+          {label}
+        </span>
+      )}
+    </SidebarMenuButton>
   );
+
+  if (isCollapsed) {
+    return (
+      <Tooltip>
+        <TooltipTrigger asChild>{button}</TooltipTrigger>
+        <TooltipContent
+          side="right"
+          align="center"
+          className="bg-hunzo-background-grey p-4 text-sm font-bold text-hunzo-text-grey"
+        >
+          {label}
+        </TooltipContent>
+      </Tooltip>
+    );
+  }
+
+  return button;
 }
 
 function HunzoChartSVG({ className }: { className?: string }) {

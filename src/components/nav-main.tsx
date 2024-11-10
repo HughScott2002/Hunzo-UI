@@ -49,12 +49,12 @@ export function NavMain({
               <CollapsibleTrigger asChild>
                 <SidebarMenuButton
                   tooltip={item.title}
-                  className={`flex pl-5 py-7 gap-4  rounded-xl w-full hover:bg-hunzo-blue transition-all ease-in-out ${
+                  className={`flex pl-5 py-7 gap-4  rounded-2xl w-full hover:bg-hunzo-blue transition-all ease-in-out ${
                     item.isActive ? "bg-hunzo-blue" : "bg-hunzo-text-grey"
                   }`}
                 >
-                  {item.icon && <item.icon className="text-white" />}
-                  <span className="font-manrope font-bold text-base text-white">
+                  {item.icon && <item.icon className="text-white " />}
+                  <span className="font-manrope font-bold text-sm text-white">
                     {item.title}
                   </span>
                   {item.items && (

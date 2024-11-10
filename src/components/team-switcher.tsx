@@ -1,8 +1,5 @@
 "use client";
-
-import * as React from "react";
 import { ChevronsUpDown, Plus } from "lucide-react";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,6 +16,8 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import Image from "next/image";
+import { newAccoutsFeatureFag } from "@/lib/featureFlags";
+import { useState } from "react";
 
 export function TeamSwitcher({
   teams,
@@ -30,73 +29,92 @@ export function TeamSwitcher({
   }[];
 }) {
   const { isMobile } = useSidebar();
-  const [activeTeam, setActiveTeam] = React.useState(teams[0]);
+  const [activeTeam, setActiveTeam] = useState(teams[0]);
   //TODO: Implement the account switcher
   return (
     <SidebarMenu>
       <SidebarMenuItem>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <SidebarMenuButton
-              size="lg"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+        {!newAccoutsFeatureFag && (
+          <SidebarTitle newAccoutsFeatureFag={newAccoutsFeatureFag} />
+        )}
+        {newAccoutsFeatureFag && (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <SidebarTitle newAccoutsFeatureFag={newAccoutsFeatureFag} />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg bg-hunzo-background-grey"
+              align="start"
+              side={isMobile ? "bottom" : "right"}
+              sideOffset={4}
             >
-              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                {/* <activeTeam.logo className="size-4" /> */}
-                <Image
-                  src="/icons/Hunzo-Logo.svg"
-                  alt="Hunzo Logo"
-                  width={56}
-                  height={56}
-                  className="size-10"
-                />
-              </div>
-              <div className="grid flex-1 text-left text-sm leading-tight">
-                {/* <span className="truncate font-semibold">
-                  {activeTeam.name}
-                </span> */}
-                <h1 className="text-2xl font-semibold -tracking-wide text-hunzo-blue font-poppins">
-                  Hunzo
-                </h1>
-                {/* <span className="truncate text-xs">{activeTeam.plan}</span> */}
-              </div>
-              <ChevronsUpDown className="ml-auto text-hunzo-blue" />
-            </SidebarMenuButton>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg bg-hunzo-background-grey"
-            align="start"
-            side={isMobile ? "bottom" : "right"}
-            sideOffset={4}
-          >
-            <DropdownMenuLabel className="text-xs text-muted-foreground">
-              Teams
-            </DropdownMenuLabel>
-            {teams.map((team, index) => (
-              <DropdownMenuItem
-                key={team.name}
-                onClick={() => setActiveTeam(team)}
-                className="gap-2 p-2"
-              >
-                <div className="flex size-6 items-center justify-center rounded-sm border">
-                  <team.logo className="size-4 shrink-0" />
+              <DropdownMenuLabel className="text-sm  text-hunzo-text-grey">
+                Accounts
+              </DropdownMenuLabel>
+              {teams.map((team, index) => (
+                <DropdownMenuItem
+                  key={team.name}
+                  onClick={() => setActiveTeam(team)}
+                  className="gap-2 p-2"
+                >
+                  <div className="flex size-6 items-center justify-center rounded-sm border">
+                    <team.logo className="size-5 shrink-0" />
+                  </div>
+                  <span className="font-manrope text-base">{team.name}</span>
+                  <DropdownMenuShortcut className="text-hunzo-blue font-bold text-xs">
+                    ⌘K
+                  </DropdownMenuShortcut>
+                </DropdownMenuItem>
+              ))}
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className="gap-2 p-2">
+                <div className="flex size-6 items-center justify-center rounded-md border bg-background">
+                  <Plus className="size-4" />
                 </div>
-                {team.name}
-                <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
+                <div className="font-medium text-muted-foreground">
+                  Add New Account
+                </div>
               </DropdownMenuItem>
-            ))}
-            <DropdownMenuSeparator />
-            <DropdownMenuItem className="gap-2 p-2">
-              <div className="flex size-6 items-center justify-center rounded-md border bg-background">
-                <Plus className="size-4" />
-              </div>
-              <div className="font-medium text-muted-foreground">
-                Add New Account
-              </div>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        )}
       </SidebarMenuItem>
     </SidebarMenu>
+  );
+}
+
+function SidebarTitle({
+  newAccoutsFeatureFag,
+}: {
+  newAccoutsFeatureFag: boolean;
+}) {
+  return (
+    <SidebarMenuButton
+      size="lg"
+      className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+    >
+      <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+        {/* <activeTeam.logo className="size-4" /> */}
+        <Image
+          src="/icons/Hunzo-Logo.svg"
+          alt="Hunzo Logo"
+          width={56}
+          height={56}
+          className="size-10"
+        />
+      </div>
+      <div className="grid flex-1 text-left text-sm leading-tight">
+        {/* <span className="truncate font-semibold">
+          {activeTeam.name}
+        </span> */}
+        <h1 className="text-2xl font-semibold -tracking-wide text-hunzo-blue font-poppins">
+          Hunzo
+        </h1>
+        {/* <span className="truncate text-xs">{activeTeam.plan}</span> */}
+      </div>
+      {newAccoutsFeatureFag && (
+        <ChevronsUpDown className="ml-auto text-hunzo-grey hover:text-hunzo-blue" />
+      )}
+    </SidebarMenuButton>
   );
 }

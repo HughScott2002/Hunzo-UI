@@ -23,7 +23,7 @@ const Transfers = () => {
             </form>
 
           </div> */}
-          <div className="  p-6">
+          <div className="p-6">
             <PaymentTransferForm
             // accounts={accountsData}
             // accounts={}

@@ -15,6 +15,7 @@ import {
 import { BellDot, ChevronDown, Search } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AppSidebar } from "@/components/app-siderbar";
+import { CommandPalette } from "@/components/CommandPalette";
 
 export default function RootLayout({
   children,
@@ -29,7 +30,7 @@ export default function RootLayout({
           <header className="flex h-28 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-20 sticky top-0 z-10 px-10 ">
             <div className="flex flex-1 items-center justify-between w-full h-full">
               <div className="flex flex-col items-start justify-center gap-2 ">
-                <h1 className="font-poppins font-semibold text-2xl">
+                <h1 className="font-poppins font-semibold text-xl">
                   Dashboard
                 </h1>
                 {/* <div className="flex items-center gap-2">
@@ -49,20 +50,20 @@ export default function RootLayout({
               </div>
               <div className="flex justify-end items-center gap-4 ">
                 <div className="w-fit h-fit bg-[#FAFAFA] rounded-full">
-                  <SidebarTrigger className=" w-10 h-10 p-2" />
+                  <SidebarTrigger className=" size-9 p-2" />
                 </div>
                 <div className="w-fit h-fit bg-[#FAFAFA] rounded-full">
-                  <Search className="w-10 h-10 p-2" />
+                  <Search className="size-9 p-2" />
                 </div>
                 <div className="w-fit h-fit bg-[#FAFAFA] rounded-full">
-                  <BellDot className="w-10 h-10 p-2 " />
+                  <BellDot className="size-9 p-2 " />
                 </div>
                 <div className="flex gap-3 p-2 bg-[#FAFAFA] rounded-full justify-center items-center">
-                  <Avatar className="w-8 h-8">
+                  <Avatar className="size-7">
                     <AvatarImage src="https://github.com/shadcn.png" />
                     <AvatarFallback>CN</AvatarFallback>
                   </Avatar>
-                  <span className="font-poppins text-base font-semibold text-[#1A202C] truncate max-w-32">
+                  <span className="font-poppins text-sm font-semibold text-[#1A202C] truncate max-w-32">
                     Firstname L.
                   </span>
                   <ChevronDown className="w-4 h-4 mr-1" />
@@ -73,6 +74,7 @@ export default function RootLayout({
           <div className="flex-1 overflow-y-auto px-10 py-2">{children}</div>
         </SidebarInset>
       </main>
+      <CommandPalette />
     </SidebarProvider>
   );
 }

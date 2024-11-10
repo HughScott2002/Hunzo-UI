@@ -1,3 +1,5 @@
+import { CommandPalette } from "@/components/CommandPalette";
+import HunzoAuthLeftSide from "@/components/HunzoAuthLeftSide";
 import HunzoAuthRightSide from "@/components/HunzoAuthRightSide";
 
 export default function RootLayout({
@@ -7,7 +9,7 @@ export default function RootLayout({
 }>) {
   return (
     <main className="grid h-screen lg:grid-cols-2">
-      {children}
+      <HunzoAuthLeftSide>{children}</HunzoAuthLeftSide>
       <HunzoAuthRightSide />
     </main>
   );

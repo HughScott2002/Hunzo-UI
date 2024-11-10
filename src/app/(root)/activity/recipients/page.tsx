@@ -1,13 +1,15 @@
 import BankInfo from "@/components/BankInfo";
 import HeaderBox from "@/components/HeaderBox";
+import RecentTransations from "@/components/RecentTransations";
 import TransactionsTable from "@/components/TransactionsTable";
+import React from "react";
 
-export default function Page() {
+export default function Recipients() {
   return (
-    <section className="flex w-full">
-      <div className="w-full rounded-2xl">
-        {/* <HeaderBox title="Transaction History" subtext="" type="nah" /> */}
-        {/* <BankInfo
+    <section className="flex">
+      <div className="my-wallets">
+        <HeaderBox title="Transaction History" subtext="" type="nah" />
+        <BankInfo
           account={{
             id: "123",
             availableBalance: 1000,
@@ -24,7 +26,7 @@ export default function Page() {
           }}
           appwriteItemId={"2309324234"}
           type="full"
-        /> */}
+        />
         <TransactionsTable
           transactions={[
             {
