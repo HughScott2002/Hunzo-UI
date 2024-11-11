@@ -4,7 +4,7 @@ import Sidebar from "@/components/Sidebar";
 import Image from "next/image";
 import { TestUser, appName } from "@/constants";
 import { CommandPalette } from "@/components/CommandPalette";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import ProtectedRouteWrapper from "@/components/ProtectedRouteWrapper";
 import AccountAlerts from "@/components/AccountAlerts";
@@ -37,38 +37,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Render the layout and children if authenticated
-  // const [isExpanded, setIsExpanded] = useState(() => {
-  //   if (typeof window !== "undefined") {
-  //     const saved = localStorage.getItem("sidebarExpanded");
-  //     return saved !== null ? JSON.parse(saved) : true;
-  //   }
-  //   return true;
-  // });
-  // const [isMobile, setIsMobile] = useState(false);
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     const mobile = window.innerWidth < 768;
-  //     setIsMobile(mobile);
-  //     if (mobile) {
-  //       setIsExpanded(false);
-  //     }
-  //   };
-
-  //   window.addEventListener("resize", handleResize);
-  //   handleResize(); // Call it initially
-
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem("sidebarExpanded", JSON.stringify(isExpanded));
-  // }, [isExpanded]);
-
-  // const toggleSidebar = () => {
-  //   setIsExpanded((prev: any) => !prev);
-  // };
+  const pathname = usePathname();
   return (
     <ProtectedRouteWrapper>
       <SidebarProvider className="min-h-screen max-h-screen overflow-hidden">
@@ -79,7 +48,7 @@ export default function RootLayout({
               <div className="flex flex-1 items-center justify-between w-full h-full">
                 <div className="flex flex-col items-start justify-center gap-2 ">
                   <h1 className="font-poppins font-semibold text-xl">
-                    Dashboard
+                    Dashboard {pathname}
                   </h1>
                   {/* <div className="flex items-center gap-2">
                   <Separator orientation="vertical" className="mr-2 h-4" />
@@ -122,8 +91,8 @@ export default function RootLayout({
             <div className="flex-1 overflow-y-auto px-10 py-2">{children}</div>
           </SidebarInset>
         </main>
-        <CommandPalette />
       </SidebarProvider>
+      <CommandPalette />
     </ProtectedRouteWrapper>
   );
 }

@@ -1,12 +1,16 @@
 "use client";
 import {
+  ArrowRightLeft,
   AudioWaveform,
   BadgePoundSterling,
   CircleHelp,
   Command,
+  Contact,
   GalleryVerticalEnd,
+  HandCoins,
   House,
   LogOut,
+  Pocket,
   Settings,
   Wallet,
   Workflow,
@@ -26,14 +30,10 @@ import {
 } from "@/components/ui/tooltip";
 import { SidebarMenuButton, useSidebar } from "@/components/ui/sidebar";
 import { TeamSwitcher } from "./team-switcher";
+import Link from "next/link";
 
 // This is sample data.
 const data = {
-  // user: {
-  //   name: "shadcn",
-  //   email: "m@example.com",
-  //   avatar: "/avatars/shadcn.jpg",
-  // },
   teams: [
     {
       name: "Acme Inc",
@@ -54,68 +54,46 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "/test",
+      url: "/",
       icon: House,
       isActive: true,
     },
     {
-      title: "Activity",
-      url: "#",
-      icon: Workflow,
-      items: [
-        {
-          title: "Transactions",
-          url: "#",
-        },
-        {
-          title: "Recipients",
-          url: "#",
-        },
-      ],
+      title: "Transactions",
+      url: "/transactions",
+      icon: ArrowRightLeft,
+    },
+    {
+      title: "Recipients",
+      url: "/recipients",
+      icon: Contact,
     },
     {
       title: "My Wallets",
-      url: "#",
+      url: "/my-wallets",
       icon: Wallet,
-      items: [
-        {
-          title: "New Wallet",
-          url: "#",
-        },
-        {
-          title: "Manage Wallets",
-          url: "#",
-        },
-      ],
+      // items: [
+      //   {
+      //     title: "New Wallet",
+      //     url: "/my-wallets",
+      //   },
+      //   {
+      //     title: "Manage Wallets",
+      //     url: "/my-wallets",
+      //   },
+      // ],
     },
+    // {
+    //   title: "FX Exchange",
+    //   url: "/fx",
+    //   icon: BadgePoundSterling,
+    // },
     {
-      title: "FX Exchange",
-      url: "#",
-      icon: BadgePoundSterling,
-    },
-    {
-      title: "Financial Planning",
-      url: "#",
-      icon: HunzoChartSVG,
+      title: "Pocket",
+      url: "/pocket",
+      icon: HandCoins,
     },
   ],
-  // projects: [
-  //   {
-  //     name: "Design Engineering",
-  //     url: "#",
-  //     icon: Frame,
-  //   },
-  //   {
-  //     name: "Sales & Marketing",
-  //     url: "#",
-  //     icon: PieChart,
-  //   },
-  //   {
-  //     name: "Travel",
-  //     url: "#",
-  //     icon: Map,
-  //   },
-  // ],
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -142,7 +120,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <HunzoFooterItem label="Help">
             <CircleHelp className="size-6" />
           </HunzoFooterItem>
-          <HunzoFooterItem label="Settings">
+          <HunzoFooterItem label="Settings" href="/settings">
             <Settings className="size-6" />
           </HunzoFooterItem>
           <HunzoFooterItem label="Logout" className="text-hunzo-red">
@@ -159,10 +137,12 @@ function HunzoFooterItem({
   children,
   label,
   className,
+  href,
 }: {
   children: React.ReactNode;
   label: string;
   className?: string;
+  href?: string;
 }) {
   const { state } = useSidebar();
   const isCollapsed = state === "collapsed";
@@ -185,7 +165,10 @@ function HunzoFooterItem({
   if (isCollapsed) {
     return (
       <Tooltip>
-        <TooltipTrigger asChild>{button}</TooltipTrigger>
+        <TooltipTrigger asChild>
+          {href && <Link href={href}> {button}</Link>}
+          {/* {!href && <>{button}</>} */}
+        </TooltipTrigger>
         <TooltipContent
           side="right"
           align="center"

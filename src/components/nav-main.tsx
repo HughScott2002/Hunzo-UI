@@ -54,9 +54,20 @@ export function NavMain({
                   }`}
                 >
                   {item.icon && <item.icon className="text-white " />}
-                  <span className="font-manrope font-bold text-sm text-white">
-                    {item.title}
-                  </span>
+                  {!item.items && (
+                    <Link
+                      href={item.url}
+                      className="font-manrope font-bold text-sm text-white"
+                    >
+                      {item.title}
+                    </Link>
+                  )}
+                  {item.items && (
+                    <span className="font-manrope font-bold text-sm text-white">
+                      {item.title}
+                    </span>
+                  )}
+
                   {item.items && (
                     <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 text-white" />
                   )}
