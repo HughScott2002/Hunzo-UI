@@ -171,12 +171,7 @@ const HunzoRegisterForm = () => {
       dataAuthorization: false,
     },
   });
-  const test = () => {
-    console.log("HIt");
-    console.log("HIt");
-    console.log("HIt");
-  };
-
+  
   const onSubmit = async (data: z.infer<typeof registerSchema>) => {
     setIsLoading(true);
     try {

@@ -6,10 +6,10 @@ import React from "react";
 
 const Transactions = () => {
   return (
-    <section className="flex">
-      <div className="my-wallets">
-        <HeaderBox title="Transaction History" subtext="" type="nah" />
-        <BankInfo
+    <section className="flex w-full">
+      <div className="my-wallets w-full">
+        {/* <HeaderBox title="Transaction History" subtext="" type="nah" /> */}
+        {/* <BankInfo
           account={{
             id: "123",
             availableBalance: 1000,
@@ -26,7 +26,7 @@ const Transactions = () => {
           }}
           appwriteItemId={"2309324234"}
           type="full"
-        />
+        /> */}
         <TransactionsTable
           transactions={[
             {

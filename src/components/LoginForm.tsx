@@ -37,7 +37,7 @@ const LoginForm = () => {
     setIsLoading(true);
     try {
       await login(data.email, data.password);
-      // toast({ title: `Welcome ${user?.firstName}` });
+      toast({ title: `Welcome` });
     } catch (error) {
       toast({
         title: "Login Failed",

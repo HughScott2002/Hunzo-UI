@@ -6,7 +6,7 @@ import {
   Command,
   Contact,
   GalleryVerticalEnd,
-  HandCoins,
+  PiggyBank,
   House,
   LogOut,
   LucideIcon,
@@ -91,7 +91,7 @@ const data = {
     {
       title: "Pocket",
       url: "/pocket",
-      icon: HandCoins,
+      icon: PiggyBank,
     },
   ],
 };
