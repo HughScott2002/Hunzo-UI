@@ -1,7 +1,8 @@
+import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
 import React from "react";
 
 const page = () => {
-  return <div>settings</div>;
+  return <HunzoInactiveDevelopment />;
 };
 
 export default page;

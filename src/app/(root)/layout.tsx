@@ -27,9 +27,28 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import {
+  Cloud,
+  CreditCard,
+  Github,
+  Keyboard,
+  LifeBuoy,
+  LogOut,
+  Mail,
+  MessageSquare,
+  Plus,
+  PlusCircle,
+  Settings,
+  User,
+  UserPlus,
+  Users,
+} from "lucide-react";
+
+
 import { BellDot, ChevronDown, Search } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AppSidebar } from "@/components/app-siderbar";
+import HunzoNotification from "@/components/HunzoNotification";
 
 //TODO: Fix the Seach bar up top
 export default function RootLayout({
@@ -47,7 +66,7 @@ export default function RootLayout({
         <main className=" h-screen w-full flex flex-col">
           <SidebarInset className="flex flex-col h-full">
             <header className="flex h-28 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-20 sticky top-0 z-10 px-10 ">
-              <div className="flex flex-1 items-center justify-between w-full h-full">
+              <div className="flex flex-col sm:flex-row flex-1 items-center justify-between w-full h-full bg-hunzo-red p-4 gap-4">
                 <div className="flex flex-row items-center justify-center gap-2 ">
                   <h1 className="font-poppins font-bold text-xl capitalize">
                     {name === ""
@@ -58,12 +77,14 @@ export default function RootLayout({
                   </h1>
                 </div>
                 <div className="flex justify-end items-center gap-4 ">
-                 
                   <div className="w-fit h-fit bg-[#FAFAFA] rounded-full">
                     <Search className="size-9 p-2" />
                   </div>
                   <div className="w-fit h-fit bg-[#FAFAFA] rounded-full">
-                    <BellDot className="size-9 p-2 " />
+                    <HunzoNotification/>
+                  </div>
+                  <div className="w-fit h-fit bg-[#FAFAFA] rounded-full">
+                    <SidebarTrigger className="size-9 p-2" />
                   </div>
                   <div className="flex gap-3 p-2 bg-[#FAFAFA] rounded-full justify-center items-center">
                     <Avatar className="size-7">

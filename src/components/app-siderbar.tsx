@@ -116,12 +116,16 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <HunzoFooterItem label="Toggle Sidebar">
             <SidebarTrigger className="size-6" />
           </HunzoFooterItem>
-          <HunzoFooterItem label="Help" href="/help">
-            <CircleHelp className="size-6" />
-          </HunzoFooterItem>
-          <HunzoFooterItem label="Settings" href="/settings">
-            <Settings className="size-6" />
-          </HunzoFooterItem>
+          <Link href="/help" className="w-full h-full">
+            <HunzoFooterItem label="Help">
+              <CircleHelp className="size-6" />
+            </HunzoFooterItem>
+          </Link>
+          <Link href="/settings" className="w-full h-full">
+            <HunzoFooterItem label="Settings">
+              <Settings className="size-6" />
+            </HunzoFooterItem>
+          </Link>
           <HunzoFooterItem label="Logout" className="text-hunzo-red">
             <LogOut className="size-6" />
           </HunzoFooterItem>
@@ -149,10 +153,11 @@ function HunzoFooterItem({
   const button = (
     <SidebarMenuButton
       className={`flex items-center justify-start px-4 py-6 ${
-        isCollapsed ? "w-full" : "w-full"
+        isCollapsed ? "w-full " : "w-full"
       } ${className}`}
     >
       {children}
+
       {!isCollapsed && (
         <span className="ml-2 font-manrope font-semibold text-base">
           {label}
@@ -165,7 +170,7 @@ function HunzoFooterItem({
     return (
       <Tooltip>
         <TooltipTrigger asChild>
-          {href ? <Link href={`${href}`}>{button}</Link> : <div>{button}</div>}
+          <div>{button}</div>
         </TooltipTrigger>
         <TooltipContent
           side="right"
