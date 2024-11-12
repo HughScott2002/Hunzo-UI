@@ -55,7 +55,7 @@ export function NavMain({
                     className={`flex pl-5 py-7 gap-4  rounded-lg w-full hover:bg-hunzo-blue transition-all ease-in-out ${
                       pathname === item.url
                         ? "bg-hunzo-blue text-white"
-                        : "text-hunzo-text-grey hover:text-white"
+                        : "text-hunzo-pitch-black hover:text-white"
                     }`}
                   >
                     {item.icon && <item.icon className=" " />}

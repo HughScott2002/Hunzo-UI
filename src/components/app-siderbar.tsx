@@ -158,7 +158,7 @@ function HunzoFooterItem({
         isCollapsed ? "w-full " : "w-full"
       } ${className}`}
     >
-      {<Icon className="size-6"></Icon>}
+      {<Icon className="size-5"></Icon>}
 
       {!isCollapsed && (
         <span className="ml-2 font-manrope font-semibold text-base">
