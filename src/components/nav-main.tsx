@@ -52,18 +52,18 @@ export function NavMain({
                 <Link href={item.url}>
                   <SidebarMenuButton
                     tooltip={item.title}
-                    className={`flex pl-5 py-7 gap-4  rounded-2xl w-full hover:bg-hunzo-blue transition-all ease-in-out ${
+                    className={`flex pl-5 py-7 gap-4  rounded-lg w-full hover:bg-hunzo-blue transition-all ease-in-out ${
                       pathname === item.url
-                        ? "bg-hunzo-blue"
-                        : "bg-hunzo-text-grey"
+                        ? "bg-hunzo-blue text-white"
+                        : "text-hunzo-text-grey hover:text-white"
                     }`}
                   >
-                    {item.icon && <item.icon className="text-white " />}
-                    <span className="font-manrope font-bold text-sm text-white">
+                    {item.icon && <item.icon className=" " />}
+                    <span className="font-manrope font-bold text-sm ">
                       {item.title}
                     </span>
                     {item.items && (
-                      <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 text-white" />
+                      <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 " />
                     )}
                   </SidebarMenuButton>
                 </Link>

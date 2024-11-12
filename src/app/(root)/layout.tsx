@@ -27,7 +27,7 @@ export default function RootLayout({
         <main className=" h-screen w-full flex flex-col">
           <SidebarInset className="flex flex-col h-full">
             <header className="flex h-28 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-20 sticky top-0 z-10 px-10 ">
-              <div className="flex flex-col sm:flex-row flex-1 items-center justify-between w-full h-full bg-hunzo-red p-4 gap-4">
+              <div className="flex flex-col sm:flex-row flex-1 items-center justify-between w-full h-full  p-4 gap-4">
                 <div className="flex flex-row items-center justify-center gap-2 ">
                   <h1 className="font-poppins font-bold text-xl capitalize">
                     {name === ""

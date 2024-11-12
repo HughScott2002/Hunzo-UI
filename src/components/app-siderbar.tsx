@@ -9,6 +9,7 @@ import {
   HandCoins,
   House,
   LogOut,
+  LucideIcon,
   Settings,
   Wallet,
 } from "lucide-react";
@@ -29,6 +30,8 @@ import { SidebarMenuButton, useSidebar } from "@/components/ui/sidebar";
 import { TeamSwitcher } from "./team-switcher";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import React, { FC, ReactNode } from "react";
+import { Separator } from "./ui/separator";
 
 // This is sample data.
 const data = {
@@ -109,44 +112,43 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <NavMain items={data.navMain} />
           {/* <NavProjects projects={data.projects} /> */}
         </SidebarContent>
-        {/* <SidebarFooter>
-          <NavUser user={data.user} />
-        </SidebarFooter> */}
-        <footer className="flex flex-col items-center gap-1 ">
-          <HunzoFooterItem label="Toggle Sidebar">
-            <SidebarTrigger className="size-6" />
-          </HunzoFooterItem>
-          <Link href="/help" className="w-full h-full">
-            <HunzoFooterItem label="Help">
-              <CircleHelp className="size-6" />
-            </HunzoFooterItem>
-          </Link>
-          <Link href="/settings" className="w-full h-full">
-            <HunzoFooterItem label="Settings">
-              <Settings className="size-6" />
-            </HunzoFooterItem>
-          </Link>
-          <HunzoFooterItem label="Logout" className="text-hunzo-red">
-            <LogOut className="size-6" />
-          </HunzoFooterItem>
-        </footer>
+        <HunzoSidebarFooter />
         <SidebarRail />
       </div>
     </Sidebar>
   );
 }
 
+function HunzoSidebarFooter(): ReactNode {
+  return (
+    <footer className="flex flex-col items-center gap-1 ">
+      <HunzoFooterItem label="Toggle Sidebar" Icon={SidebarTrigger} />
+      <Link href="/help" className="w-full h-full">
+        <HunzoFooterItem label="Help" Icon={CircleHelp} />
+      </Link>
+      <Link href="/settings" className="w-full h-full">
+        <HunzoFooterItem label="Settings" Icon={Settings} />
+      </Link>
+      <HunzoFooterItem
+        label="Logout"
+        className="text-hunzo-red"
+        Icon={LogOut}
+      />
+    </footer>
+  );
+}
+
 function HunzoFooterItem({
-  children,
   label,
   className,
   href,
+  Icon,
 }: {
-  children: React.ReactNode;
   label: string;
   className?: string;
   href?: string;
-}) {
+  Icon: LucideIcon | FC;
+}): ReactNode {
   const { state } = useSidebar();
   const isCollapsed = state === "collapsed";
 
@@ -156,7 +158,7 @@ function HunzoFooterItem({
         isCollapsed ? "w-full " : "w-full"
       } ${className}`}
     >
-      {children}
+      {<Icon className="size-6"></Icon>}
 
       {!isCollapsed && (
         <span className="ml-2 font-manrope font-semibold text-base">

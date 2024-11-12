@@ -8,9 +8,9 @@ const HunzoInactiveDevelopment = () => {
         alt="Hunzo Logo"
         width={56}
         height={56}
-        className="h-12 w-12"
+        className="h-10 w-10"
       />
-      <h1 className="text-[200%] font-semibold -tracking-wide font-poppins">
+      <h1 className="text-[150%] font-semibold -tracking-wide font-poppins">
         IN ACTIVE DEVELOPMENT
       </h1>
     </div>

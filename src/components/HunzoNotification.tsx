@@ -68,7 +68,7 @@ const HunzoNotification = () => {
           <span className="h-full w-full ">Notifications</span>
           <Button className="flex gap-1  -p-2 text-hunzo-blue">
             <CheckCheck className="size-5" />
-            <span className="">Mark all as read</span>
+            <span className="font-semibold">Mark all as read</span>
           </Button>
         </DropdownMenuLabel>
 
