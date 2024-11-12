@@ -1,54 +1,15 @@
 "use client";
-import MoblieSidebar from "@/components/MoblieSidebar";
-import Sidebar from "@/components/Sidebar";
-import Image from "next/image";
-import { TestUser, appName } from "@/constants";
 import { CommandPalette } from "@/components/CommandPalette";
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import ProtectedRouteWrapper from "@/components/ProtectedRouteWrapper";
-import AccountAlerts from "@/components/AccountAlerts";
-import NewSidebar from "@/components/NewSidebar";
-import New2Sidebar from "@/components/New2Sidebar";
-import HeaderSearch from "@/components/HeaderSearch";
-import { cn } from "@/lib/utils";
-import HunzoSiderbar from "@/components/HunzoSiderbar";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { Separator } from "@/components/ui/separator";
+
 import {
   SidebarInset,
   SidebarProvider,
-  SidebarTrigger,
 } from "@/components/ui/sidebar";
-import {
-  Cloud,
-  CreditCard,
-  Github,
-  Keyboard,
-  LifeBuoy,
-  LogOut,
-  Mail,
-  MessageSquare,
-  Plus,
-  PlusCircle,
-  Settings,
-  User,
-  UserPlus,
-  Users,
-} from "lucide-react";
 
-
-import { BellDot, ChevronDown, Search } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AppSidebar } from "@/components/app-siderbar";
-import HunzoNotification from "@/components/HunzoNotification";
+import HunzoHeaderControls from "@/components/HunzoHeaderControls";
 
 //TODO: Fix the Seach bar up top
 export default function RootLayout({
@@ -76,27 +37,7 @@ export default function RootLayout({
                       : name}
                   </h1>
                 </div>
-                <div className="flex justify-end items-center gap-4 ">
-                  <div className="w-fit h-fit bg-[#FAFAFA] rounded-full">
-                    <Search className="size-9 p-2" />
-                  </div>
-                  <div className="w-fit h-fit bg-[#FAFAFA] rounded-full">
-                    <HunzoNotification/>
-                  </div>
-                  <div className="w-fit h-fit bg-[#FAFAFA] rounded-full">
-                    <SidebarTrigger className="size-9 p-2" />
-                  </div>
-                  <div className="flex gap-3 p-2 bg-[#FAFAFA] rounded-full justify-center items-center">
-                    <Avatar className="size-7">
-                      <AvatarImage src="https://github.com/shadcn.png" />
-                      <AvatarFallback>CN</AvatarFallback>
-                    </Avatar>
-                    <span className="font-poppins text-sm font-semibold text-[#1A202C] truncate max-w-32">
-                      Firstname L.
-                    </span>
-                    <ChevronDown className="w-4 h-4 mr-1" />
-                  </div>
-                </div>
+               <HunzoHeaderControls/>
               </div>
             </header>
             <div className="flex-1 overflow-y-auto px-10 py-2 h-full">
