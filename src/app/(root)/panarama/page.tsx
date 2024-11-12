@@ -1,9 +1,11 @@
 import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
-import HunzoLicence from "@/components/HunzoLicence";
 
-//TODO: Add Robust Privacy
 const page = () => {
-  return <HunzoInactiveDevelopment />;
+  return (
+    <section className="w-full h-full">
+      <HunzoInactiveDevelopment />
+    </section>
+  );
 };
 
 export default page;

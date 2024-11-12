@@ -40,10 +40,6 @@ export default function RootLayout({
   const pathname = usePathname();
   var name = pathname.substring(1);
 
-  function dashboardName() {
-    return name.substring(1);
-  }
-
   return (
     <ProtectedRouteWrapper>
       <SidebarProvider className="min-h-screen max-h-screen overflow-hidden">
@@ -52,33 +48,17 @@ export default function RootLayout({
           <SidebarInset className="flex flex-col h-full">
             <header className="flex h-28 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-20 sticky top-0 z-10 px-10 ">
               <div className="flex flex-1 items-center justify-between w-full h-full">
-                <div className="flex flex-col items-start justify-center gap-2 ">
-                  <h1 className="font-poppins font-semibold text-xl capitalize">
+                <div className="flex flex-row items-center justify-center gap-2 ">
+                  <h1 className="font-poppins font-bold text-xl capitalize">
                     {name === ""
                       ? "Dashboard"
                       : name === "my-wallets"
                       ? "My Wallets"
                       : name}
                   </h1>
-                  {/* <div className="flex items-center gap-2">
-                  <Separator orientation="vertical" className="mr-2 h-4" />
-                  <Breadcrumb>
-                    <BreadcrumbList>
-                      <BreadcrumbItem className="hidden md:block">
-                        <BreadcrumbLink href="#">Hunzo</BreadcrumbLink>
-                      </BreadcrumbItem>
-                      <BreadcrumbSeparator className="hidden md:block" />
-                      <BreadcrumbItem>
-                        <BreadcrumbPage>Home</BreadcrumbPage>
-                      </BreadcrumbItem>
-                    </BreadcrumbList>
-                  </Breadcrumb>
-                </div> */}
                 </div>
                 <div className="flex justify-end items-center gap-4 ">
-                  <div className="w-fit h-fit bg-[#FAFAFA] rounded-full">
-                    <SidebarTrigger className=" size-9 p-2" />
-                  </div>
+                 
                   <div className="w-fit h-fit bg-[#FAFAFA] rounded-full">
                     <Search className="size-9 p-2" />
                   </div>

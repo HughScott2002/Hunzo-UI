@@ -28,6 +28,7 @@ import {
 import { SidebarMenuButton, useSidebar } from "@/components/ui/sidebar";
 import { TeamSwitcher } from "./team-switcher";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 // This is sample data.
 const data = {
@@ -96,9 +97,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" className="bg-hunzo-background-grey" {...props}>
       <div className="px-4 py-2  w-full h-full flex flex-col">
-        <SidebarHeader className="">
-          <TeamSwitcher teams={data.teams} />
-        </SidebarHeader>
+        <Link href={"/"}>
+          <SidebarHeader className="">
+            <TeamSwitcher teams={data.teams} />
+          </SidebarHeader>
+        </Link>
         <hr />
         <hr />
         <hr className="text-hunzo-pitch-black" />
@@ -162,13 +165,17 @@ function HunzoFooterItem({
     return (
       <Tooltip>
         <TooltipTrigger asChild>
-          {href ? <Link href={`${href}`}>{button}</Link> : ""}
-          {/* {!href && button} */}
+          {href ? <Link href={`${href}`}>{button}</Link> : <div>{button}</div>}
         </TooltipTrigger>
         <TooltipContent
           side="right"
           align="center"
-          className="bg-hunzo-background-grey p-4 text-sm font-bold text-hunzo-text-grey"
+          className={cn(
+            "bg-hunzo-background-grey p-4 text-sm font-bold ",
+            label.toLowerCase() === "logout"
+              ? "text-hunzo-red"
+              : "text-hunzo-text-grey"
+          )}
         >
           {label}
         </TooltipContent>

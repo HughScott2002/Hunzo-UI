@@ -1,12 +1,9 @@
+import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
 import HunzoLicence from "@/components/HunzoLicence";
 
 //TODO: Add Robust Terms
 const page = () => {
-  return (
-    <div className="flex w-full h-screen justify-center items-center">
-      <HunzoLicence />
-    </div>
-  );
+  return <HunzoInactiveDevelopment />;
 };
 
 export default page;
