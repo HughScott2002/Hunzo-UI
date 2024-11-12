@@ -35,12 +35,13 @@ const HunzoLoginForm = () => {
       await login(data.email, data.password);
       // toast({ title: `Welcome ${user?.firstName}` });
     } catch (error) {
-      // console.error("Login error:", error);
+      //TODO: Implement the error so that it tells you what was the problem, also reload the page and all that.
       toast({
-        title: "Login failed",
+        title: "Oh No! We couldn't log you in",
         variant: "destructive",
-        
+        description: "There was a small problem with your request",
       });
+      // console.error("Login error:", error);
     } finally {
       setIsLoading(false);
     }

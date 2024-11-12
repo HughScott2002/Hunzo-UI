@@ -39,8 +39,11 @@ const LoginForm = () => {
       await login(data.email, data.password);
       // toast({ title: `Welcome ${user?.firstName}` });
     } catch (error) {
-      // console.error("Login error:", error);
-      toast({ title: "Login failed" });
+      toast({
+        title: "Login Failed",
+        description: "Please make sure all your information is correct. 😊",
+      });
+      console.error("Login error:", error);
     } finally {
       setIsLoading(false);
     }
@@ -73,6 +76,7 @@ const LoginForm = () => {
             label="Email"
             placeholder="johndoe@mail.com"
             type="email"
+            isHidden={false}
           />
           <CustomInput
             control={form.control}
@@ -80,6 +84,7 @@ const LoginForm = () => {
             label="Password"
             placeholder="Enter your password"
             type="password"
+            isHidden={false}
           />
           <Button
             type="submit"
