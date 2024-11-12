@@ -1,7 +1,11 @@
-import React from "react";
+import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
 
 const page = () => {
-  return <div>FX</div>;
+  return (
+    <section className="w-full h-full">
+      <HunzoInactiveDevelopment />
+    </section>
+  );
 };
 
 export default page;

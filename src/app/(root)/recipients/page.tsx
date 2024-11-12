@@ -1,13 +1,11 @@
-import BankInfo from "@/components/BankInfo";
-import HeaderBox from "@/components/HeaderBox";
-import RecentTransations from "@/components/RecentTransations";
-import TransactionsTable from "@/components/TransactionsTable";
-import React from "react";
+import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
 
-export default function Recipients() {
+const page = () => {
   return (
-    <section className="flex">
-      contacts
+    <section className="w-full h-full">
+      <HunzoInactiveDevelopment />
     </section>
   );
-}
+};
+
+export default page;

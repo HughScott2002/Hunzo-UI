@@ -2,7 +2,6 @@
 import {
   ArrowRightLeft,
   AudioWaveform,
-  BadgePoundSterling,
   CircleHelp,
   Command,
   Contact,
@@ -10,10 +9,8 @@ import {
   HandCoins,
   House,
   LogOut,
-  Pocket,
   Settings,
   Wallet,
-  Workflow,
 } from "lucide-react";
 import { NavMain } from "@/components/nav-main";
 import {

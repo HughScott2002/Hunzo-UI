@@ -1,11 +1,11 @@
-import DashboardComponents from "@/components/DashboardComponents";
-import HeaderBox from "@/components/HeaderBox";
-import RightSidebar from "@/components/RightSidebar";
-import Image from "next/image";
-import { transactionsTestData, bankTestData } from "@/constants";
+import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
 
-const page = () => {
-  return <section className="flex w-full">Dashboard</section>;
+const Dashboard = () => {
+  return (
+    <section className="w-full h-full">
+      <HunzoInactiveDevelopment />
+    </section>
+  );
 };
 
-export default page;
+export default Dashboard;

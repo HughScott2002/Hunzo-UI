@@ -38,10 +38,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
+  var name = pathname.substring(1);
 
   function dashboardName() {
-    var name = pathname.trim.toString();
-
     return name.substring(1);
   }
 
@@ -55,9 +54,11 @@ export default function RootLayout({
               <div className="flex flex-1 items-center justify-between w-full h-full">
                 <div className="flex flex-col items-start justify-center gap-2 ">
                   <h1 className="font-poppins font-semibold text-xl capitalize">
-                    {pathname.substring(1) === ""
+                    {name === ""
                       ? "Dashboard"
-                      : pathname.substring(1)}
+                      : name === "my-wallets"
+                      ? "My Wallets"
+                      : name}
                   </h1>
                   {/* <div className="flex items-center gap-2">
                   <Separator orientation="vertical" className="mr-2 h-4" />
@@ -97,7 +98,9 @@ export default function RootLayout({
                 </div>
               </div>
             </header>
-            <div className="flex-1 overflow-y-auto px-10 py-2">{children}</div>
+            <div className="flex-1 overflow-y-auto px-10 py-2 h-full">
+              {children}
+            </div>
           </SidebarInset>
         </main>
       </SidebarProvider>
