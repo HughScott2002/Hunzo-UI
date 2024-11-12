@@ -5,7 +5,7 @@ import Image from "next/image";
 import { transactionsTestData, bankTestData } from "@/constants";
 
 const page = () => {
-  return <section className="flex w-full"></section>;
+  return <section className="flex w-full">Dashboard</section>;
 };
 
 export default page;

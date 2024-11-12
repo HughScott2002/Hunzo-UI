@@ -7,20 +7,20 @@ import { AuthProvider } from "@/components/AuthContext";
 import localFont from "next/font/local";
 // import { HunzoAuthProvider } from "@/components/HunzoAuthProvider";
 
-const inter = Inter({
+export const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
 });
 
-const poppins = Poppins({
+export const poppins = Poppins({
   weight: ["100", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-poppins",
   display: "swap",
 });
 
-const manrope = Manrope({
+export const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
   display: "swap",
@@ -153,16 +153,8 @@ export default function RootLayout({
     >
       <body>
         <AuthProvider>{children}</AuthProvider>
-        {/* <HunzoAuthProvider>{children}</HunzoAuthProvider> */}
         <Toaster />
       </body>
     </html>
   );
 }
-// function localFont(arg0: {
-//   src: { path: string; weight: string; style: string }[];
-//   variable: string;
-//   display: string;
-// }) {
-//   throw new Error("Function not implemented.");
-// }

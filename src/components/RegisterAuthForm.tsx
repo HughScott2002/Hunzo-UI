@@ -416,6 +416,7 @@ const RegisterAuthForm = () => {
                       onCheckedChange={(checked) =>
                         form.setValue("dataAuthorization", checked as boolean)
                       }
+                      className="size-4"
                     />
                     <div className="mt-5">
                       <label

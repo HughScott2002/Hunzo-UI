@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import React from "react";
+import { usePathname } from "next/navigation";
 
 export function NavMain({
   items,
@@ -27,13 +28,14 @@ export function NavMain({
     title: string;
     url: string;
     icon?: LucideIcon | React.FC;
-    isActive?: boolean;
     items?: {
       title: string;
       url: string;
     }[];
   }[];
 }) {
+  const pathname = usePathname();
+
   return (
     <SidebarGroup className="mt-6 h-fit w-full ">
       {/* <SidebarGroupLabel>Platform</SidebarGroupLabel> */}
@@ -42,48 +44,41 @@ export function NavMain({
           <Collapsible
             key={item.title}
             asChild
-            defaultOpen={item.isActive}
+            defaultOpen={pathname === item.url ? true : false}
             className="group/collapsible"
           >
             <SidebarMenuItem className="">
               <CollapsibleTrigger asChild>
-                <SidebarMenuButton
-                  tooltip={item.title}
-                  className={`flex pl-5 py-7 gap-4  rounded-2xl w-full hover:bg-hunzo-blue transition-all ease-in-out ${
-                    item.isActive ? "bg-hunzo-blue" : "bg-hunzo-text-grey"
-                  }`}
-                >
-                  {item.icon && <item.icon className="text-white " />}
-                  {!item.items && (
-                    <Link
-                      href={item.url}
-                      className="font-manrope font-bold text-sm text-white"
-                    >
-                      {item.title}
-                    </Link>
-                  )}
-                  {item.items && (
+                <Link href={item.url}>
+                  <SidebarMenuButton
+                    tooltip={item.title}
+                    className={`flex pl-5 py-7 gap-4  rounded-2xl w-full hover:bg-hunzo-blue transition-all ease-in-out ${
+                      pathname === item.url
+                        ? "bg-hunzo-blue"
+                        : "bg-hunzo-text-grey"
+                    }`}
+                  >
+                    {item.icon && <item.icon className="text-white " />}
                     <span className="font-manrope font-bold text-sm text-white">
                       {item.title}
                     </span>
-                  )}
-
-                  {item.items && (
-                    <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 text-white" />
-                  )}
-                </SidebarMenuButton>
+                    {item.items && (
+                      <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 text-white" />
+                    )}
+                  </SidebarMenuButton>
+                </Link>
               </CollapsibleTrigger>
               {item.items?.map((subItem) => (
                 <CollapsibleContent className="">
                   <SidebarMenuSub className="">
                     <SidebarMenuSubItem key={subItem.title}>
-                      <SidebarMenuSubButton asChild>
-                        <Link href={subItem.url}>
+                      <Link href={subItem.url}>
+                        <SidebarMenuSubButton asChild>
                           <span className="text-hunzo-text-grey ml-4 text-base font-bold hover:text-hunzo-blue">
                             {subItem.title}
                           </span>
-                        </Link>
-                      </SidebarMenuSubButton>
+                        </SidebarMenuSubButton>
+                      </Link>
                     </SidebarMenuSubItem>
                   </SidebarMenuSub>
                 </CollapsibleContent>

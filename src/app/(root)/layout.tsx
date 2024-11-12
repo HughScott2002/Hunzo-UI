@@ -38,6 +38,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
+
+  function dashboardName() {
+    var name = pathname.trim.toString();
+
+    return name.substring(1);
+  }
+
   return (
     <ProtectedRouteWrapper>
       <SidebarProvider className="min-h-screen max-h-screen overflow-hidden">
@@ -47,8 +54,10 @@ export default function RootLayout({
             <header className="flex h-28 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-20 sticky top-0 z-10 px-10 ">
               <div className="flex flex-1 items-center justify-between w-full h-full">
                 <div className="flex flex-col items-start justify-center gap-2 ">
-                  <h1 className="font-poppins font-semibold text-xl">
-                    Dashboard {pathname}
+                  <h1 className="font-poppins font-semibold text-xl capitalize">
+                    {pathname.substring(1) === ""
+                      ? "Dashboard"
+                      : pathname.substring(1)}
                   </h1>
                   {/* <div className="flex items-center gap-2">
                   <Separator orientation="vertical" className="mr-2 h-4" />

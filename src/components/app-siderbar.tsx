@@ -56,7 +56,6 @@ const data = {
       title: "Dashboard",
       url: "/",
       icon: House,
-      isActive: true,
     },
     {
       title: "Transactions",
@@ -117,7 +116,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <HunzoFooterItem label="Toggle Sidebar">
             <SidebarTrigger className="size-6" />
           </HunzoFooterItem>
-          <HunzoFooterItem label="Help">
+          <HunzoFooterItem label="Help" href="/help">
             <CircleHelp className="size-6" />
           </HunzoFooterItem>
           <HunzoFooterItem label="Settings" href="/settings">
@@ -166,8 +165,8 @@ function HunzoFooterItem({
     return (
       <Tooltip>
         <TooltipTrigger asChild>
-          {href && <Link href={href}> {button}</Link>}
-          {/* {!href && <>{button}</>} */}
+          {href ? <Link href={`${href}`}>{button}</Link> : ""}
+          {/* {!href && button} */}
         </TooltipTrigger>
         <TooltipContent
           side="right"

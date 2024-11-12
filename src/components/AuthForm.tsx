@@ -443,6 +443,7 @@ const AuthForm = ({ type }: { type: string }) => {
                             onCheckedChange={(checked) =>
                               form.setValue("authorization", checked as boolean)
                             }
+                            className="size-4"
                           />
                           <label
                             htmlFor="authorization"

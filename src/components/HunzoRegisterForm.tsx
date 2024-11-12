@@ -400,11 +400,12 @@ const HunzoRegisterForm = () => {
                               checked as boolean
                             )
                           }
+                          className="size-4"
                         />
                         <div className="mt-5">
                           <label
                             htmlFor="dataAuthorization"
-                            className="text-sm font-medium font-poppins leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                            className="text-sm text-balance font-medium font-poppins leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                           >
                             I authorize the collection and processing of my data
                             for KYC purposes and agree to the terms of service.
