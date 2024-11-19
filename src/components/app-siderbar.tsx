@@ -64,8 +64,8 @@ const data = {
       icon: ArrowRightLeft,
     },
     {
-      title: "Recipients",
-      url: "/recipients",
+      title: "Contacts",
+      url: "/contacts",
       icon: Contact,
     },
     {
