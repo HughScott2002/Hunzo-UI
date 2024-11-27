@@ -75,7 +75,7 @@ const HunzoWalletCard: FC<HunzoWalletCardProps> = ({
   date,
 }) => {
   return (
-    <div className="w-full h-[50%] rounded-3xl bg-black-1">
+    <div className="w-full h-[50%] rounded-3xl bg-black-1 mt-2">
       <HunzoInactiveDevelopment />
     </div>
   );
@@ -95,16 +95,14 @@ const Dashboard: FC = () => {
               </span>
               <Ellipsis className="size-8" />
             </div>
-            {/* <span>Card</span>
-             */}
+
             <HunzoWalletCard
               balance={0}
               cardNumber={0}
               currency={"JMD"}
               date={"11/22"}
             />
-            <div>Card</div>
-            <Ellipsis />
+            <Ellipsis className="my-4 size-8" />
             <div className="flex gap-6 w-full justify-center">
               <DashboardWalletIcon
                 Icon={ArrowUpRight}
