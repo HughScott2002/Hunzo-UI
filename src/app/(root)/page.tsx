@@ -4,6 +4,7 @@ import {
   ArrowDownLeft,
   ArrowRightLeft,
   ArrowUpRight,
+  Ellipsis,
   LucideIcon,
 } from "lucide-react";
 import React, { FC, ReactElement } from "react";
@@ -40,6 +41,13 @@ interface DashboardWalletIconProps {
   hoverColor: string;
 }
 
+interface HunzoWalletCardProps {
+  balance: number;
+  cardNumber: number;
+  currency: "JMD" | "USD" | "JPY"; // TODO: Add more currency
+  date: Date | string;
+}
+
 const DashboardWalletIcon: FC<DashboardWalletIconProps> = ({
   Icon,
   title,
@@ -49,7 +57,7 @@ const DashboardWalletIcon: FC<DashboardWalletIconProps> = ({
   return (
     <div className={`flex flex-col justify-center items-center gap-2`}>
       <div
-        className={`size-12 p-2 border-1 border-hunzo-text-grey rounded-xl ${textColor} hover:${hoverColor} hover:text-white justify-center align-middle items-center`}
+        className={`size-12 p-2 border-2 border-hunzo-text-grey rounded-xl ${textColor} hover:${hoverColor} hover:text-white justify-center align-middle items-center`}
       >
         <Icon className="w-full" />
       </div>
@@ -60,6 +68,18 @@ const DashboardWalletIcon: FC<DashboardWalletIconProps> = ({
   );
 };
 
+const HunzoWalletCard: FC<HunzoWalletCardProps> = ({
+  balance,
+  cardNumber,
+  currency,
+  date,
+}) => {
+  return (
+    <div className="w-full h-[50%] rounded-3xl bg-black-1">
+      <HunzoInactiveDevelopment />
+    </div>
+  );
+};
 const Dashboard: FC = () => {
   return (
     <section className="w-full h-full">
@@ -68,10 +88,23 @@ const Dashboard: FC = () => {
           <HunzoInactiveDevelopment />
         </div>
         <div className="w-[45%] h-full max-lg:hidden">
-          <div className="border-4 border-hunzo-text-grey rounded-2xl h-[60%] w-full">
-            <span>Card</span>
+          <div className="border-4 border-hunzo-text-grey rounded-2xl h-[60%] w-full flex flex-col items-center p-6">
+            <div className="flex w-full">
+              <span className="w-full font-poppins font-semibold text-lg">
+                Wallet
+              </span>
+              <Ellipsis className="size-8" />
+            </div>
+            {/* <span>Card</span>
+             */}
+            <HunzoWalletCard
+              balance={0}
+              cardNumber={0}
+              currency={"JMD"}
+              date={"11/22"}
+            />
             <div>Card</div>
-            <div>Svg</div>
+            <Ellipsis />
             <div className="flex gap-6 w-full justify-center">
               <DashboardWalletIcon
                 Icon={ArrowUpRight}

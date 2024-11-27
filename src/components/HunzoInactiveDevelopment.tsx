@@ -9,7 +9,7 @@ const HunzoInactiveDevelopment = () => {
         height={56}
         className="h-10 w-10"
       />
-      <h1 className="text-[150%] font-semibold -tracking-wide font-poppins">
+      <h1 className="text-[150%] text-pretty font-semibold -tracking-wide font-poppins">
         IN ACTIVE DEVELOPMENT
       </h1>
     </div>
