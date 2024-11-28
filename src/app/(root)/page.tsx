@@ -1,4 +1,5 @@
 import BankCard from "@/components/BankCard";
+import HunzoDashboardSmallChart from "@/components/HunzoDashboardSmallChart";
 import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
 import { Button } from "@/components/ui/button";
 import WalletCard from "@/components/WalletCard";
@@ -74,11 +75,11 @@ const DashboardWalletIcon: FC<DashboardWalletIconProps> = ({
   return (
     <div className={`flex flex-col justify-center items-center gap-2 hun`}>
       <div
-        className={`size-12 p-2  border-hunzo-text-grey rounded-xl ${textColor} hover:${hoverColor} hover:text-white justify-center align-middle items-center`}
+        className={`size-12 p-2 border-2 border-hunzo-background-grey rounded-xl ${textColor} hover:${hoverColor} hover:text-white justify-center align-middle items-center`}
       >
         <Icon className="size-full" strokeWidth={2} />
       </div>
-      <span className="font-semibold text-hunzo-text-grey font-poppins">
+      <span className="font-semibold text-hunzo-text-grey font-poppins text-sm">
         {title}
       </span>
     </div>
@@ -105,6 +106,7 @@ const HunzoWalletCard: FC<HunzoWalletCardProps> = ({
               width={50}
               height={50}
               alt={"Wallet Card"}
+              className="-mr-2"
             />
           </div>
           <div className="text-white w-full px-6 flex h-full justify-between items-center ">
@@ -112,7 +114,7 @@ const HunzoWalletCard: FC<HunzoWalletCardProps> = ({
             <span className="text-hunzo-text-grey">{date.toString()}</span>
           </div>
         </div>
-        <div className="bg-hunzo-green w-full z-40 h-24 rounded-b-2xl px-6 font-bold text-2xl text-hunzo-dark-blue flex justify-between items-center">
+        <div className="bg-hunzo-green w-full z-40 h-20 rounded-b-2xl px-6 font-bold text-xl text-hunzo-dark-blue flex justify-between items-center">
           {currency === "GBP" ? "£" : "$"}
           {balance}
           <Ban
@@ -232,7 +234,7 @@ const SmallTransactionComponent: FC<SmallTransactionComponentProps> = ({
 
 const DashboardWallet = () => {
   return (
-    <div className="min-h-[400px] max-h-[400px] border-[0.1rem] border-hunzo-text-grey rounded-2xl h-[55%] w-full flex flex-col items-center px-6 py-6">
+    <div className="min-h-[400px] max-h-[400px] border-2 border-hunzo-background-grey rounded-2xl h-[55%] w-full flex flex-col items-center px-6 py-6">
       <div className="flex w-full">
         <span className="w-full font-poppins font-semibold text-lg ">
           Wallet
@@ -281,8 +283,18 @@ const Dashboard: FC = () => {
   return (
     <section className="w-full h-full">
       <div className="flex size-full md:gap-2 lg:gap-4 xl:gap-6 transition-all">
-        <div className="size-full">
-          <HunzoInactiveDevelopment />
+        <div className="size-full lg:flex lg:justify-between ">
+          {/* <HunzoInactiveDevelopment />
+           */}
+          <div className="">
+            <HunzoDashboardSmallChart type="bar" />
+          </div>
+          <div className="">
+            <HunzoDashboardSmallChart type="bar" />
+          </div>
+          <div className="">
+            <HunzoDashboardSmallChart type="radial" />
+          </div>
         </div>
         <div className="min-w-fit transition-all  h-full max-lg:hidden">
           <DashboardWallet />
