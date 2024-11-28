@@ -3,10 +3,7 @@ import { CommandPalette } from "@/components/CommandPalette";
 import { usePathname } from "next/navigation";
 import ProtectedRouteWrapper from "@/components/ProtectedRouteWrapper";
 
-import {
-  SidebarInset,
-  SidebarProvider,
-} from "@/components/ui/sidebar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 import { AppSidebar } from "@/components/app-siderbar";
 import HunzoHeaderControls from "@/components/HunzoHeaderControls";
@@ -37,10 +34,10 @@ export default function RootLayout({
                       : name}
                   </h1>
                 </div>
-               <HunzoHeaderControls/>
+                <HunzoHeaderControls />
               </div>
             </header>
-            <div className="flex-1 overflow-y-auto px-10 py-2 h-full">
+            <div className="flex-1 overflow-y-auto px-10 py-2 h-full w-full">
               {children}
             </div>
           </SidebarInset>
