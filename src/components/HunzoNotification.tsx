@@ -153,7 +153,6 @@ const HunzoNotification = () => {
           <div
             className={cn(
               "overflow-y-auto transition-all duration-300 ease-in-out px-4"
-              // isExpanded ? "overflow-y-auto" : "overflow-y-hidden"
             )}
             style={{ maxHeight }}
           >
@@ -173,7 +172,7 @@ const HunzoNotification = () => {
             >
               {isExpanded ? "Show less" : "See all notifications"}
             </Button>
-            <Settings className="size-5" />
+            <Settings className="size-5 mr-1" />
           </div>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
