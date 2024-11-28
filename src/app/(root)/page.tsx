@@ -1,10 +1,15 @@
+import BankCard from "@/components/BankCard";
 import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
+import { Button } from "@/components/ui/button";
+import WalletCard from "@/components/WalletCard";
 import { cn } from "@/lib/utils";
 import {
   ArrowDownLeft,
   ArrowRightLeft,
   ArrowUpRight,
+  Ban,
   Ellipsis,
+  Eye,
   LucideIcon,
 } from "lucide-react";
 import Image from "next/image";
@@ -45,9 +50,9 @@ interface DashboardWalletIconProps {
 }
 
 interface HunzoWalletCardProps {
-  balance: number;
-  cardNumber: number;
-  currency: "JMD" | "USD" | "JPY"; // TODO: Add more currency
+  balance: number | string;
+  cardNumber: number | string;
+  currency: "JMD" | "USD" | "JPY" | "GBP"; // TODO: Add more currency
   date: Date | string;
 }
 
@@ -69,7 +74,7 @@ const DashboardWalletIcon: FC<DashboardWalletIconProps> = ({
   return (
     <div className={`flex flex-col justify-center items-center gap-2 hun`}>
       <div
-        className={`size-12 p-2 border-2 border-hunzo-text-grey rounded-xl ${textColor} hover:${hoverColor} hover:text-white justify-center align-middle items-center`}
+        className={`size-12 p-2  border-hunzo-text-grey rounded-xl ${textColor} hover:${hoverColor} hover:text-white justify-center align-middle items-center`}
       >
         <Icon className="size-full" strokeWidth={2} />
       </div>
@@ -87,8 +92,35 @@ const HunzoWalletCard: FC<HunzoWalletCardProps> = ({
   date,
 }) => {
   return (
-    <div className="w-full h-[50%] rounded-3xl bg-black-1 mt-2">
-      <HunzoInactiveDevelopment />
+    <div className="w-full h-full rounded-2xl bg-hunzo-pitch-black  mt-2">
+      {/* <WalletCard businessName={"sda"} /> */}
+      <div className="size-full flex flex-col">
+        <div className="h-full flex flex-col justify-between">
+          <div className="flex justify-between px-6 py-4 ">
+            <Button variant={"ghost"} className="cursor-pointer -p-2">
+              <Eye className="text-white" />
+            </Button>
+            <Image
+              src={"/icons/mastercard.svg"}
+              width={50}
+              height={50}
+              alt={"Wallet Card"}
+            />
+          </div>
+          <div className="text-white w-full px-6 flex h-full justify-between items-center ">
+            <span>{cardNumber}</span>
+            <span className="text-hunzo-text-grey">{date.toString()}</span>
+          </div>
+        </div>
+        <div className="bg-hunzo-green w-full z-40 h-24 rounded-b-2xl px-6 font-bold text-2xl text-hunzo-dark-blue flex justify-between items-center">
+          {currency === "GBP" ? "£" : "$"}
+          {balance}
+          <Ban
+            strokeWidth={3}
+            className="hover:text-hunzo-red transition-all"
+          />
+        </div>
+      </div>
     </div>
   );
 };
@@ -200,7 +232,7 @@ const SmallTransactionComponent: FC<SmallTransactionComponentProps> = ({
 
 const DashboardWallet = () => {
   return (
-    <div className="min-h-[400px] max-h-[400px] border-4 border-hunzo-text-grey rounded-2xl h-[55%] w-full flex flex-col items-center px-6 py-6">
+    <div className="min-h-[400px] max-h-[400px] border-[0.1rem] border-hunzo-text-grey rounded-2xl h-[55%] w-full flex flex-col items-center px-6 py-6">
       <div className="flex w-full">
         <span className="w-full font-poppins font-semibold text-lg ">
           Wallet
@@ -209,8 +241,8 @@ const DashboardWallet = () => {
       </div>
 
       <HunzoWalletCard
-        balance={0}
-        cardNumber={0}
+        balance={"13,543.32"}
+        cardNumber={"**** **** **** 7854"}
         currency={"JMD"}
         date={"11/22"}
       />
@@ -249,7 +281,7 @@ const Dashboard: FC = () => {
   return (
     <section className="w-full h-full">
       <div className="flex size-full md:gap-2 lg:gap-4 xl:gap-6 transition-all">
-        <div className="bg-hunzo-yellow size-full">
+        <div className="size-full">
           <HunzoInactiveDevelopment />
         </div>
         <div className="min-w-fit transition-all  h-full max-lg:hidden">

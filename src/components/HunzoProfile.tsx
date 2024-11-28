@@ -1,4 +1,3 @@
-import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
   ChevronDown,
@@ -14,15 +13,9 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Item } from "@radix-ui/react-select";
 import { cn } from "@/lib/utils";
 
 type ProfileItemsArray = ProfileItems[];
