@@ -69,7 +69,7 @@ const DashboardWalletIcon: FC<DashboardWalletIconProps> = ({
   return (
     <div className={`flex flex-col justify-center items-center gap-2 hun`}>
       <div
-        className={`size-12 p-2 border-4 border-hunzo-text-grey rounded-xl ${textColor} hover:${hoverColor} hover:text-white justify-center align-middle items-center`}
+        className={`size-12 p-2 border-2 border-hunzo-text-grey rounded-xl ${textColor} hover:${hoverColor} hover:text-white justify-center align-middle items-center`}
       >
         <Icon className="size-full" strokeWidth={2} />
       </div>
@@ -214,7 +214,7 @@ const DashboardWallet = () => {
         currency={"JMD"}
         date={"11/22"}
       />
-      <Ellipsis className="my-4 size-8" />
+      <Ellipsis className="my-2 size-8 text-hunzo-text-grey" />
       <div className="flex gap-6 w-full justify-center ">
         <DashboardWalletIcon
           Icon={ArrowUpRight}

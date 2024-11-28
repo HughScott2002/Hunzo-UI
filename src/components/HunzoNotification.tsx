@@ -1,37 +1,19 @@
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-  BellDot,
-  CheckCheck,
-  Cloud,
-  CreditCard,
-  Github,
-  Keyboard,
-  LifeBuoy,
-  LogOut,
-  Mail,
-  MessageSquare,
-  Plus,
-  PlusCircle,
-  Settings,
-  User,
-  UserPlus,
-  Users,
-} from "lucide-react";
+// import {
+//   DropdownMenu,
+//   DropdownMenuContent,
+//   DropdownMenuGroup,
+//   DropdownMenuItem,
+//   DropdownMenuLabel,
+//   DropdownMenuSeparator,
+
+//   DropdownMenuTrigger,
+// } from "@/components/ui/dropdown-menu";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { BellDot, CheckCheck, Settings } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 
 type NotificationsArray = Notifications[];
 
@@ -40,9 +22,73 @@ type Notifications = {
   content: string;
   date: string;
   type?: "info" | "warning" | "avatar" | "action";
+  icon?: string;
 };
 
 const notifications: NotificationsArray = [
+  {
+    label: "Tenner Stafford",
+    content: "You have sent $200.00 to Tenner Stafford",
+    date: "2 mins ago",
+    icon: "https://github.com/shadcn.png",
+  },
+  {
+    label: "Kafla Winser",
+    content:
+      "You have a new payment request from Cindy Lillibridge for $800.00",
+    date: "10 hours ago",
+    type: "action",
+  },
+  {
+    label: "Tenner Stafford",
+    content: "You have sent $200.00 to Tenner Stafford",
+    date: "2 mins ago",
+  },
+  {
+    label: "Kafla Winser",
+    content:
+      "You have a new payment request from Cindy Lillibridge for $800.00",
+    date: "10 hours ago",
+    type: "action",
+  },
+  {
+    label: "Tenner Stafford",
+    content: "You have sent $200.00 to Tenner Stafford",
+    date: "2 mins ago",
+    icon: "https://github.com/shadcn.png",
+  },
+  {
+    label: "Kafla Winser",
+    content:
+      "You have a new payment request from Cindy Lillibridge for $800.00",
+    date: "10 hours ago",
+    type: "action",
+  },
+  {
+    label: "Tenner Stafford",
+    content: "You have sent $200.00 to Tenner Stafford",
+    date: "2 mins ago",
+  },
+  {
+    label: "Kafla Winser",
+    content:
+      "You have a new payment request from Cindy Lillibridge for $800.00",
+    date: "10 hours ago",
+    type: "action",
+  },
+  {
+    label: "Tenner Stafford",
+    content: "You have sent $200.00 to Tenner Stafford",
+    date: "2 mins ago",
+    icon: "https://github.com/shadcn.png",
+  },
+  {
+    label: "Kafla Winser",
+    content:
+      "You have a new payment request from Cindy Lillibridge for $800.00",
+    date: "10 hours ago",
+    type: "action",
+  },
   {
     label: "Tenner Stafford",
     content: "You have sent $200.00 to Tenner Stafford",
@@ -58,108 +104,91 @@ const notifications: NotificationsArray = [
 ];
 
 const HunzoNotification = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [maxHeight, setMaxHeight] = useState("16rem");
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const updateMaxHeight = () => {
+      if (contentRef.current) {
+        const windowHeight = window.innerHeight;
+        const contentRect = contentRef.current.getBoundingClientRect();
+        const maxAvailableHeight = windowHeight - contentRect.top - 20; // 20px buffer
+        setMaxHeight(
+          isExpanded
+            ? `${maxAvailableHeight - (20 / 100) * maxAvailableHeight}px`
+            : "16rem"
+        );
+        console.log("HERE");
+        console.log(maxAvailableHeight);
+        console.log("HERE");
+      }
+    };
+    updateMaxHeight();
+    window.addEventListener("resize", updateMaxHeight);
+    return () => window.removeEventListener("resize", updateMaxHeight);
+  }, [isExpanded]);
+
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+    <DropdownMenu.Root open={isOpen} onOpenChange={setIsOpen}>
+      <DropdownMenu.Trigger asChild>
         <BellDot className="size-9 p-2" />
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-80 bg-hunzo-background-grey">
-        <DropdownMenuLabel className="flex justify-center items-center w-full  h-full text-sm font-semibold  px-4">
-          <span className="h-full w-full ">Notifications</span>
-          <Button className="flex gap-1  -p-2 text-hunzo-blue">
-            <CheckCheck className="size-5" />
-            <span className="font-semibold">Mark all as read</span>
-          </Button>
-        </DropdownMenuLabel>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content
+          className="w-80 bg-hunzo-background-grey rounded-md shadow-md"
+          ref={contentRef}
+        >
+          <div className="flex justify-center items-center w-full  h-full text-sm font-semibold  px-4 py-2">
+            <span className="h-full w-full ">Notifications</span>
+            <Button className="flex gap-1  -p-2 text-hunzo-blue">
+              <CheckCheck className="size-5" />
+              <span className="font-semibold">Mark all as read</span>
+            </Button>
+          </div>
 
-        <DropdownMenuSeparator className="text-hunzo-pitch-black bg-hunzo-text-grey" />
+          <hr className="text-hunzo-pitch-black bg-hunzo-text-grey" />
 
-        <DropdownMenuGroup>
-          {notifications.map((notification: Notifications) => (
-            <DropdownMenuItem>
-              <NotificationItems data={notification} />
-            </DropdownMenuItem>
-          ))}
-        </DropdownMenuGroup>
+          <div
+            className={cn(
+              "overflow-y-auto transition-all duration-300 ease-in-out px-4"
+              // isExpanded ? "overflow-y-auto" : "overflow-y-hidden"
+            )}
+            style={{ maxHeight }}
+          >
+            {notifications.map((notification: Notifications) => (
+              <DropdownMenu.Item>
+                <NotificationItems data={notification} />
+              </DropdownMenu.Item>
+            ))}
+          </div>
 
-        {/* <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <CreditCard />
-            <span>Billing</span>
-            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Settings />
-            <span>Settings</span>
-            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Keyboard />
-            <span>Keyboard shortcuts</span>
-            <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <Users />
-            <span>Team</span>
-          </DropdownMenuItem>
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>
-              <UserPlus />
-              <span>Invite users</span>
-            </DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem>
-                  <Mail />
-                  <span>Email</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <MessageSquare />
-                  <span>Message</span>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <PlusCircle />
-                  <span>More...</span>
-                </DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-          <DropdownMenuItem>
-            <Plus />
-            <span>New Team</span>
-            <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-
-        <DropdownMenuSeparator /> */}
-
-        <DropdownMenuItem className="items-center w-full h-full text-xs font-semibold  px-4">
-          <Button className="h-full w-full justify-start -px-2 text-hunzo-dark-blue">
-            See all notifications
-          </Button>
-          <div className="pl-10">
+          <div className="flex items-center justify-between w-full text-xs font-semibold px-2 py-2">
+            <Button
+              className="text-hunzo-dark-blue"
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsExpanded(!isExpanded)}
+            >
+              {isExpanded ? "Show less" : "See all notifications"}
+            </Button>
             <Settings className="size-5" />
           </div>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
   );
 };
 
 export default HunzoNotification;
 
 function NotificationItems({ data }: { data: Notifications }) {
+  const source = data.icon || "https://github.com/shadcn.png";
   return (
     <div className="flex gap-2 w-full">
       <Avatar className="my-8">
-        <AvatarImage
-          src="https://github.com/shadcn.png"
-          alt="notification icon"
-        />
+        <AvatarImage src={source} alt="notification icon" />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
       <div className="flex flex-col w-full my-2 gap-2">
