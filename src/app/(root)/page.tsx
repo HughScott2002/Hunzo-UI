@@ -1,4 +1,6 @@
 import BankCard from "@/components/BankCard";
+import { HunzoDashboardBalance } from "@/components/HunzoDashboardBalance";
+import { HunzoDashboardCreditScore } from "@/components/HunzoDashboardCreditScore";
 import HunzoDashboardSmallChart from "@/components/HunzoDashboardSmallChart";
 import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
 import { Button } from "@/components/ui/button";
@@ -18,6 +20,7 @@ import Link from "next/link";
 import React, { FC, ReactElement } from "react";
 
 //TODO: Fix the Recent Activity Overflow UI Problem
+//TODO: Add Credit Score
 interface IconComponent {
   className?: string;
 }
@@ -283,17 +286,15 @@ const Dashboard: FC = () => {
   return (
     <section className="w-full h-full">
       <div className="flex size-full md:gap-2 lg:gap-4 xl:gap-6 transition-all">
-        <div className="size-full lg:flex lg:justify-between ">
+        <div className="size-full lg:flex lg:justify-center items-start">
           {/* <HunzoInactiveDevelopment />
            */}
-          <div className="">
+          <div className="lg:flex lg:gap-6 flex-grow 2xl:justify-center">
+            {/* <HunzoDashboardSmallChart type="bar" />
             <HunzoDashboardSmallChart type="bar" />
-          </div>
-          <div className="">
-            <HunzoDashboardSmallChart type="bar" />
-          </div>
-          <div className="">
-            <HunzoDashboardSmallChart type="radial" />
+            <HunzoDashboardSmallChart type="radial" /> */}
+            <HunzoDashboardCreditScore />
+            <HunzoDashboardBalance/>
           </div>
         </div>
         <div className="min-w-fit transition-all  h-full max-lg:hidden">

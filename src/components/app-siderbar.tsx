@@ -12,6 +12,7 @@ import {
   LucideIcon,
   Settings,
   Wallet,
+  BadgePoundSterling,
 } from "lucide-react";
 import { NavMain } from "@/components/nav-main";
 import {
@@ -83,11 +84,11 @@ const data = {
       //   },
       // ],
     },
-    // {
-    //   title: "FX Exchange",
-    //   url: "/fx",
-    //   icon: BadgePoundSterling,
-    // },
+    {
+      title: "FX Exchange",
+      url: "/fx",
+      icon: BadgePoundSterling,
+    },
     {
       title: "Pocket",
       url: "/pocket",
