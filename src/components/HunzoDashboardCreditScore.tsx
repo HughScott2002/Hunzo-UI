@@ -47,7 +47,7 @@ export function HunzoDashboardCreditScore() {
             </CardTitle>
           </div>
 
-          <CircleDollarSign className="p-2 border-2 border-hunzo-background-grey size-fit rounded-l" />
+          <CircleDollarSign className="p-2 border-2 border-hunzo-background-grey size-10 rounded-lg" />
         </div>
       </CardHeader>
       <CardContent className="flex items-center justify-center size-full p-0 m-0 ">
