@@ -35,7 +35,7 @@ export function HunzoDashboardCreditScore() {
   const totalVisitors = chartData[0].desktop + chartData[0].mobile;
 
   return (
-    <Card className="flex flex-col size-[14rem] p-4 rounded-2xl">
+    <Card className="flex flex-col size-[14rem] p-4 rounded-2xl border-2 border-hunzo-background-grey">
       <CardHeader className="items-start justify-start p-0 m-0">
         <div className="w-full h-full flex justify-between items-center">
           <div>
@@ -50,7 +50,7 @@ export function HunzoDashboardCreditScore() {
           <CircleDollarSign className="p-2 border-2 border-hunzo-background-grey size-10 rounded-lg" />
         </div>
       </CardHeader>
-      <CardContent className="flex items-center justify-center size-full p-0 m-0 ">
+      <CardContent className="flex items-center justify-center size-full p-0 m-0    ">
         <ChartContainer
           config={chartConfig}
           className="aspect-square size-full"

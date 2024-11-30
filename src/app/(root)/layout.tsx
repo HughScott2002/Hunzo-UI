@@ -31,6 +31,8 @@ export default function RootLayout({
                       ? "Dashboard"
                       : name === "my-wallets"
                       ? "My Wallets"
+                      : name === "fx"
+                      ? "FX"
                       : name}
                   </h1>
                 </div>

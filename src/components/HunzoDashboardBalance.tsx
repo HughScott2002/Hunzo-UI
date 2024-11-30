@@ -28,7 +28,7 @@ export function HunzoDashboardBalance() {
   };
 
   return (
-    <Card className="flex flex-col size-[14rem] p-4 rounded-2xl">
+    <Card className="flex flex-col size-[14rem] p-4 rounded-2xl border-2 border-hunzo-background-grey">
       <CardHeader className="items-start justify-start p-0 m-0">
         <div className="w-full h-full flex justify-between items-center">
           <div>
