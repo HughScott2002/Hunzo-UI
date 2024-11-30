@@ -412,7 +412,7 @@ const Dashboard: FC = () => {
                   </div>
                 ))}
               </div>
-              <div className=" grid grid-cols-[repeat(auto-fit,20rem)] gap-6 justify-center bg-hunzo-green">
+              {/* <div className=" grid grid-cols-[repeat(auto-fit,20rem)] gap-6 justify-center ">
                 <div className="w-[20rem] h-[18rem] rounded-2xl border-2 border-hunzo-background-grey transition-all bg-black-1">
                   hey
                 </div>
@@ -422,7 +422,7 @@ const Dashboard: FC = () => {
                 <div className="w-[20rem] h-[18rem] rounded-2xl border-2 border-hunzo-background-grey transition-all">
                   hey
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
