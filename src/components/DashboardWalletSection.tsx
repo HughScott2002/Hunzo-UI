@@ -61,7 +61,7 @@ const DashboardWalletIcon: FC<DashboardWalletIconProps> = ({
   );
 };
 
-const DashboardWalletSection = () => {
+const HunzoDashboardWalletSection = () => {
   return (
     <div className="min-h-[400px] max-h-[400px] border-2 border-hunzo-background-grey rounded-2xl h-[55%] w-full flex flex-col items-center px-6 py-6">
       <div className="flex w-full">
@@ -108,4 +108,4 @@ const DashboardWalletSection = () => {
   );
 };
 
-export default DashboardWalletSection;
+export default HunzoDashboardWalletSection;

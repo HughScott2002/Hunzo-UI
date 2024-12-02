@@ -1,153 +1,18 @@
-"use client";
-import BankCard from "@/components/BankCard";
-import DashboardWalletSection from "@/components/DashboardWalletSection";
-import { HunzoDashboardBalance } from "@/components/HunzoDashboardBalance";
-import { HunzoDashboardCreditScore } from "@/components/HunzoDashboardCreditScore";
-import HunzoDashboardSmallChart from "@/components/HunzoDashboardSmallChart";
-import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
-import HunzoWalletCard from "@/components/HunzoWalletCard";
-import { Button } from "@/components/ui/button";
-import { CardDescription, CardTitle } from "@/components/ui/card";
+import HunzoDashboardWalletSection from "@/components/DashboardWalletSection";
+import HunzoDashboardRecentActivity from "@/components/HunzoDashboardRecentActivity";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import WalletCard from "@/components/WalletCard";
-import { cn } from "@/lib/utils";
-import {
-  ArrowDownLeft,
-  ArrowRightLeft,
-  ArrowUpRight,
-  Ban,
-  CircleDollarSign,
-  Ellipsis,
-  Eye,
-  LucideIcon,
-} from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import React, { FC, ReactElement } from "react";
+import { CircleDollarSign } from "lucide-react";
+import React, { FC } from "react";
 import { Label, PolarRadiusAxis, RadialBar, RadialBarChart } from "recharts";
 
 //TODO: Spilt up this large File
 //TODO: Fix the Recent Activity Overflow UI Problem
 //TODO: Add Credit Score
-
-interface SmallTransactionComponentProps {
-  transationLabel: string;
-  type: string;
-  date: Date | string;
-  Time: string | Date;
-  href: string;
-  photo?: string;
-}
-
-const DashboardRecentActivity = () => {
-  return (
-    <div className=" min-h-fit w-full flex flex-col">
-      <h2 className="flex w-full my-4 bg-white sticky top-0">
-        <span className="w-full font-poppins font-semibold text-lg">
-          Recent Activity
-        </span>
-        <Link href={"/transactions"} className="h-fit w-fit flex text-nowrap">
-          <span className="text-hunzo-text-grey hover:text-hunzo-blue hover:underline">
-            View All
-          </span>
-        </Link>
-      </h2>
-
-      <div className="flex-1 min-h-2 max-h-[50]  ">
-        <div className="flex flex-col gap-2 overflow-y-auto">
-          <SmallTransactionComponent
-            transationLabel={"Flexy Gym"}
-            type={"Payment"}
-            date={"Jan 29, 2024"}
-            Time={"8:00 pm"}
-            href={"/transactions"}
-            photo={"https://github.com/shadcn.png"}
-          />
-          <SmallTransactionComponent
-            transationLabel={"Clapper"}
-            type={"Payment"}
-            date={"Jan 29, 2024"}
-            Time={"10:00 pm"}
-            href={"/transactions"}
-            photo={"https://github.com/shadcn.png"}
-          />
-          <SmallTransactionComponent
-            transationLabel={"Clapper"}
-            type={"Payment"}
-            date={"Jan 29, 2024"}
-            Time={"10:00 pm"}
-            href={"/transactions"}
-            photo={"https://github.com/shadcn.png"}
-          />
-          <SmallTransactionComponent
-            transationLabel={"Clapper"}
-            type={"Payment"}
-            date={"Jan 29, 2024"}
-            Time={"10:00 pm"}
-            href={"/transactions"}
-            photo={"https://github.com/shadcn.png"}
-          />
-
-          {/* <HunzoInactiveDevelopment /> */}
-          {/* <HunzoInactiveDevelopment /> */}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const SmallTransactionComponent: FC<SmallTransactionComponentProps> = ({
-  transationLabel,
-  type,
-  date,
-  Time,
-  href,
-  photo,
-}) => {
-  return (
-    <Link
-      href={href}
-      className="w-full h-fit flex gap-4 py-2 hover:bg-hunzo-background-grey border-2 border-white hover:border-hunzo-background-grey transition-all rounded-lg hover:px-2"
-    >
-      {/* Icons and Images */}
-      {photo ? (
-        <div className="size-14  flex items-center justify-center rounded-xl">
-          <Image
-            width={500}
-            height={500}
-            src={photo}
-            alt={"Dashboard Transaction Icon"}
-            className="rounded-xl"
-          />
-        </div>
-      ) : (
-        <div className="size-14 flex items-center justify-center rounded-xl">
-          {type}
-        </div>
-      )}
-      {/* Name and Types */}
-      <div className="flex flex-col flex-1">
-        <span className="text-lg font-semibold">{transationLabel}</span>
-        <span className="text-xs">{type}</span>
-      </div>
-
-      {/* Dates */}
-      <div className="flex flex-col">
-        <span className="text-base uppercase text-hunzo-pitch-black">
-          {date.toString()}
-        </span>
-        <span className="text-hunzo-text-grey text-sm">
-          At {Time.toString()}
-        </span>
-      </div>
-    </Link>
-  );
-};
 
 const chartData = [{ month: "january", desktop: 1260, mobile: 570 }];
 
@@ -283,8 +148,8 @@ const Dashboard: FC = () => {
           </div>
         </div>
         <div className="min-w-fit transition-all  h-full max-lg:hidden">
-          <DashboardWalletSection />
-          <DashboardRecentActivity />
+          <HunzoDashboardWalletSection />
+          <HunzoDashboardRecentActivity />
         </div>
       </div>
     </section>
