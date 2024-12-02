@@ -1,3 +1,4 @@
+"use client";
 import HunzoDashboardWalletSection from "@/components/DashboardWalletSection";
 import HunzoDashboardRecentActivity from "@/components/HunzoDashboardRecentActivity";
 import {
@@ -33,14 +34,14 @@ const Dashboard: FC = () => {
   return (
     <section className="w-full h-full">
       <div className="flex size-full md:gap-2 lg:gap-4 xl:gap-6 transition-all">
-        <div className="size-full flex  items-start ">
+        <div className="size-full flex items-start ">
           {/* <HunzoInactiveDevelopment />
            */}
 
-          <div className="flex flex-1 flex-col gap-4 p-2 sm:p-4">
+          <div className="flex flex-1 flex-col gap-4 sm:p-4">
             <div className="w-full xl:max-w-[80rem] mx-auto">
               {/* Container to limit width and center */}
-              <div className="grid grid-cols-[repeat(auto-fit,14rem)] gap-4 justify-center ">
+              <div className="grid grid-cols-[repeat(auto-fit,14rem)] gap-4 justify-center">
                 {[1, 2, 3, 4].map((item) => (
                   <div className="size-[14rem] p-4 rounded-2xl border-2 border-hunzo-background-grey transition-all">
                     <div className="size-full flex flex-col justify-between">
@@ -133,17 +134,17 @@ const Dashboard: FC = () => {
                   </div>
                 ))}
               </div>
-              {/* <div className=" grid grid-cols-[repeat(auto-fit,20rem)] gap-6 justify-center ">
-                <div className="w-[20rem] h-[18rem] rounded-2xl border-2 border-hunzo-background-grey transition-all bg-black-1">
+              <div className=" grid grid-cols-[repeat(auto-fit,18rem)] gap-6 justify-center my-10">
+                <div className="w-[18rem] h-[18rem] rounded-2xl border-2 border-hunzo-background-grey transition-all">
                   hey
                 </div>
-                <div className="w-[20rem] h-[18rem] rounded-2xl border-2 border-hunzo-background-grey transition-all">
+                <div className="w-[18rem] h-[18rem] rounded-2xl border-2 border-hunzo-background-grey transition-all">
                   hey
                 </div>
-                <div className="w-[20rem] h-[18rem] rounded-2xl border-2 border-hunzo-background-grey transition-all">
+                <div className="w-[18rem] h-[18rem] rounded-2xl border-2 border-hunzo-background-grey transition-all">
                   hey
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
