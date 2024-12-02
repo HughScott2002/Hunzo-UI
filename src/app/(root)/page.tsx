@@ -199,7 +199,7 @@ const SmallTransactionComponent: FC<SmallTransactionComponentProps> = ({
   );
 };
 
-const DashboardWallet = () => {
+const DashboardWalletSection = () => {
   return (
     <div className="min-h-[400px] max-h-[400px] border-2 border-hunzo-background-grey rounded-2xl h-[55%] w-full flex flex-col items-center px-6 py-6">
       <div className="flex w-full">
@@ -380,7 +380,7 @@ const Dashboard: FC = () => {
           </div>
         </div>
         <div className="min-w-fit transition-all  h-full max-lg:hidden">
-          <DashboardWallet />
+          <DashboardWalletSection />
           <DashboardRecentActivity />
         </div>
       </div>
