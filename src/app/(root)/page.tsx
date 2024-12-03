@@ -1,6 +1,7 @@
 "use client";
 import HunzoDashboardWalletSection from "@/components/DashboardWalletSection";
 import HunzoDashboardRecentActivity from "@/components/HunzoDashboardRecentActivity";
+import HunzoMoneyFlowDiagram from "@/components/HunzoMoneyFlowDiagram";
 import { Button } from "@/components/ui/button";
 import {
   ChartConfig,
@@ -195,6 +196,7 @@ const Dashboard: FC = () => {
                 </div>
                 <div className="w-full h-[86%] bg-hunzo-yellow"></div>
               </div>
+              <HunzoMoneyFlowDiagram />
               <div className=" grid grid-cols-[repeat(auto-fit,28rem)] gap-6 justify-between bg-hunzo-yellow">
                 <div className="w-full h-[18rem] rounded-3xl border-2 border-hunzo-background-grey transition-all bg-hunzo-red">
                   hey

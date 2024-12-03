@@ -19,11 +19,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const data = [
-  { time: "1D", value: 20 },
+  { time: "1D", value: 40 },
   { time: "5D", value: 10 },
   { time: "1M", value: 70 },
   { time: "3M", value: 40 },
-  { time: "6M", value: 90 },
+  { time: "6M", value: 30 },
   { time: "1Y", value: 30 },
 ];
 const HunzoMoneyFlowDiagram = () => {
@@ -43,7 +43,7 @@ const HunzoMoneyFlowDiagram = () => {
                 <ChevronDown className="ml-1 h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent>
+            <DropdownMenuContent className="bg-hunzo-background-grey">
               <DropdownMenuLabel>Date Range</DropdownMenuLabel>
               <DropdownMenuSeparator />
               {/* Add date range options here */}
@@ -59,7 +59,7 @@ const HunzoMoneyFlowDiagram = () => {
               color: "hsl(var(--primary))",
             },
           }}
-          className="h-[300px]"
+          className="h-[300px]  w-full"
         >
           <LineChart
             data={data}
@@ -70,28 +70,32 @@ const HunzoMoneyFlowDiagram = () => {
               left: 20,
             }}
           >
-            <CartesianGrid vertical={false} stroke="hsl(var(--border))" />
+            <CartesianGrid vertical={false} stroke="#EDF2F7" />
             <XAxis
               dataKey="time"
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: 12 }}
-              dy={10}
+              tick={{ fontSize: "0.92431rem", fontWeight: 600 }}
+              dy={20}
             />
             <YAxis
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: 12 }}
-              dx={-10}
-              domain={[0, 500]}
-              ticks={[0, 50, 100, 500]}
+              tick={{ fontSize: "0.92431rem", fontWeight: 600 }}
+              dx={-40}
+              domain={[0, 100]}
+              ticks={[0, 50, 100]}
             />
-            <ChartTooltip content={<ChartTooltipContent />} />
+            <ChartTooltip
+              content={
+                <ChartTooltipContent className="bg-hunzo-background-grey" />
+              }
+            />
             <Line
               type="monotone"
               dataKey="value"
-              stroke="hsl(var(--primary))"
-              strokeWidth={2}
+              stroke="#000000"
+              strokeWidth={6}
               dot={false}
               activeDot={{ r: 4, strokeWidth: 0 }}
             />
