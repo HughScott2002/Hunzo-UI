@@ -1,13 +1,23 @@
 "use client";
 import HunzoDashboardWalletSection from "@/components/DashboardWalletSection";
 import HunzoDashboardRecentActivity from "@/components/HunzoDashboardRecentActivity";
+import { Button } from "@/components/ui/button";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { CircleDollarSign } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuCheckboxItem,
+  DropdownMenuCheckboxItemProps,
+} from "@radix-ui/react-dropdown-menu";
+import { ChevronDown, CircleDollarSign } from "lucide-react";
 import React, { FC } from "react";
 import { Label, PolarRadiusAxis, RadialBar, RadialBarChart } from "recharts";
 
@@ -16,7 +26,7 @@ import { Label, PolarRadiusAxis, RadialBar, RadialBarChart } from "recharts";
 //TODO: Add Credit Score
 
 const chartData = [{ month: "january", desktop: 1260, mobile: 570 }];
-
+type Checked = DropdownMenuCheckboxItemProps["checked"];
 const chartConfig = {
   desktop: {
     label: "Desktop",
@@ -30,6 +40,9 @@ const chartConfig = {
 
 const Dashboard: FC = () => {
   const totalVisitors = chartData[0].desktop + chartData[0].mobile;
+  const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true);
+  const [showActivityBar, setShowActivityBar] = React.useState<Checked>(false);
+  const [showPanel, setShowPanel] = React.useState<Checked>(false);
 
   return (
     <section className="w-full h-full">
@@ -38,12 +51,12 @@ const Dashboard: FC = () => {
           {/* <HunzoInactiveDevelopment />
            */}
 
-          <div className="flex flex-1 flex-col gap-4 sm:p-4">
-            <div className="w-full xl:max-w-[80rem] mx-auto">
+          <div className="flex flex-1 flex-col gap-4 sm:p-4 bg-hunzo-background-grey rounded-3xl transition-all ease-in-out">
+            <div className="w-full xl:max-w-[60rem] mx-auto bg-black-1 flex flex-col p-2 gap-6">
               {/* Container to limit width and center */}
               <div className="grid grid-cols-[repeat(auto-fit,14rem)] gap-4 justify-center">
                 {[1, 2, 3, 4].map((item) => (
-                  <div className="size-[14rem] p-4 rounded-2xl border-2 border-hunzo-background-grey transition-all">
+                  <div className="size-[14rem] p-4 rounded-2xl border-2 border-hunzo-background-grey transition-all ">
                     <div className="size-full flex flex-col justify-between">
                       <div className="w-full h-fit flex justify-between items-center">
                         <div className="w-full">
@@ -134,21 +147,66 @@ const Dashboard: FC = () => {
                   </div>
                 ))}
               </div>
-              <div className=" grid grid-cols-[repeat(auto-fit,18rem)] gap-6 justify-center my-10">
-                <div className="w-[18rem] h-[18rem] rounded-2xl border-2 border-hunzo-background-grey transition-all">
+
+              <div className="w-full bg-hunzo-green h-[20.1875rem] rounded-3xl p-6">
+                <div className="flex justify-between items-end bg-black-1">
+                  <h2 className="h-full  text-center font-bold text-xl">
+                    Money Flow
+                  </h2>
+                  <div className="flex gap-10 items-center bg-hunzo-blue">
+                    <div className="flex gap-2 justify-center items-center h-full w-fit bg-white">
+                      <div className="h-2 w-4 rounded-full bg-hunzo-pitch-black" />
+                      <span className="font-poppins text-sm font-semibold ">
+                        Expenses
+                      </span>
+                    </div>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button className="font-semibold text-xs  bg-hunzo-background-grey rounded-2xl px-2 h-full">
+                          <span className="">Jan 10 - Jan 16</span>
+                          <ChevronDown className="size-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent className="w-56">
+                        <DropdownMenuLabel>Appearance</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuCheckboxItem
+                          checked={showStatusBar}
+                          onCheckedChange={setShowStatusBar}
+                        >
+                          Status Bar
+                        </DropdownMenuCheckboxItem>
+                        <DropdownMenuCheckboxItem
+                          checked={showActivityBar}
+                          onCheckedChange={setShowActivityBar}
+                          disabled
+                        >
+                          Activity Bar
+                        </DropdownMenuCheckboxItem>
+                        <DropdownMenuCheckboxItem
+                          checked={showPanel}
+                          onCheckedChange={setShowPanel}
+                        >
+                          Panel
+                        </DropdownMenuCheckboxItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </div>
+                </div>
+                <div className="w-full h-[86%] bg-hunzo-yellow"></div>
+              </div>
+              <div className=" grid grid-cols-[repeat(auto-fit,28rem)] gap-6 justify-between bg-hunzo-yellow">
+                <div className="w-full h-[18rem] rounded-3xl border-2 border-hunzo-background-grey transition-all bg-hunzo-red">
                   hey
                 </div>
-                <div className="w-[18rem] h-[18rem] rounded-2xl border-2 border-hunzo-background-grey transition-all">
-                  hey
-                </div>
-                <div className="w-[18rem] h-[18rem] rounded-2xl border-2 border-hunzo-background-grey transition-all">
+                <div className="h-[18rem] rounded-3xl border-2 border-hunzo-background-grey transition-all">
                   hey
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="min-w-fit transition-all  h-full max-lg:hidden">
+        <div className="min-w-fit transition-all  h-full max-lg:hidden flex flex-col gap-6">
           <HunzoDashboardWalletSection />
           <HunzoDashboardRecentActivity />
         </div>

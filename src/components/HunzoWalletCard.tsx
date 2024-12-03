@@ -17,7 +17,7 @@ const HunzoWalletCard: FC<HunzoWalletCardProps> = ({
   date,
 }) => {
   return (
-    <div className="w-full h-full rounded-2xl bg-hunzo-pitch-black  mt-2">
+    <div className="w-full h-full rounded-2xl bg-hunzo-pitch-black  mt-2 ">
       {/* <WalletCard businessName={"sda"} /> */}
       <div className="size-full flex flex-col">
         <div className="h-full flex flex-col justify-between">
