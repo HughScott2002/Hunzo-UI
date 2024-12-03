@@ -28,12 +28,12 @@ const data = [
 ];
 const HunzoMoneyFlowDiagram = () => {
   return (
-    <Card className="w-full">
+    <Card className="w-full rounded-3xl">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
         <h2 className="font-bold text-xl">Money Flow</h2>
         <div className="flex items-center gap-10">
           <div className="flex items-center gap-2">
-            <div className="h-2 w-4 rounded-full bg-primary" />
+            <div className="h-2 w-4 rounded-full bg-hunzo-pitch-black" />
             <span className="text-sm font-semibold">Expenses</span>
           </div>
           <DropdownMenu>
@@ -59,7 +59,7 @@ const HunzoMoneyFlowDiagram = () => {
               color: "hsl(var(--primary))",
             },
           }}
-          className="h-[300px]  w-full"
+          className="h-[300px]  w-full transition-all"
         >
           <LineChart
             data={data}
@@ -75,7 +75,11 @@ const HunzoMoneyFlowDiagram = () => {
               dataKey="time"
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: "0.92431rem", fontWeight: 600 }}
+              tick={{
+                fontSize: "0.92431rem",
+                fontWeight: 600,
+                color: "#000000",
+              }}
               dy={20}
             />
             <YAxis
@@ -95,7 +99,7 @@ const HunzoMoneyFlowDiagram = () => {
               type="monotone"
               dataKey="value"
               stroke="#000000"
-              strokeWidth={6}
+              strokeWidth={4}
               dot={false}
               activeDot={{ r: 4, strokeWidth: 0 }}
             />

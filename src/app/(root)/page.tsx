@@ -1,6 +1,7 @@
 "use client";
 import HunzoDashboardWalletSection from "@/components/DashboardWalletSection";
 import HunzoDashboardRecentActivity from "@/components/HunzoDashboardRecentActivity";
+import HunzoHalfSavingsDiagram from "@/components/HunzoHalfSavingsDiagram";
 import HunzoMoneyFlowDiagram from "@/components/HunzoMoneyFlowDiagram";
 import { Button } from "@/components/ui/button";
 import {
@@ -53,7 +54,7 @@ const Dashboard: FC = () => {
            */}
 
           <div className="flex flex-1 flex-col gap-4 sm:p-4 bg-hunzo-background-grey rounded-3xl transition-all ease-in-out">
-            <div className="w-full xl:max-w-[60rem] mx-auto bg-black-1 flex flex-col p-2 gap-6">
+            <div className="w-full xl:max-w-[60rem] mx-auto  flex flex-col p-2 gap-6">
               {/* Container to limit width and center */}
               <div className="grid grid-cols-[repeat(auto-fit,14rem)] gap-4 justify-center">
                 {[1, 2, 3, 4].map((item) => (
@@ -149,59 +150,18 @@ const Dashboard: FC = () => {
                 ))}
               </div>
 
-              <div className="w-full bg-hunzo-green h-[20.1875rem] rounded-3xl p-6">
-                <div className="flex justify-between items-end bg-black-1">
-                  <h2 className="h-full  text-center font-bold text-xl">
-                    Money Flow
-                  </h2>
-                  <div className="flex gap-10 items-center bg-hunzo-blue">
-                    <div className="flex gap-2 justify-center items-center h-full w-fit bg-white">
-                      <div className="h-2 w-4 rounded-full bg-hunzo-pitch-black" />
-                      <span className="font-poppins text-sm font-semibold ">
-                        Expenses
-                      </span>
-                    </div>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button className="font-semibold text-xs  bg-hunzo-background-grey rounded-2xl px-2 h-full">
-                          <span className="">Jan 10 - Jan 16</span>
-                          <ChevronDown className="size-4" />
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent className="w-56">
-                        <DropdownMenuLabel>Appearance</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuCheckboxItem
-                          checked={showStatusBar}
-                          onCheckedChange={setShowStatusBar}
-                        >
-                          Status Bar
-                        </DropdownMenuCheckboxItem>
-                        <DropdownMenuCheckboxItem
-                          checked={showActivityBar}
-                          onCheckedChange={setShowActivityBar}
-                          disabled
-                        >
-                          Activity Bar
-                        </DropdownMenuCheckboxItem>
-                        <DropdownMenuCheckboxItem
-                          checked={showPanel}
-                          onCheckedChange={setShowPanel}
-                        >
-                          Panel
-                        </DropdownMenuCheckboxItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </div>
-                </div>
-                <div className="w-full h-[86%] bg-hunzo-yellow"></div>
-              </div>
               <HunzoMoneyFlowDiagram />
-              <div className=" grid grid-cols-[repeat(auto-fit,28rem)] gap-6 justify-between bg-hunzo-yellow">
-                <div className="w-full h-[18rem] rounded-3xl border-2 border-hunzo-background-grey transition-all bg-hunzo-red">
-                  hey
-                </div>
-                <div className="h-[18rem] rounded-3xl border-2 border-hunzo-background-grey transition-all">
+
+              <div className=" grid grid-cols-[repeat(auto-fit,28rem)] gap-6 justify-between ">
+                <HunzoHalfSavingsDiagram />
+                <div className="w-full h-[18rem] rounded-3xl border-2 border-hunzo-background-grey transition-all bg-hunzo-red p-6">
+                  <div className="flex w-full bg-hunzo-yellow justify-between">
+                    <h2 className="">Saving</h2>
+                    <div className="bg-hunzo-background-grey flex">
+                      <span>This month</span>
+                      <ChevronDown className="size-4" />
+                    </div>
+                  </div>
                   hey
                 </div>
               </div>
