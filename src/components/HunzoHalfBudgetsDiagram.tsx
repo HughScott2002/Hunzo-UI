@@ -4,7 +4,8 @@ import { ChevronDown, ChevronRight, Dot, Wallet } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-// import { Progress } from "@/components/ui/progress";
+import { TrendingUp } from "lucide-react";
+import { Label, Pie, PieChart } from "recharts";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,15 +15,64 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import * as Progress from "@radix-ui/react-progress";
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
+import { cn } from "@/lib/utils";
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+interface PieItemProps {
+  amount: number;
+  label: string;
+  color: string;
+}
 
-const PieItem: FC = () => {
+const chartData = [
+  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
+  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
+  { browser: "firefox", visitors: 287, fill: "var(--color-firefox)" },
+  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
+  { browser: "other", visitors: 190, fill: "var(--color-other)" },
+];
+const chartConfig = {
+  visitors: {
+    label: "Visitors",
+  },
+  chrome: {
+    label: "Chrome",
+    color: "hsl(var(--chart-1))",
+  },
+  safari: {
+    label: "Safari",
+    color: "hsl(var(--chart-2))",
+  },
+  firefox: {
+    label: "Firefox",
+    color: "hsl(var(--chart-3))",
+  },
+  edge: {
+    label: "Edge",
+    color: "hsl(var(--chart-4))",
+  },
+  other: {
+    label: "Other",
+    color: "hsl(var(--chart-5))",
+  },
+} satisfies ChartConfig;
+
+const PieItem: FC<PieItemProps> = ({
+  amount = 0.0,
+  label = "Label",
+  color = "text-hunzo-pitch-black",
+}) => {
   return (
-    <div className="flex justify-center items-center bg-hunzo-red h-fit">
-      <Dot className="bg-black-1 p-0 m-0 size-10 " />
+    <div className="flex justify-start items-center  h-fit w-full">
+      <Dot className={cn("p-0 m-0", color)} size={30} />
       <div className="flex flex-col justify-start gap-1">
-        <span className="text-xs font-extrabold ">$735.00</span>
-        <span className="text-[0.625rem] text-hunzo-text-grey">Shopping</span>
+        <span className="text-sm font-extrabold font-manrope">${amount}</span>
+        <span className="text-[0.625rem] text-hunzo-text-grey">{label}</span>
       </div>
     </div>
   );
@@ -35,7 +85,6 @@ const ProgressBar = () => {
     const timer = setTimeout(() => setProgress(66), 500);
     return () => clearTimeout(timer);
   }, []);
-
   return (
     <Progress.Root
       className="relative mt-2 h-2 w-full overflow-hidden rounded-full bg-hunzo-text-grey"
@@ -76,11 +125,32 @@ const HunzoHalfBudgetsDiagram = () => {
           </DropdownMenuContent>
         </DropdownMenu>
       </CardHeader>
-      <CardContent className=" h-[80%] overflow-y-auto gap-2 px-2 bg-red-300 p-2 m-0 flex">
-        <div className="size-full bg-black-1">s</div>
-        <div className="h-full grid bg-hunzo-green w-[45%] ">
-          <div className="flex justify-center p-2">
-            <PieItem />
+      <CardContent className=" h-[80%] overflow-y-auto gap-2 px-2 p-2 m-0 flex">
+        <div className="size-full ">
+          <PieChartComponent />
+        </div>
+        <div className="h-full grid  w-[70%] ">
+          <div className="flex flex-col justify-center items-start gap-2 p-2 overflow-y-auto">
+            <PieItem
+              amount={754.99}
+              label={"Shopping"}
+              color={"text-hunzo-black"}
+            />
+            <PieItem
+              amount={2350.0}
+              label={"Rent"}
+              color={"text-hunzo-green"}
+            />
+            <PieItem
+              amount={710.0}
+              label={"Savings"}
+              color={"text-hunzo-yellow"}
+            />
+            <PieItem
+              amount={1000}
+              label={"Rent"}
+              color={"text-hunzo-pitech-black/60"}
+            />
           </div>
         </div>
       </CardContent>
@@ -89,3 +159,61 @@ const HunzoHalfBudgetsDiagram = () => {
 };
 
 export default HunzoHalfBudgetsDiagram;
+
+const PieChartComponent = () => {
+  // const totalVisitors = useMemo(() => {
+  //   return chartData.reduce((acc, curr) => acc + curr.visitors, 0);
+  // }, []);
+  return (
+    <ChartContainer
+      config={chartConfig}
+      className="mx-auto aspect-square max-h-full"
+    >
+      <PieChart>
+        <ChartTooltip
+          cursor={false}
+          content={<ChartTooltipContent hideLabel className="bg-white" />}
+        />
+        <Pie
+          data={chartData}
+          dataKey="visitors"
+          nameKey="browser"
+          innerRadius={50}
+          strokeWidth={8}
+        >
+          <Label
+            content={({ viewBox }) => {
+              if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                return (
+                  <text
+                    x={viewBox.cx}
+                    y={viewBox.cy}
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                  >
+                    <tspan
+                      x={viewBox.cx}
+                      y={viewBox.cy}
+                      className="fill-foreground text-3xl font-bold"
+                    >
+                      {/* {totalVisitors.toLocaleString()}
+                       */}
+                      OK
+                    </tspan>
+                    <tspan
+                      x={viewBox.cx}
+                      y={(viewBox.cy || 0) + 24}
+                      className="fill-muted-foreground"
+                    >
+                      Status
+                    </tspan>
+                  </text>
+                );
+              }
+            }}
+          />
+        </Pie>
+      </PieChart>
+    </ChartContainer>
+  );
+};

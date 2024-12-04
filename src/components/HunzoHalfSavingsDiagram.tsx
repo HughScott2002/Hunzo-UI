@@ -1,6 +1,13 @@
 "use client";
 
-import { ChevronDown, Wallet } from "lucide-react";
+import {
+  Bitcoin,
+  ChevronDown,
+  LucideIcon,
+  ShoppingBag,
+  TrendingUp,
+  Wallet,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -16,35 +23,55 @@ import {
 import * as Progress from "@radix-ui/react-progress";
 import { FC, useEffect, useState } from "react";
 
-const SavingsItem: FC = () => {
+interface SavingsItemProps {
+  Icon: LucideIcon | FC;
+  label: string;
+  sublabel: string;
+  amount: number;
+  progress: number;
+  colour: string;
+}
+
+interface ProgressBarProps {
+  value: number;
+  colour: string;
+}
+const SavingsItem: FC<SavingsItemProps> = ({
+  Icon,
+  label,
+  sublabel,
+  amount,
+  progress,
+  colour,
+}) => {
   return (
     <div className="w-full h-fit p-4 border-2 rounded-2xl">
       <div className="w-full h-fit  flex justify-between items-center">
         <div className="flex gap-4">
-          <div className="rounded-full bg-hunzo-blue/20 p-2">
-            <Wallet className="size-5 text-hunzo-blue" />
+          <div className={`rounded-full text-${colour}  bg-${colour}/20 p-2`}>
+            <Icon className="size-5 " />
           </div>
           <div className="flex flex-col gap-22">
-            <h2 className="font-manrope font-extrabold text-sm">Mutal funds</h2>
+            <h2 className="font-manrope font-extrabold text-sm">{label}</h2>
             <span className="font-manrope font-medium text-hunzo-text-grey text-xs">
-              Monthly income 10%
+              {sublabel}
             </span>
           </div>
         </div>
-        <span className="font-extrabold text-sm text-hunzo-dark-blue">
-          $545.00
+        <span className="font-extrabold text-sm text-hunzo-pitch-black">
+          ${amount}
         </span>
       </div>
-      <ProgressBar />
+      <ProgressBar value={progress} colour={colour} />
     </div>
   );
 };
 
-const ProgressBar = () => {
+const ProgressBar: FC<ProgressBarProps> = ({ value, colour }) => {
   const [progress, setProgress] = useState(13);
 
   useEffect(() => {
-    const timer = setTimeout(() => setProgress(80), 500);
+    const timer = setTimeout(() => setProgress(value), 500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -89,10 +116,38 @@ const HunzoHalfSavingsDiagram = () => {
         </DropdownMenu>
       </CardHeader>
       <CardContent className=" h-[80%] overflow-y-auto flex flex-col gap-2 px-2">
-        <SavingsItem />
-        <SavingsItem />
-        <SavingsItem />
-        <SavingsItem />
+        <SavingsItem
+          Icon={Wallet}
+          label={"Mutual funds"}
+          sublabel={"Monthly income 10%"}
+          amount={545.32}
+          progress={20}
+          colour={"hunzo-blue"}
+        />
+        <SavingsItem
+          Icon={TrendingUp}
+          label={"Investment"}
+          sublabel={"Monthly income 4%"}
+          amount={234.78}
+          progress={50}
+          colour={"hunzo-green"}
+        />
+        <SavingsItem
+          Icon={ShoppingBag}
+          label={"Shopping"}
+          sublabel={"Monthly income 37%"}
+          amount={3445.23}
+          progress={20}
+          colour={"hunzo-yellow"}
+        />
+        <SavingsItem
+          Icon={Bitcoin}
+          label={"Crypto"}
+          sublabel={"Monthly income 10%"}
+          amount={545.32}
+          progress={20}
+          colour={"hunzo-green"}
+        />
       </CardContent>
     </Card>
   );

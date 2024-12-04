@@ -22,9 +22,9 @@ const data = [
   { time: "1D", value: 40 },
   { time: "5D", value: 10 },
   { time: "1M", value: 70 },
-  { time: "3M", value: 40 },
-  { time: "6M", value: 30 },
-  { time: "1Y", value: 30 },
+  { time: "3M", value: 23 },
+  { time: "6M", value: 43 },
+  { time: "1Y", value: 100 },
 ];
 const HunzoMoneyFlowDiagram = () => {
   return (
@@ -102,6 +102,7 @@ const HunzoMoneyFlowDiagram = () => {
               type="monotone"
               dataKey="value"
               stroke="#000000"
+              fill="#000000"
               strokeWidth={4}
               dot={false}
               activeDot={{ r: 4, strokeWidth: 0 }}
