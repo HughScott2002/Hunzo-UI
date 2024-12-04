@@ -30,7 +30,7 @@ const HunzoMoneyFlowDiagram = () => {
   return (
     <Card className="w-full rounded-3xl">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
-        <h2 className="font-bold text-xl">Money Flow</h2>
+        <h2 className="font-bold text-lg">Money Flow</h2>
         <div className="flex items-center gap-10">
           <div className="flex items-center gap-2">
             <div className="h-2 w-4 rounded-full bg-hunzo-pitch-black" />
@@ -38,7 +38,10 @@ const HunzoMoneyFlowDiagram = () => {
           </div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="rounded-full text-xs h-8">
+              <Button
+                variant="outline"
+                className="rounded-lg text-xs h-8 bg-hunzo-background-grey"
+              >
                 Jan 10 - Jan 16
                 <ChevronDown className="ml-1 h-4 w-4" />
               </Button>

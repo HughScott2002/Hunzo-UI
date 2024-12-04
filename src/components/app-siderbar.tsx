@@ -90,8 +90,8 @@ const data = {
       icon: BadgePoundSterling,
     },
     {
-      title: "Pocket",
-      url: "/pocket",
+      title: "Savings",
+      url: "/savings",
       icon: PiggyBank,
     },
   ],

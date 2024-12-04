@@ -1,6 +1,7 @@
 "use client";
 import HunzoDashboardWalletSection from "@/components/DashboardWalletSection";
 import HunzoDashboardRecentActivity from "@/components/HunzoDashboardRecentActivity";
+import HunzoHalfBudgetsDiagram from "@/components/HunzoHalfBudgetsDiagram";
 import HunzoHalfSavingsDiagram from "@/components/HunzoHalfSavingsDiagram";
 import HunzoMoneyFlowDiagram from "@/components/HunzoMoneyFlowDiagram";
 import { Button } from "@/components/ui/button";
@@ -53,12 +54,12 @@ const Dashboard: FC = () => {
           {/* <HunzoInactiveDevelopment />
            */}
 
-          <div className="flex flex-1 flex-col gap-4 sm:p-4 bg-hunzo-background-grey rounded-3xl transition-all ease-in-out">
-            <div className="w-full xl:max-w-[60rem] mx-auto  flex flex-col p-2 gap-6">
+          <div className="flex flex-1 flex-col gap-4 sm:p-4 rounded-3xl transition-all ease-in-out">
+            <div className="w-full xl:max-w-[56rem] mx-auto  flex flex-col p-2 gap-2 ">
               {/* Container to limit width and center */}
-              <div className="grid grid-cols-[repeat(auto-fit,14rem)] gap-4 justify-center">
+              <div className="grid grid-cols-[repeat(auto-fit,13rem)] gap-4 3xl:justify-center justify-start">
                 {[1, 2, 3, 4].map((item) => (
-                  <div className="size-[14rem] p-4 rounded-2xl border-2 border-hunzo-background-grey transition-all ">
+                  <div className="size-[13rem] p-4 rounded-2xl border-2 border-hunzo-background-grey transition-all ">
                     <div className="size-full flex flex-col justify-between">
                       <div className="w-full h-fit flex justify-between items-center">
                         <div className="w-full">
@@ -152,9 +153,10 @@ const Dashboard: FC = () => {
 
               <HunzoMoneyFlowDiagram />
 
-              <div className=" grid grid-cols-[repeat(auto-fit,28rem)] gap-6 justify-between ">
+              <div className=" grid grid-cols-[repeat(auto-fit,26rem)] justify-between ">
                 <HunzoHalfSavingsDiagram />
-                <div className="w-full h-[18rem] rounded-3xl border-2 border-hunzo-background-grey transition-all bg-hunzo-red p-6">
+                <HunzoHalfBudgetsDiagram />
+                {/* <div className="my-4 w-full h-[18rem] rounded-3xl border-2 border-hunzo-background-grey transition-all bg-hunzo-red p-6">
                   <div className="flex w-full bg-hunzo-yellow justify-between">
                     <h2 className="">Saving</h2>
                     <div className="bg-hunzo-background-grey flex">
@@ -163,7 +165,7 @@ const Dashboard: FC = () => {
                     </div>
                   </div>
                   hey
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
