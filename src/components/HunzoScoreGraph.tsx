@@ -1,63 +1,76 @@
 "use client";
+
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { Label, PolarRadiusAxis, RadialBar, RadialBarChart } from "recharts";
+import { color } from "framer-motion";
+import {
+  Label,
+  PolarGrid,
+  PolarRadiusAxis,
+  RadialBar,
+  RadialBarChart,
+} from "recharts";
 
-const chartData = [{ month: "january", desktop: 1260, mobile: 570 }];
+const chartData = [
+  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
+];
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "hsl(var(--chart-1))",
+  visitors: {
+    label: "Visitors",
+    color: "#718096",
   },
-  mobile: {
-    label: "Mobile",
-    color: "hsl(var(--chart-2))",
+  safari: {
+    label: "Safari",
+    color: "#06D6A0",
   },
-} satisfies ChartConfig;
+};
+
 const HunzoScoreGraph = () => {
   return (
-    <ChartContainer config={chartConfig} className="aspect-square size-full">
+    <ChartContainer config={chartConfig} className="size-full">
       <RadialBarChart
         data={chartData}
-        endAngle={180}
-        innerRadius={70}
-        outerRadius={140}
-        className="m-0 p-0"
+        startAngle={0}
+        endAngle={240}
+        innerRadius={40}
+        outerRadius={70}
       >
-        <ChartTooltip
-          cursor={false}
-          content={
-            <ChartTooltipContent
-              hideLabel
-              className="bg-hunzo-background-grey"
-            />
-          }
+        <PolarGrid
+          gridType="circle"
+          radialLines={false}
+          stroke="none"
+          className="first:fill-muted last:fill-background"
+          polarRadius={[86, 74]}
+        />
+        <RadialBar
+          dataKey="visitors"
+          background
+          cornerRadius={10}
+          fill="#718096"
         />
         <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
           <Label
             content={({ viewBox }) => {
               if (viewBox && "cx" in viewBox && "cy" in viewBox) {
                 return (
-                  <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
+                  <text
+                    x={viewBox.cx}
+                    y={viewBox.cy}
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                  >
                     <tspan
                       x={viewBox.cx}
-                      y={(viewBox.cy || 0) - 16}
-                      className="fill-foreground text-2xl font-bold"
+                      y={viewBox.cy}
+                      fill="#06D6A0"
+                      className="fill-foreground text-base font-bold "
                     >
-                      {/* {totalVisitors.toLocaleString()} */}
-                      800
-                    </tspan>
-                    <tspan
-                      x={viewBox.cx}
-                      y={(viewBox.cy || 0) + 4}
-                      className="fill-muted-foreground"
-                    >
-                      Awesome
+                      Great
                     </tspan>
                   </text>
                 );
@@ -65,20 +78,6 @@ const HunzoScoreGraph = () => {
             }}
           />
         </PolarRadiusAxis>
-        <RadialBar
-          dataKey="desktop"
-          stackId="a"
-          cornerRadius={5}
-          fill="#718096"
-          className="stroke-transparent stroke-2"
-        />
-        <RadialBar
-          dataKey="mobile"
-          fill="#118AB2"
-          stackId="a"
-          cornerRadius={5}
-          className="stroke-transparent stroke-2"
-        />
       </RadialBarChart>
     </ChartContainer>
   );

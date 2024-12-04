@@ -112,9 +112,9 @@ const HunzoHalfBudgetsDiagram = () => {
           <DropdownMenuTrigger asChild>
             <Button
               variant="outline"
-              className="rounded-lg text-xs h-8 bg-hunzo-background-grey "
+              className="rounded-lg text-xs h-8 bg-hunzo-background-grey font-semibold border-2 border-hunzo-background-grey"
             >
-              Veiw All
+              View All
               <ChevronRight className="ml-1 h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
@@ -125,7 +125,7 @@ const HunzoHalfBudgetsDiagram = () => {
           </DropdownMenuContent>
         </DropdownMenu>
       </CardHeader>
-      <CardContent className=" h-[80%] overflow-y-auto gap-2 px-2 p-2 m-0 flex">
+      <CardContent className="bg-hunzo-background-grey rounded-xl h-[80%] overflow-y-auto gap-2 px-2 p-2 m-0 flex">
         <div className="size-full ">
           <PieChartComponent />
         </div>
@@ -194,7 +194,7 @@ const PieChartComponent = () => {
                     <tspan
                       x={viewBox.cx}
                       y={viewBox.cy}
-                      className="fill-foreground text-3xl font-bold"
+                      className="fill-foreground text-2xl font-bold"
                     >
                       {/* {totalVisitors.toLocaleString()}
                        */}

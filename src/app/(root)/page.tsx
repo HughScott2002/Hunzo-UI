@@ -1,7 +1,10 @@
 import HunzoDashboardWalletSection from "@/components/DashboardWalletSection";
+import HunzoBalanceGraph from "@/components/HunzoBalanceGraph";
 import HunzoDashboardRecentActivity from "@/components/HunzoDashboardRecentActivity";
+import HunzoExpensesGraph from "@/components/HunzoExpensesGraph";
 import HunzoHalfBudgetsDiagram from "@/components/HunzoHalfBudgetsDiagram";
 import HunzoHalfSavingsDiagram from "@/components/HunzoHalfSavingsDiagram";
+import HunzoIncomeGraph from "@/components/HunzoIncomeGraph";
 import HunzoMoneyFlowDiagram from "@/components/HunzoMoneyFlowDiagram";
 import HunzoScoreGraph from "@/components/HunzoScoreGraph";
 import HunzoTopDashComponent from "@/components/HunzoTopDashComponent";
@@ -27,17 +30,17 @@ type Checked = DropdownMenuCheckboxItemProps["checked"];
  */
 const dashboardItems = [
   {
-    chartContainer: <></>,
+    chartContainer: <HunzoBalanceGraph />,
     label: "Balance",
     title: "$24,098.00",
   },
   {
-    chartContainer: <></>,
+    chartContainer: <HunzoIncomeGraph />,
     label: "Income",
     title: "$2,456.84",
   },
   {
-    chartContainer: <></>,
+    chartContainer: <HunzoExpensesGraph />,
     label: "Expenses",
     title: "$1,980.00",
   },
@@ -59,7 +62,7 @@ const Dashboard: FC = () => {
           <div className="flex flex-1 flex-col gap-4 sm:p-4 rounded-3xl transition-all ease-in-out">
             <div className="w-full xl:max-w-[56rem] mx-auto  flex flex-col p-2 gap-2 ">
               {/* Container to limit width and center */}
-              <div className="grid grid-cols-[repeat(auto-fit,13rem)] gap-4 3xl:justify-center justify-start">
+              <div className="grid grid-cols-[repeat(auto-fit,13rem)] gap-4 3xl:justify-center justify-start ">
                 {dashboardItems.map((item, index) => (
                   <HunzoTopDashComponent
                     ChartContainer={item.chartContainer}

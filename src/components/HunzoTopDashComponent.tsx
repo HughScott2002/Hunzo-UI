@@ -19,7 +19,7 @@ const HunzoTopDashComponent: FC<TopDashComponentsProps> = ({
   title = "Defualt",
 }) => {
   return (
-    <div className="h-[13rem] p-4 rounded-2xl border-2 border-hunzo-background-grey transition-all ">
+    <div className="h-[11rem] p-4 rounded-2xl border-2 border-hunzo-background-grey transition-all ">
       <div className="size-full flex flex-col justify-between">
         <div className="w-full h-fit flex justify-between items-center">
           <div className="w-full">
@@ -32,7 +32,7 @@ const HunzoTopDashComponent: FC<TopDashComponentsProps> = ({
           </div>
           <CircleDollarSign className="p-2 border-2 border-hunzo-background-grey size-10 rounded-lg" />
         </div>
-        {ChartContainer}
+        <div className="w-full h-full ">{ChartContainer}</div>
       </div>
     </div>
   );

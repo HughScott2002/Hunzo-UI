@@ -26,7 +26,7 @@ const HunzoSmallTransactionComponent: FC<SmallTransactionComponentProps> = ({
     >
       {/* Icons and Images */}
       {photo ? (
-        <div className="size-14  flex items-center justify-center rounded-xl">
+        <div className="size-12  flex items-center justify-center rounded-xl">
           <Image
             width={500}
             height={500}
@@ -42,13 +42,13 @@ const HunzoSmallTransactionComponent: FC<SmallTransactionComponentProps> = ({
       )}
       {/* Name and Types */}
       <div className="flex flex-col flex-1">
-        <span className="text-lg font-semibold">{transationLabel}</span>
-        <span className="text-xs">{type}</span>
+        <span className="text-base font-semibold">{transationLabel}</span>
+        <span className="text-xs font-medium text-hunzo-text-grey">{type}</span>
       </div>
 
       {/* Dates */}
       <div className="flex flex-col">
-        <span className="text-base uppercase text-hunzo-pitch-black">
+        <span className="text-base font-semibold uppercase text-hunzo-pitch-black">
           {date.toString()}
         </span>
         <span className="text-hunzo-text-grey text-sm">

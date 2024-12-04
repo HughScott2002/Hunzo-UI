@@ -39,7 +39,7 @@ const HunzoMoneyFlowDiagram = () => {
             <DropdownMenuTrigger asChild>
               <Button
                 variant="outline"
-                className="rounded-lg text-xs h-8 bg-hunzo-background-grey"
+                className="rounded-lg text-xs h-8 bg-hunzo-background-grey font-semibold border-2 border-hunzo-background-grey"
               >
                 Jan 10 - Jan 16
                 <ChevronDown className="ml-1 h-4 w-4" />
