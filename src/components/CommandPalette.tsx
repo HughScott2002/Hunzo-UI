@@ -19,12 +19,12 @@ import {
   Wallet,
 } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export function CommandPalette() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
@@ -48,7 +48,7 @@ export function CommandPalette() {
             </CommandItem>
             <CommandItem className="flex gap-4 py-2 text-sm text-hunzo-text-grey">
               <HandCoins />
-              Request payment
+              Request payments
             </CommandItem>
           </CommandGroup>
           <CommandSeparator />

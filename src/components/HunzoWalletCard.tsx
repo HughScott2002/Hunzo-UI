@@ -38,7 +38,7 @@ const HunzoWalletCard: FC<HunzoWalletCardProps> = ({
             <span className="text-hunzo-text-grey">{date.toString()}</span>
           </div>
         </div>
-        <div className="bg-hunzo-green w-full z-40 h-20 rounded-b-2xl px-6 font-bold text-xl text-hunzo-dark-blue flex justify-between items-center">
+        <div className="bg-hunzo-green w-full h-20 rounded-b-2xl px-6 font-bold text-xl text-hunzo-dark-blue flex justify-between items-center">
           {currency === "GBP" ? "£" : "$"}
           {balance}
           <Ban

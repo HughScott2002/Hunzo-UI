@@ -133,7 +133,7 @@ const HunzoNotification = () => {
   return (
     <DropdownMenu.Root open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenu.Trigger asChild>
-        <BellDot className="size-9 p-2" />
+        <BellDot className="size-9 p-2 " />
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content
