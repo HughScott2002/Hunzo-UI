@@ -64,11 +64,11 @@ export function CommandPalette() {
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="QUICK ACTIONS">
-            <CommandItem className="flex gap-4 py-2 text-sm text-hunzo-text-grey">
+            <CommandItem className="flex gap-4 py-2 text-sm ">
               <SendHorizontal />
               Send Money
             </CommandItem>
-            <CommandItem className="flex gap-4 py-2 text-sm text-hunzo-text-grey">
+            <CommandItem className="flex gap-4 py-2 text-sm ">
               <HandCoins />
               Request payments
             </CommandItem>
@@ -76,20 +76,20 @@ export function CommandPalette() {
           <CommandSeparator />
           <CommandGroup heading="NAVIGATE">
             <Link href={"/my-wallets"}>
-              <CommandItem className="flex gap-4 py-2 text-sm text-hunzo-text-grey">
+              <CommandItem className="flex gap-4 py-2 text-sm ">
                 <Wallet />
                 Wallets
               </CommandItem>
             </Link>
-            <CommandItem className="flex gap-4 py-2 text-sm text-hunzo-text-grey">
+            <CommandItem className="flex gap-4 py-2 text-sm ">
               <ArrowRightLeft />
               Transactions
             </CommandItem>
-            <CommandItem className="flex gap-4 py-2 text-sm text-hunzo-text-grey">
+            <CommandItem className="flex gap-4 py-2 text-sm ">
               <PiggyBank />
               Pockets
             </CommandItem>
-            <CommandItem className="flex gap-4 py-2 text-sm text-hunzo-text-grey">
+            <CommandItem className="flex gap-4 py-2 text-sm ">
               <Settings />
               Settings
             </CommandItem>
