@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/command";
 import {
   ArrowRightLeft,
+  ChevronLeft,
+  ChevronRight,
   HandCoins,
   PiggyBank,
   SendHorizontal,
@@ -36,9 +38,29 @@ export function CommandPalette() {
   }, []);
 
   return (
-    <div className="bg-hunzo-text-grey">
-      <CommandDialog open={open} onOpenChange={setOpen}>
+    <CommandDialog open={open} onOpenChange={setOpen}>
+      {/* <header className="mx-6">
+        <div className="flex items-center justify-center text-lg font-manrope text-hunzo-dark-blue font-bold mt-4 mb-2 ">
+          SEARCH
+        </div>
+        <div className="text-base font-bold text-hunzo-pitch-black font-manrope flex">
+          <span className="flex-1">QUICK NAVIGATE</span>
+          <div className="flex gap-2 items-center justify-center">
+            <ChevronLeft className="size-4" />
+            <ChevronRight className="size-4" />
+          </div>
+        </div>
+        <div>
+          <div>Transaction</div>
+          <div>Contacts</div>
+          <div>Wallet</div>
+          <div>Savings</div>
+          <div>Settings</div>
+        </div>
+      </header> */}
+      <div className="mx-2">
         <CommandInput placeholder="Type a command or search..." />
+
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="QUICK ACTIONS">
@@ -73,7 +95,7 @@ export function CommandPalette() {
             </CommandItem>
           </CommandGroup>
         </CommandList>
-      </CommandDialog>
-    </div>
+      </div>
+    </CommandDialog>
   );
 }

@@ -1,4 +1,3 @@
-import { CommandPalette } from "@/components/CommandPalette";
 import HunzoAuthLeftSide from "@/components/HunzoAuthLeftSide";
 import HunzoAuthRightSide from "@/components/HunzoAuthRightSide";
 

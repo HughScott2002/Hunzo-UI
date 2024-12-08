@@ -35,7 +35,7 @@ import React, { FC, ReactNode } from "react";
 import { Separator } from "./ui/separator";
 
 // This is sample data.
-const data = {
+export const sideBarData = {
   teams: [
     {
       name: "Acme Inc",
@@ -103,15 +103,15 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <div className="px-4 py-2  w-full h-full flex flex-col">
         <Link href={"/"}>
           <SidebarHeader className="">
-            <TeamSwitcher teams={data.teams} />
+            <TeamSwitcher teams={sideBarData.teams} />
           </SidebarHeader>
         </Link>
         <hr />
         <hr />
         <hr className="text-hunzo-pitch-black" />
         <SidebarContent className="">
-          <NavMain items={data.navMain} />
-          {/* <NavProjects projects={data.projects} /> */}
+          <NavMain items={sideBarData.navMain} />
+          {/* <NavProjects projects={sideBarData.projects} /> */}
         </SidebarContent>
         <HunzoSidebarFooter />
         <SidebarRail />

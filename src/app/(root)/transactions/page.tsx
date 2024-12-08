@@ -7,26 +7,9 @@ import React from "react";
 const Transactions = () => {
   return (
     <section className="flex w-full">
-      <div className="my-wallets w-full">
-        {/* <HeaderBox title="Transaction History" subtext="" type="nah" /> */}
-        {/* <BankInfo
-          account={{
-            id: "123",
-            availableBalance: 1000,
-            currentBalance: 1500,
-            officialName: "Bank of America",
-            mask: "1234",
-            name: "Bank of America",
-            type: "depository",
-            subtype: "Checking",
-            appwriteItemId: "2309324234",
-            sharableId: "1234",
-            institutionId: "1234",
-            // Add the remaining required properties here
-          }}
-          appwriteItemId={"2309324234"}
-          type="full"
-        /> */}
+      
+      {/* <div className="my-wallets w-full">
+
         <TransactionsTable
           transactions={[
             {
@@ -276,7 +259,7 @@ const Transactions = () => {
             },
           ]}
         />
-      </div>
+      </div> */}
     </section>
   );
 };

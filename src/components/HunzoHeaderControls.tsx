@@ -28,8 +28,11 @@ const controls: ControlsArray = [
 const HunzoHeaderControls = () => {
   return (
     <div className="flex justify-end items-center gap-4 ">
-      {controls.map((control: Controls) => (
-        <div className="w-fit h-fit bg-hunzo-background-grey rounded-full hover:bg-hunzo-blue hover:text-white  transition-colors ease-in">
+      {controls.map((control: Controls, index) => (
+        <div
+          className="w-fit h-fit bg-hunzo-background-grey rounded-full hover:bg-hunzo-blue hover:text-white  transition-colors ease-in"
+          key={index}
+        >
           <control.node className="size-9 p-2" />
         </div>
       ))}
