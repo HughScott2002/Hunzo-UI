@@ -50,7 +50,7 @@ const DashboardWalletIcon: FC<DashboardWalletIconProps> = ({
   return (
     <div className={`flex flex-col justify-center items-center gap-2 hun`}>
       <div
-        className={`size-12 p-2 border-2 border-hunzo-background-grey rounded-xl ${textColor} hover:${hoverColor} hover:text-white justify-center align-middle items-center`}
+        className={`size-12 p-2 border-2 border-hunzo-background-grey rounded-xl cursor-pointer ${textColor} hover:${hoverColor} hover:text-white justify-center align-middle items-center`}
       >
         <Icon className="size-full" strokeWidth={2} />
       </div>
@@ -101,7 +101,7 @@ const HunzoDashboardWalletSection = () => {
           Icon={WidgetSVG}
           title="More"
           textColor="text-hunzo-text-grey"
-          hoverColor="bg-hunzo-text-grey"
+          hoverColor=" hover:bg-hunzo-text-grey"
         />
       </div>
     </div>

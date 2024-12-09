@@ -17,13 +17,13 @@ const SearchInput = ({ type = "desktop" }: { type: "mobile" | "desktop" }) => {
     );
   } else {
     return (
-      <div className="sidebar-link flex w-fill items-center space-x-2 mr-0">
+      <div className="flex w-full items-center space-x-2 mr-0 ">
         <div className="relative">
           <SearchIcon className="absolute left-2.5 top-2.5 h-4 w-fill text-black-1" />
           <Input
             type="search"
             placeholder="Search"
-            className="pl-10 text-black-1 w-fill"
+            className="pl-10 font-semibold text-sm text-black-1 w-full "
           />
         </div>
       </div>
