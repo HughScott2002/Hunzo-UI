@@ -1,5 +1,3 @@
-import BankInfo from "@/components/BankInfo";
-import HeaderBox from "@/components/HeaderBox";
 import TransactionsTable from "@/components/TransactionsTable";
 
 export default function Page() {

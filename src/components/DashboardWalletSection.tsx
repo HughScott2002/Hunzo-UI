@@ -8,6 +8,10 @@ import {
 import HunzoWalletCard from "./HunzoWalletCard";
 import { FC } from "react";
 import { cn } from "@/lib/utils";
+import { Button } from "./ui/button";
+import HunzoRequestPayment from "./HunzoRequestPayment";
+import HunzoSendMoney from "./HunzoSendMoney";
+import Link from "next/link";
 
 interface IconComponent {
   className?: string;
@@ -61,6 +65,45 @@ const DashboardWalletIcon: FC<DashboardWalletIconProps> = ({
   );
 };
 
+const triggerRequestPaymentButton = (
+  <Button className="size-full p-0 m-0" variant={"ghost"}>
+    <DashboardWalletIcon
+      Icon={ArrowDownLeft}
+      title="Request"
+      textColor="text-hunzo-blue"
+      hoverColor="bg-hunzo-blue"
+    />
+  </Button>
+);
+
+const triggerSendMoneyButton = (
+  <Button className="size-full p-0 m-0" variant={"ghost"}>
+    <DashboardWalletIcon
+      Icon={ArrowUpRight}
+      title="Send"
+      textColor="text-hunzo-green"
+      hoverColor=" hover:bg-hunzo-green"
+    />
+  </Button>
+);
+
+const triggerExchangeButton = (
+  <DashboardWalletIcon
+    Icon={ArrowRightLeft}
+    title="Exchange"
+    textColor="text-hunzo-yellow"
+    hoverColor=" hover:bg-hunzo-yellow"
+  />
+);
+
+const triggerMoreButton = (
+  <DashboardWalletIcon
+    Icon={WidgetSVG}
+    title="More"
+    textColor="text-hunzo-text-grey"
+    hoverColor=" hover:bg-hunzo-text-grey"
+  />
+);
 const HunzoDashboardWalletSection = () => {
   return (
     <div className="min-h-[400px] max-h-[400px] border-2 border-hunzo-background-grey rounded-2xl h-[55%] w-full flex flex-col items-center px-6 py-6">
@@ -79,30 +122,11 @@ const HunzoDashboardWalletSection = () => {
       />
       <Ellipsis className="my-2 size-8 text-hunzo-text-grey" />
       <div className="flex gap-6 w-full justify-center ">
-        <DashboardWalletIcon
-          Icon={ArrowUpRight}
-          title="Send"
-          textColor="text-hunzo-green"
-          hoverColor=" hover:bg-hunzo-green"
-        />
-        <DashboardWalletIcon
-          Icon={ArrowDownLeft}
-          title="Request"
-          textColor="text-hunzo-blue"
-          hoverColor="bg-hunzo-blue"
-        />
-        <DashboardWalletIcon
-          Icon={ArrowRightLeft}
-          title="Exchange"
-          textColor="text-hunzo-yellow"
-          hoverColor=" hover:bg-hunzo-yellow"
-        />
-        <DashboardWalletIcon
-          Icon={WidgetSVG}
-          title="More"
-          textColor="text-hunzo-text-grey"
-          hoverColor=" hover:bg-hunzo-text-grey"
-        />
+        <HunzoSendMoney trigger={triggerSendMoneyButton} />
+        <HunzoRequestPayment trigger={triggerRequestPaymentButton} />
+
+        <Link href="/fx">{triggerExchangeButton}</Link>
+        <Link href={"#"}>{triggerMoreButton}</Link>
       </div>
     </div>
   );

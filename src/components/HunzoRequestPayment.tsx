@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import SearchInput from "./SearchInput";
+import { FC, ReactNode } from "react";
 
 type QuickNavItem = {
   icon: LucideIcon;
@@ -61,11 +62,16 @@ const quickNavItems: QuickNavItem[] = [
   },
 ];
 
-const HunzoSearch = () => {
+type HunzoRequestPaymentProps = {
+  trigger: ReactNode;
+};
+
+const HunzoRequestPayment = ({ trigger }: HunzoRequestPaymentProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Search className="size-9 p-2 " />
+        {/* <Icon/> */}
+        {trigger}
       </DialogTrigger>
 
       <DialogOverlay className="bg-hunzo-pitch-black/80" />
@@ -73,20 +79,20 @@ const HunzoSearch = () => {
       <DialogContent className="sm:max-w-[425px] bg-hunzo-background-grey">
         <DialogHeader>
           <DialogTitle className="w-full flex items-center justify-center text-lg font-manrope text-hunzo-dark-blue font-bold mb-4">
-            SEARCH
+            REQUEST PAYMENT
           </DialogTitle>
           <DialogDescription>
             <div className="text-base font-bold text-hunzo-pitch-black font-manrope flex">
-              <span className="flex-1">QUICK NAVIGATE</span>
+              <span className="flex-1">RECENT CONTACT</span>
               <div className="flex gap-2 items-center justify-center">
                 <ChevronLeft className="size-4" />
-                <ChevronRight className="size-4" />
+                <ChevronRight className="size-4 text-hunzo-blue" />
               </div>
             </div>
-            <div className="flex justify-between my-4 ">
+            <div className="flex justify-between my-4">
               {quickNavItems.map(({ icon: Icon, label, href }) => (
                 <Link key={href} href={href}>
-                  <div className="flex flex-col justify-center items-center gap-2 transition-all ease-in-out hover:text-hunzo-blue ">
+                  <div className="flex flex-col justify-center items-center gap-2 transition-all ease-in-out">
                     <Icon className="size-12 p-4 bg-[#D9D9D9] rounded-full hover:bg-hunzo-blue hover:text-white" />
                     <span className="font-medium text-xm">{label}</span>
                   </div>
@@ -134,4 +140,4 @@ const HunzoSearch = () => {
   );
 };
 
-export default HunzoSearch;
+export default HunzoRequestPayment;
