@@ -174,7 +174,6 @@ const HunzoSendMoney = ({ trigger }: HunzoSendMoneyPros) => {
                     <div className="size-12">
                       <Image src={image} width={100} height={100} alt={""} />
                     </div>
-                    {/* <Plus className="size-12 p-4 bg-[#D9D9D9] rounded-full hover:bg-hunzo-blue hover:text-white" /> */}
                     <span className="font-medium text-xm">{label}</span>
                   </div>
                 </Link>
