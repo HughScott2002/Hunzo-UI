@@ -156,8 +156,8 @@ const HunzoNotification = () => {
             )}
             style={{ maxHeight }}
           >
-            {notifications.map((notification: Notifications) => (
-              <DropdownMenu.Item>
+            {notifications.map((notification: Notifications, index) => (
+              <DropdownMenu.Item key={index}>
                 <NotificationItems data={notification} />
               </DropdownMenu.Item>
             ))}
