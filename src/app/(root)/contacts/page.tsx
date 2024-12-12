@@ -1,3 +1,4 @@
+import { HunzoContactTable } from "@/components/HunzoContactTable";
 import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
 import HunzoTransactionsTable from "@/components/HunzoTransactionsTable";
 import SearchInput from "@/components/SearchInput";
@@ -21,7 +22,8 @@ const page = () => {
           </div>
         </div>
       </div>
-      <HunzoTransactionsTable />
+      {/* <HunzoTransactionsTable /> */}
+      <HunzoContactTable />
     </section>
   );
 };
