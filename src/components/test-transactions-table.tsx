@@ -214,9 +214,9 @@ type TableHeaderMakerProps = {
 
 const TableHeaderMaker = ({ label, icon: Icon }: TableHeaderMakerProps) => {
   return (
-    <div className="flex items-center gap-1">
-      <span className="text-sm font-bold text-gray-700">{label}</span>
-      <Icon className="h-4 w-4 text-gray-500" />
+    <div className="py-2 flex items-center gap-2">
+      <span className="text-sm font-bold text-hunzo-pitch-black">{label}</span>
+      <Icon className="size-5 text-hunzo-pitch-black cursor-pointer" />
     </div>
   );
 };
@@ -234,17 +234,19 @@ export function TransactionsTable() {
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-200">
+        <tbody className="divide-y divide-hunzo-background-grey">
           {transactions.map((transaction, index) => (
             <tr key={index}>
               <TableCell>
                 <div className="flex items-center">
-                  <div className="h-10 w-10 flex-shrink-0 rounded-full bg-gray-200"></div>
+                  <div className="size-12 flex-shrink-0 rounded-xl bg-gray-200"></div>
                   <div className="ml-4">
-                    <div className="font-medium text-gray-900">
+                    <div className="font-bold text-hunzo-pitch-black text-base">
                       {transaction.name}
                     </div>
-                    <div className="text-gray-500">{transaction.type}</div>
+                    <div className="text-hunzo-text-grey text-sm">
+                      {transaction.type}
+                    </div>
                   </div>
                 </div>
               </TableCell>
@@ -252,16 +254,24 @@ export function TransactionsTable() {
                 <div>{transaction.date}</div>
                 <div className="text-gray-500">{transaction.time}</div>
               </TableCell>
-              <TableCell>{transaction.invoiceId}</TableCell>
-              <TableCell>{transaction.amount}</TableCell>
+              <TableCell>
+                <span className="font-bold text-hunzo-pitch-black">
+                  {transaction.invoiceId}
+                </span>
+              </TableCell>
+              <TableCell>
+                <span className="font-bold text-hunzo-pitch-black">
+                  {transaction.amount}
+                </span>
+              </TableCell>
               <TableCell>
                 <span
-                  className={`px-4 py-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                  className={`px-4 py-2 inline-flex text-sm leading-5 font-bold rounded-lg ${
                     transaction.status === "Success"
-                      ? "bg-green-100 text-green-800"
+                      ? "bg-hunzo-green/20 text-hunzo-green"
                       : transaction.status === "Pending"
-                      ? "bg-yellow-100 text-yellow-800"
-                      : "bg-red-100 text-red-800"
+                      ? "bg-hunzo-blue/20 text-hunzo-blue"
+                      : "bg-hunzo-red/20 text-hunzo-red"
                   }`}
                 >
                   {transaction.status}
