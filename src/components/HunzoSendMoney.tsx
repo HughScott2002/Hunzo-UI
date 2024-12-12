@@ -9,27 +9,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { DialogPortal } from "@radix-ui/react-dialog";
-import {
-  ArrowRightLeft,
-  ChevronLeft,
-  ChevronRight,
-  Contact,
-  DiamondPlusIcon,
-  LucideIcon,
-  PiggyBank,
-  Plus,
-  Search,
-  Settings,
-  Wallet,
-} from "lucide-react";
-import Link from "next/link";
-import SearchInput from "./SearchInput";
-import { FC, ReactNode } from "react";
-import Image from "next/image";
-import HunzoWalletCard from "./HunzoWalletCard";
+
+import { ReactNode } from "react";
 import HunzoDialogRecentContacts from "./HunzoDialogRecentContacts";
 import HunzoDialogSendMoney from "./HunzoDialogSendMoney";
 
@@ -39,7 +20,7 @@ type recentContactsItems = {
   href: string;
 };
 
-const recentContacts: recentContactsItems[] = [
+export const recentContacts: recentContactsItems[] = [
   {
     image: "/placeholder/Ian.png",
     label: "Ian",

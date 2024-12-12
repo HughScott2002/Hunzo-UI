@@ -126,7 +126,7 @@ const HunzoDashboardWalletSection = () => {
         <HunzoRequestPayment trigger={triggerRequestPaymentButton} />
 
         <Link href="/fx">{triggerExchangeButton}</Link>
-        <Link href={"#"}>{triggerMoreButton}</Link>
+        <Link href={"/my-wallets"}>{triggerMoreButton}</Link>
       </div>
     </div>
   );

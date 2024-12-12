@@ -1,6 +1,7 @@
 import { Plus } from "lucide-react";
 import Image from "next/image";
 import { Input } from "./ui/input";
+import HunzoWalletCard from "./HunzoWalletCard";
 
 type HunzoCardItemProps = {
   src: string;
@@ -77,7 +78,7 @@ const HunzoDialogSendMoney = () => {
     <ChevronRight className="size-4 text-hunzo-blue" /> */}
         </div>
       </div>
-      <div className="grid grid-cols-1 h-fit w-full gap-2">
+      <div className="grid grid-cols-2 h-fit w-full gap-2">
         <div className="flex flex-col gap-2">
           {paymentMethods.map((method) => (
             <HunzoCardItem
@@ -88,20 +89,19 @@ const HunzoDialogSendMoney = () => {
             />
           ))}
         </div>
-        <div className="flex flex-col gap-4  px-2 py-2 justify-center items-center">
-          {/* <HunzoWalletCard
-              balance={""}
-              cardNumber={""}
-              currency={"JMD"}
-              date={""}
-            /> */}
-
-          <Input
-            type="number"
-            className="w-full h-14 text-hunzo-pitch-black rounded-xl"
-            placeholder="Enter Amount"
+        <div className="flex flex-col gap-4  px-2 justify-center items-center">
+          <HunzoWalletCard
+            balance={""}
+            cardNumber={""}
+            currency={"JMD"}
+            date={""}
           />
         </div>
+        <Input
+          type="number"
+          className="w-full h-14 text-hunzo-pitch-black rounded-xl col-span-2"
+          placeholder="Enter Amount"
+        />
       </div>
     </>
   );
