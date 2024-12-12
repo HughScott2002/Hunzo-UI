@@ -103,78 +103,62 @@ const TableHeaderMaker = ({ label, icon: Icon }: TableHeaderMakerProps) => {
 
 export function HunzoContactTable() {
   return (
-    <div className="space-y-4">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-hunzo-pitch-black">
-          Recipients
-        </h1>
-        <div className="flex gap-2">
-          <Button className="bg-hunzo-blue hover:bg-hunzo-blue/90">
-            <Plus className="mr-2 h-4 w-4" /> Add New
-          </Button>
-          <Button variant="outline" className="border-2">
-            Filters
-          </Button>
-        </div>
-      </div>
-
-      <div className="rounded-lg overflow-hidden">
-        <table className="min-w-full">
-          <thead className="border-b">
-            <tr>
-              {tableHeaders.map((header, index) => (
-                <TableHeader key={index}>
-                  <TableHeaderMaker label={header.label} icon={header.icon} />
-                </TableHeader>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-hunzo-background-grey">
-            {recipients.map((recipient, index) => (
-              <tr key={index}>
-                <TableCell>
-                  <div className="flex items-center">
-                    <div className="size-12 flex-shrink-0 rounded-full bg-gray-200"></div>
-                    <div className="ml-4">
-                      <div className="font-bold text-hunzo-pitch-black text-base">
-                        {recipient.name}
-                      </div>
-                    </div>
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <div className="text-hunzo-pitch-black">{recipient.date}</div>
-                  <div className="text-hunzo-text-grey">{recipient.time}</div>
-                </TableCell>
-                <TableCell>
-                  <span className="font-bold text-hunzo-pitch-black">
-                    {recipient.amount}
-                  </span>
-                </TableCell>
-                <TableCell>
-                  <div className="flex items-center gap-2">
-                    <div className="size-6 rounded-full overflow-hidden">
-                      <img
-                        src="/placeholder.svg?height=24&width=24"
-                        alt="USD flag"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <span className="font-bold text-hunzo-pitch-black">
-                      {recipient.currency}
-                    </span>
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <Button className="border-2 hover:text-white hover:bg-hunzo-blue hover:border-hunzo-blue transition-colors ease-in-out">
-                    Details
-                  </Button>
-                </TableCell>
-              </tr>
+    <div className="rounded-lg overflow-hidden">
+      <table className="min-w-full">
+        <thead className="border-b">
+          <tr>
+            {tableHeaders.map((header, index) => (
+              <TableHeader key={index}>
+                <TableHeaderMaker label={header.label} icon={header.icon} />
+              </TableHeader>
             ))}
-          </tbody>
-        </table>
-      </div>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-hunzo-background-grey">
+          {recipients.map((recipient, index) => (
+            <tr key={index}>
+              <TableCell>
+                <div className="flex items-center">
+                  <div className="size-12 flex-shrink-0 rounded-full bg-gray-200"></div>
+                  <div className="ml-4">
+                    <div className="font-bold text-hunzo-pitch-black text-base">
+                      {recipient.name}
+                    </div>
+                  </div>
+                </div>
+              </TableCell>
+              <TableCell>
+                <div className="text-hunzo-pitch-black">{recipient.date}</div>
+                <div className="text-hunzo-text-grey">{recipient.time}</div>
+              </TableCell>
+              <TableCell>
+                <span className="font-bold text-hunzo-pitch-black">
+                  {recipient.amount}
+                </span>
+              </TableCell>
+              <TableCell>
+                <div className="flex items-center gap-2">
+                  <div className="size-6 rounded-full overflow-hidden">
+                    <img
+                      src="/placeholder.svg?height=24&width=24"
+                      alt="USD flag"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <span className="font-bold text-hunzo-pitch-black">
+                    {recipient.currency}
+                  </span>
+                </div>
+              </TableCell>
+              <TableCell>
+                <Button className="border-2 hover:text-white hover:bg-hunzo-blue hover:border-hunzo-blue transition-colors ease-in-out">
+                  Details
+                </Button>
+              </TableCell>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
