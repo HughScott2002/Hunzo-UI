@@ -221,7 +221,7 @@ const TableHeaderMaker = ({ label, icon: Icon }: TableHeaderMakerProps) => {
   );
 };
 
-export function TransactionsTable() {
+export function HunzoTransactionsTable() {
   return (
     <div className="rounded-lg overflow-y-auto scroll-">
       <table className="min-w-full">

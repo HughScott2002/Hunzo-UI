@@ -1,12 +1,11 @@
-import HunzoTransactionsTable from "@/components/HunzoTransactionsTable";
 import SearchInput from "@/components/SearchInput";
-import { TransactionsTable } from "@/components/test-transactions-table";
+import { HunzoTransactionsTable } from "@/components/test-transactions-table";
 import { Download, Settings2 } from "lucide-react";
 
 const Transactions = () => {
   return (
     <section className="flex flex-col size-full ">
-      <header className="w-full h-fit py-5 grid grid-cols-2 ">
+      <header className="w-full h-14 grid grid-cols-2 mb-6">
         <div className="w-full">
           <SearchInput type={"desktop"} />
         </div>
@@ -21,7 +20,7 @@ const Transactions = () => {
           </div>
         </div>
       </header>
-      <TransactionsTable />
+      <HunzoTransactionsTable />
       {/* <HunzoTransactionsTable /> */}
     </section>
   );

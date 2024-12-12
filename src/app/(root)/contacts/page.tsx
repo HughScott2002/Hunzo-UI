@@ -7,7 +7,7 @@ import { Download, Plus, Settings2 } from "lucide-react";
 const page = () => {
   return (
     <section className="flex flex-col w-full">
-      <div className="w-full h-fit  grid grid-cols-2 mb-6">
+      <header className="w-full h-10 grid grid-cols-2 mb-6">
         <div className="w-full">
           <SearchInput type={"desktop"} />
         </div>
@@ -21,8 +21,7 @@ const page = () => {
             Filters
           </div>
         </div>
-      </div>
-      {/* <HunzoTransactionsTable /> */}
+      </header>
       <HunzoContactTable />
     </section>
   );
