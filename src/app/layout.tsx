@@ -5,6 +5,7 @@ import { appName, appDescription } from "@/constants";
 import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from "@/components/AuthContext";
 import localFont from "next/font/local";
+import { ThemeProvider } from "@/components/theme-provider";
 // import { HunzoAuthProvider } from "@/components/HunzoAuthProvider";
 
 export const inter = Inter({
