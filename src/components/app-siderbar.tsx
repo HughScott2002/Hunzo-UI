@@ -13,6 +13,7 @@ import {
   Settings,
   Wallet,
   BadgePoundSterling,
+  BotMessageSquare,
 } from "lucide-react";
 import { NavMain } from "@/components/nav-main";
 import {
@@ -68,6 +69,11 @@ export const sideBarData = {
       title: "Contacts",
       url: "/contacts",
       icon: Contact,
+    },
+    {
+      title: "AI",
+      url: "/ai",
+      icon: BotMessageSquare,
     },
     {
       title: "My Wallets",

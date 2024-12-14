@@ -170,10 +170,10 @@ const PieChartComponent = () => {
       className="mx-auto aspect-square max-h-full"
     >
       <PieChart>
-        <ChartTooltip
+        {/* <ChartTooltip
           cursor={false}
           content={<ChartTooltipContent hideLabel className="bg-white" />}
-        />
+        /> */}
         <Pie
           data={chartData}
           dataKey="visitors"
