@@ -4,180 +4,279 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { ChartConfig } from "@/components/ui/chart";
 import { Separator } from "@/components/ui/separator";
+import HunzoRegisterForm from "@/components/HunzoRegisterForm";
+import HunzoCustomLoginInput from "@/components/Hunzo-custom-login-input";
+import { Label } from "@/components/ui/label";
+import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
+import { useState } from "react";
 
+// Types
+interface MenuItem {
+  id: string;
+  icon: React.ComponentType<React.ComponentProps<"svg">>;
+  title: string;
+  description: string;
+  active: boolean;
+}
+
+interface ProfileCompletion {
+  percentage: number;
+  title: string;
+  description: string;
+}
+
+interface PersonalInfoField {
+  label: string;
+  placeholder: string;
+  type?: string;
+  gridSpan?: boolean;
+}
+
+interface AddressField {
+  label: string;
+  placeholder: string;
+}
+
+const initialMenuItems: MenuItem[] = [
+  {
+    id: "personal-info",
+    icon: UserIcon,
+    title: "Personal Information",
+    description: "View your detail to receiving money",
+    active: true,
+  },
+  {
+    id: "security",
+    icon: LockIcon,
+    title: "Login and Security",
+    description: "Amet, est purus, a lobortis sit.",
+    active: false,
+  },
+  {
+    id: "debits",
+    icon: CreditCardIcon,
+    title: "Direct Debits",
+    description: "Set up and manage your direct debit",
+    active: false,
+  },
+];
+
+const personalInfoFields: PersonalInfoField[] = [
+  {
+    label: "Full legal first name",
+    placeholder: "Enter your first name",
+  },
+  {
+    label: "Full legal last name",
+    placeholder: "Enter your last name",
+  },
+  {
+    label: "Date of birth",
+    placeholder: "",
+    type: "date",
+  },
+  {
+    label: "Phone number",
+    placeholder: "Enter your phone number",
+    type: "tel",
+  },
+];
+
+const addressFields: AddressField[] = [
+  {
+    label: "Country",
+    placeholder: "Select your country",
+  },
+  {
+    label: "City",
+    placeholder: "Enter your city",
+  },
+  {
+    label: "Address",
+    placeholder: "Enter your address",
+  },
+  {
+    label: "Postal code",
+    placeholder: "Enter your postal code",
+  },
+];
+
+// Components
+const ProfileCompletionCard: React.FC<ProfileCompletion> = ({
+  percentage,
+  title,
+  description,
+}) => (
+  <Card className="bg-hunzo-blue p-6 text-white mx-10">
+    <div className="mb-4 flex items-center justify-between">
+      <div className="relative h-16 w-16">
+        <svg className="h-full w-full" viewBox="0 0 100 100">
+          <circle
+            className="stroke-muted"
+            cx="50"
+            cy="50"
+            r="40"
+            strokeWidth="10"
+            fill="none"
+          />
+          <circle
+            className="stroke-teal-400 transition-all duration-300 ease-in-out"
+            cx="50"
+            cy="50"
+            r="40"
+            strokeWidth="10"
+            fill="none"
+            strokeLinecap="round"
+            transform="rotate(-90 50 50)"
+            strokeDasharray={`${percentage * 2.51327} ${100 * 2.51327}`}
+          />
+        </svg>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="text-lg font-medium text-white">{percentage}%</span>
+        </div>
+      </div>
+      <div className="flex-1 px-4">
+        <h3 className="text-lg font-semibold">{title}</h3>
+        <p className="text-sm opacity-90">{description}</p>
+      </div>
+    </div>
+    <Button
+      variant="secondary"
+      className="w-full bg-white font-bold text-hunzo-blue"
+    >
+      Verify identity
+    </Button>
+  </Card>
+);
+
+const MenuItem: React.FC<{
+  item: MenuItem;
+  onClick: (id: string) => void;
+}> = ({ item, onClick }) => (
+  <div
+    className="flex h-28 cursor-pointer hover:bg-gray-50 transition-colors"
+    onClick={() => onClick(item.id)}
+  >
+    {item.active && <div className="bg-hunzo-blue w-1" />}
+    <div className="flex items-center gap-4 justify-center pl-6 w-full">
+      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-hunzo-text-grey/20">
+        <item.icon className="size-5" />
+      </div>
+      <div className="flex-1">
+        <h3 className="font-bold text-hunzo-pitch-black">{item.title}</h3>
+        <p className="text-sm text-hunzo-text-grey/90">{item.description}</p>
+      </div>
+    </div>
+  </div>
+);
+
+const PersonalInfoForm: React.FC = () => (
+  <div className="grid gap-6">
+    <div className="grid gap-4 sm:grid-cols-2">
+      {personalInfoFields.map((field, index) => (
+        <>
+          {/* <HunzoCustomLoginInput control={[]} /> */}
+          <div key={index} className="space-y-2">
+            <Label className="text-sm text-muted-foreground">
+              {field.label}
+            </Label>
+            <Input
+              type={field.type || "text"}
+              placeholder={field.placeholder}
+            />
+          </div>
+        </>
+      ))}
+    </div>
+
+    <Separator className="my-4" />
+
+    <h3 className="text-lg font-medium">Personal Address</h3>
+
+    <div className="grid gap-4 sm:grid-cols-2">
+      {addressFields.map((field, index) => (
+        <div key={index} className="space-y-2">
+          <label className="text-sm text-muted-foreground">{field.label}</label>
+          <Input placeholder={field.placeholder} />
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+// Components
+const PersonalInformationContent: React.FC = () => (
+  <>
+    <div className="mb-8">
+      <h2 className="text-2xl font-bold">Personal Information</h2>
+    </div>
+
+    <div className="mb-8 flex items-center gap-4">
+      <Avatar className="h-24 w-24">
+        <AvatarImage src="https://github.com/shadcn.png" />
+        <AvatarFallback>AK</AvatarFallback>
+      </Avatar>
+      <div className="space-x-4">
+        <Button className="bg-hunzo-blue font-semibold text-white">
+          Upload new pictures
+        </Button>
+        <Button className="bg-hunzo-red font-semibold text-white">
+          Delete
+        </Button>
+      </div>
+    </div>
+
+    <PersonalInfoForm />
+
+    <div className="mt-8 flex justify-end">
+      <Button className="bg-hunzo-blue text-white">Edit Details</Button>
+    </div>
+  </>
+);
 const Page = () => {
+  const [menuItems, setMenuItems] = useState<MenuItem[]>(initialMenuItems);
+  const [activeItemId, setActiveItemId] = useState("personal-info");
+
+  const handleMenuClick = (id: string) => {
+    setMenuItems((items) =>
+      items.map((item) => ({
+        ...item,
+        active: item.id === id,
+      }))
+    );
+    setActiveItemId(id);
+  };
+
+  const renderContent = () => {
+    switch (activeItemId) {
+      case "personal-info":
+        return <PersonalInformationContent />;
+      default:
+        return <HunzoInactiveDevelopment />;
+    }
+  };
+
+  const profileCompletion: ProfileCompletion = {
+    percentage: 64,
+    title: "Complete profile",
+    description: "Complete your profile to unlock all features",
+  };
+
   return (
     <div className="size-full">
       <div className="flex size-full border-t-2">
-        <div className="w-[40%] border-r-2 px-10 py-8">
-          <Card className="bg-hunzo-blue p-6 text-white">
-            <div className="mb-4 flex items-center justify-between">
-              <div className="relative h-16 w-16">
-                <svg className="h-full w-full" viewBox="0 0 100 100">
-                  <circle
-                    className="stroke-muted"
-                    cx="50"
-                    cy="50"
-                    r="40"
-                    strokeWidth="10"
-                    fill="none"
-                  />
-                  <circle
-                    className="stroke-teal-400 transition-all duration-300 ease-in-out"
-                    cx="50"
-                    cy="50"
-                    r="40"
-                    strokeWidth="10"
-                    fill="none"
-                    strokeLinecap="round"
-                    transform="rotate(-90 50 50)"
-                    strokeDasharray={`${64 * 2.51327} ${100 * 2.51327}`}
-                  />
-                </svg>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-lg font-medium text-white">64%</span>
-                </div>
-              </div>
-              <div className="flex-1 px-4">
-                <h3 className="font-semibold text-lg">Complete profile</h3>
-                <p className="text-sm opacity-90">
-                  Complete your profile to unlock all features
-                </p>
-              </div>
-            </div>
-            <Button
-              variant="secondary"
-              className="w-full text-hunzo-blue bg-white font-bold"
-            >
-              Verify identity
-            </Button>
-          </Card>
+        <div className="w-[40%] border-r-2 py-8">
+          <ProfileCompletionCard {...profileCompletion} />
 
-          <div className="mt-8 space-y-6">
-            <div className="flex items-center gap-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted">
-                <UserIcon className="h-5 w-5" />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-medium">Personal Information</h3>
-                <p className="text-sm text-muted-foreground">
-                  View your detail to receiving money
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted">
-                <LockIcon className="h-5 w-5" />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-medium">Login and Security</h3>
-                <p className="text-sm text-muted-foreground">
-                  Amet, est purus, a lobortis sit.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted">
-                <CreditCardIcon className="h-5 w-5" />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-medium">Direct Debits</h3>
-                <p className="text-sm text-muted-foreground">
-                  Set up and manage your direct debit
-                </p>
-              </div>
-            </div>
+          <div className="mt-8">
+            {menuItems.map((item) => (
+              <MenuItem key={item.id} item={item} onClick={handleMenuClick} />
+            ))}
           </div>
         </div>
 
-        <div className="size-full p-10">
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold">Personal Information</h2>
-          </div>
-
-          <div className="mb-8 flex items-center gap-4">
-            <Avatar className="h-24 w-24">
-              <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>AK</AvatarFallback>
-            </Avatar>
-            <div className="space-x-4">
-              <Button className="bg-hunzo-blue text-white font-semibold">
-                Upload new pictures
-              </Button>
-              <Button className="bg-hunzo-red text-white font-semibold">
-                Delete
-              </Button>
-            </div>
-          </div>
-
-          <div className="grid gap-6">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-2">
-                <label className="text-sm text-muted-foreground">
-                  Full legal first name
-                </label>
-                <Input placeholder="Enter your first name" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm text-muted-foreground">
-                  Full legal last name
-                </label>
-                <Input placeholder="Enter your last name" />
-              </div>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-2">
-                <label className="text-sm text-muted-foreground">
-                  Date of birth
-                </label>
-                <Input type="date" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm text-muted-foreground">
-                  Phone number
-                </label>
-                <Input type="tel" placeholder="Enter your phone number" />
-              </div>
-            </div>
-
-            <Separator className="my-4" />
-
-            <h3 className="text-lg font-medium">Personal Address</h3>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-2">
-                <label className="text-sm text-muted-foreground">Country</label>
-                <Input placeholder="Select your country" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm text-muted-foreground">City</label>
-                <Input placeholder="Enter your city" />
-              </div>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-2">
-                <label className="text-sm text-muted-foreground">Address</label>
-                <Input placeholder="Enter your address" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm text-muted-foreground">
-                  Postal code
-                </label>
-                <Input placeholder="Enter your postal code" />
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8 flex justify-end">
-            <Button className="bg-hunzo-blue  text-white">Edit Details</Button>
-          </div>
-        </div>
+        <div className="size-full p-10">{renderContent()}</div>
       </div>
     </div>
   );
