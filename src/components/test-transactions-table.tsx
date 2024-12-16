@@ -236,7 +236,7 @@ export function HunzoTransactionsTable() {
         </thead>
         <tbody className="divide-y divide-hunzo-background-grey">
           {transactions.map((transaction, index) => (
-            <tr key={index}>
+            <tr key={index} className="hover:bg-hunzo-background-grey">
               <TableCell>
                 <div className="flex items-center">
                   <div className="size-12 flex-shrink-0 rounded-xl bg-gray-200"></div>

@@ -116,7 +116,7 @@ export function HunzoContactTable() {
         </thead>
         <tbody className="divide-y divide-hunzo-background-grey">
           {recipients.map((recipient, index) => (
-            <tr key={index}>
+            <tr key={index} className="hover:bg-hunzo-background-grey">
               <TableCell>
                 <div className="flex items-center">
                   <div className="size-12 flex-shrink-0 rounded-full bg-gray-200"></div>
