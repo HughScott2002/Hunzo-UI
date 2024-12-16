@@ -3,11 +3,11 @@
 import {
   ArrowUpDown,
   ChevronDown,
-  Plus,
   TypeIcon as type,
   LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 // Define the recipient type
 type Recipient = {
@@ -118,7 +118,7 @@ export function HunzoContactTable() {
           {recipients.map((recipient, index) => (
             <tr key={index} className="hover:bg-hunzo-background-grey">
               <TableCell>
-                <div className="flex items-center">
+                <div className="flex items-center cursor-default">
                   <div className="size-12 flex-shrink-0 rounded-full bg-gray-200"></div>
                   <div className="ml-4">
                     <div className="font-bold text-hunzo-pitch-black text-base">
@@ -128,21 +128,25 @@ export function HunzoContactTable() {
                 </div>
               </TableCell>
               <TableCell>
-                <div className="text-hunzo-pitch-black">{recipient.date}</div>
-                <div className="text-hunzo-text-grey">{recipient.time}</div>
+                <div className="cursor-default">
+                  <div className="text-hunzo-pitch-black">{recipient.date}</div>
+                  <div className="text-hunzo-text-grey">{recipient.time}</div>
+                </div>
               </TableCell>
               <TableCell>
-                <span className="font-bold text-hunzo-pitch-black">
+                <span className="font-bold text-hunzo-pitch-black cursor-default">
                   {recipient.amount}
                 </span>
               </TableCell>
               <TableCell>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 cursor-default">
                   <div className="size-6 rounded-full overflow-hidden">
-                    <img
-                      src="/placeholder.svg?height=24&width=24"
+                    <Image
+                      src="/icons/gradient-mesh.svg"
                       alt="USD flag"
                       className="w-full h-full object-cover"
+                      height={100}
+                      width={100}
                     />
                   </div>
                   <span className="font-bold text-hunzo-pitch-black">

@@ -240,7 +240,7 @@ export function HunzoTransactionsTable() {
               <TableCell>
                 <div className="flex items-center">
                   <div className="size-12 flex-shrink-0 rounded-xl bg-gray-200"></div>
-                  <div className="ml-4">
+                  <div className="ml-4  cursor-default">
                     <div className="font-bold text-hunzo-pitch-black text-base">
                       {transaction.name}
                     </div>
@@ -252,21 +252,23 @@ export function HunzoTransactionsTable() {
               </TableCell>
               <TableCell>
                 <div>{transaction.date}</div>
-                <div className="text-gray-500">{transaction.time}</div>
+                <div className="text-gray-500 cursor-default">
+                  {transaction.time}
+                </div>
               </TableCell>
               <TableCell>
-                <span className="font-bold text-hunzo-pitch-black">
+                <span className="font-bold text-hunzo-pitch-black cursor-default">
                   {transaction.invoiceId}
                 </span>
               </TableCell>
               <TableCell>
-                <span className="font-bold text-hunzo-pitch-black">
+                <span className="font-bold text-hunzo-pitch-black cursor-default">
                   {transaction.amount}
                 </span>
               </TableCell>
               <TableCell>
                 <span
-                  className={`px-4 py-2 inline-flex text-sm leading-5 font-bold rounded-lg ${
+                  className={`px-4 py-2 inline-flex text-sm leading-5 font-bold rounded-lg cursor-default ${
                     transaction.status === "Success"
                       ? "bg-hunzo-green/20 text-hunzo-green"
                       : transaction.status === "Pending"
