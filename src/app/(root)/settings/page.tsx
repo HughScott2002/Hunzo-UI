@@ -12,6 +12,7 @@ import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { CircleX } from "lucide-react";
+import Image from "next/image";
 
 // Types
 interface MenuItem {
@@ -108,7 +109,7 @@ const addressFields: AddressField[] = [
 const ProfileCompletionCard: React.FC<
   ProfileCompletion & { onDismiss: () => void }
 > = ({ percentage, title, description, onDismiss }) => (
-  <Card className="bg-hunzo-blue p-6 text-white mx-10">
+  <Card className="bg-hunzo-blue p-6 text-white mx-10 ">
     <div className="w-full h-fit flex justify-end">
       <CircleX className="cursor-pointer" onClick={onDismiss} />
     </div>
@@ -220,14 +221,14 @@ const PersonalInformationContent: React.FC = () => (
       <h2 className="text-2xl font-bold">Personal Information</h2>
     </div>
 
-    <div className="mb-8 flex flex-col justify-center items-center gap-4 w-full ">
+    <div className="mb-8 flex md:flex-col justify-center items-center gap-4 w-full ">
       <Avatar className="size-24 border-4 border-hunzo-blue">
         <AvatarImage src="/placeholder/image 8.png" />
         <AvatarFallback>DP</AvatarFallback>
       </Avatar>
       <div className="flex flex-col justify-center items-center ">
         <h3 className="font-bold text-lg">Hugh Scott</h3>
-        <span className="text-hunzo-pitch-black/60">@hugh1</span>
+        <span className="text-hunzo-pitch-black/60 text-sm">@taghugh1</span>
       </div>
       <div className="space-x-4">
         <Button className="bg-hunzo-blue font-semibold text-white">
@@ -279,9 +280,9 @@ const Page = () => {
   };
 
   return (
-    <div className="size-full bg-red-800">
-      <div className="flex size-full border-t-2">
-        <div className="w-[40%] border-r-2 py-8">
+    <div className="size-full">
+      <div className="lg:flex size-full border-t-2">
+        <div className="lg:w-[40%] w-full lg:border-r-2 lg:py-8 pt-4">
           {/* <ProfileCompletionCard {...profileCompletion} /> */}
           {showCompletion && (
             <ProfileCompletionCard
