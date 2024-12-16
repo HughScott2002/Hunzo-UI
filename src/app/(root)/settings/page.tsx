@@ -10,6 +10,8 @@ import HunzoCustomLoginInput from "@/components/Hunzo-custom-login-input";
 import { Label } from "@/components/ui/label";
 import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { CircleX } from "lucide-react";
 
 // Types
 interface MenuItem {
@@ -103,12 +105,13 @@ const addressFields: AddressField[] = [
 ];
 
 // Components
-const ProfileCompletionCard: React.FC<ProfileCompletion> = ({
-  percentage,
-  title,
-  description,
-}) => (
+const ProfileCompletionCard: React.FC<
+  ProfileCompletion & { onDismiss: () => void }
+> = ({ percentage, title, description, onDismiss }) => (
   <Card className="bg-hunzo-blue p-6 text-white mx-10">
+    <div className="w-full h-fit flex justify-end">
+      <CircleX className="cursor-pointer" onClick={onDismiss} />
+    </div>
     <div className="mb-4 flex items-center justify-between">
       <div className="relative h-16 w-16">
         <svg className="h-full w-full" viewBox="0 0 100 100">
@@ -160,7 +163,12 @@ const MenuItem: React.FC<{
   >
     {item.active && <div className="bg-hunzo-blue w-1" />}
     <div className="flex items-center gap-4 justify-center pl-6 w-full">
-      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-hunzo-text-grey/20">
+      <div
+        className={cn(
+          "flex h-12 w-12 items-center justify-center rounded-full bg-hunzo-text-grey/10",
+          item.active ? "text-hunzo-blue" : ""
+        )}
+      >
         <item.icon className="size-5" />
       </div>
       <div className="flex-1">
@@ -212,11 +220,15 @@ const PersonalInformationContent: React.FC = () => (
       <h2 className="text-2xl font-bold">Personal Information</h2>
     </div>
 
-    <div className="mb-8 flex items-center gap-4">
-      <Avatar className="h-24 w-24">
-        <AvatarImage src="https://github.com/shadcn.png" />
-        <AvatarFallback>AK</AvatarFallback>
+    <div className="mb-8 flex flex-col justify-center items-center gap-4 w-full ">
+      <Avatar className="size-24 border-4 border-hunzo-blue">
+        <AvatarImage src="/placeholder/image 8.png" />
+        <AvatarFallback>DP</AvatarFallback>
       </Avatar>
+      <div className="flex flex-col justify-center items-center ">
+        <h3 className="font-bold text-lg">Hugh Scott</h3>
+        <span className="text-hunzo-pitch-black/60">@hugh1</span>
+      </div>
       <div className="space-x-4">
         <Button className="bg-hunzo-blue font-semibold text-white">
           Upload new pictures
@@ -237,6 +249,9 @@ const PersonalInformationContent: React.FC = () => (
 const Page = () => {
   const [menuItems, setMenuItems] = useState<MenuItem[]>(initialMenuItems);
   const [activeItemId, setActiveItemId] = useState("personal-info");
+  const [showCompletion, setShowCompletion] = useState(true);
+
+  const handleDismiss = () => setShowCompletion(false);
 
   const handleMenuClick = (id: string) => {
     setMenuItems((items) =>
@@ -258,18 +273,23 @@ const Page = () => {
   };
 
   const profileCompletion: ProfileCompletion = {
-    percentage: 64,
+    percentage: 50,
     title: "Complete profile",
     description: "Complete your profile to unlock all features",
   };
 
   return (
-    <div className="size-full">
+    <div className="size-full bg-red-800">
       <div className="flex size-full border-t-2">
         <div className="w-[40%] border-r-2 py-8">
-          <ProfileCompletionCard {...profileCompletion} />
-
-          <div className="mt-8">
+          {/* <ProfileCompletionCard {...profileCompletion} /> */}
+          {showCompletion && (
+            <ProfileCompletionCard
+              {...profileCompletion}
+              onDismiss={handleDismiss}
+            />
+          )}
+          <div className="mt-8 transition-all ease-in-out">
             {menuItems.map((item) => (
               <MenuItem key={item.id} item={item} onClick={handleMenuClick} />
             ))}
