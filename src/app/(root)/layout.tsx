@@ -26,7 +26,7 @@ export default function RootLayout({
             <header className="flex h-24 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-20 sticky top-0 z-10 px-10">
               <div className="flex flex-col sm:flex-row flex-1 items-center justify-between w-full h-full  p-4 gap-4">
                 <div className="flex flex-row items-center justify-center gap-2 ">
-                  <h1 className="font-poppins font-bold text-xl capitalize">
+                  <h1 className="font-poppins font-bold text-xl capitalize cursor-default">
                     {name === ""
                       ? "Dashboard"
                       : name === "my-wallets"

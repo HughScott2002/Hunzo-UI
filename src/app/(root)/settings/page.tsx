@@ -67,15 +67,19 @@ const initialMenuItems: MenuItem[] = [
 
 const personalInfoFields: PersonalInfoField[] = [
   {
-    label: "Full legal first name",
+    label: "First Name",
     placeholder: "Enter your first name",
   },
   {
-    label: "Full legal last name",
+    label: "Last Name",
     placeholder: "Enter your last name",
   },
   {
-    label: "Date of birth",
+    label: "Street Address",
+    placeholder: "",
+  },
+  {
+    label: "City",
     placeholder: "",
     type: "date",
   },
@@ -109,7 +113,7 @@ const addressFields: AddressField[] = [
 const ProfileCompletionCard: React.FC<
   ProfileCompletion & { onDismiss: () => void }
 > = ({ percentage, title, description, onDismiss }) => (
-  <Card className="bg-hunzo-blue p-6 text-white mx-10 ">
+  <Card className="bg-hunzo-blue p-6 text-white mx-10">
     <div className="w-full h-fit flex justify-end">
       <CircleX className="cursor-pointer" onClick={onDismiss} />
     </div>
@@ -181,7 +185,7 @@ const MenuItem: React.FC<{
 );
 
 const PersonalInfoForm: React.FC = () => (
-  <div className="grid gap-6">
+  <div className="grid gap-6 overflow-y-auto">
     <div className="grid gap-4 sm:grid-cols-2">
       {personalInfoFields.map((field, index) => (
         <>
@@ -268,6 +272,10 @@ const Page = () => {
     switch (activeItemId) {
       case "personal-info":
         return <PersonalInformationContent />;
+      case "security":
+        return <HunzoInactiveDevelopment />;
+      case "debits":
+        return <HunzoInactiveDevelopment />;
       default:
         return <HunzoInactiveDevelopment />;
     }

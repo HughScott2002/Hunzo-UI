@@ -270,10 +270,10 @@ export function HunzoTransactionsTable() {
                 <span
                   className={`px-4 py-2 inline-flex text-sm leading-5 font-bold rounded-lg cursor-default ${
                     transaction.status === "Success"
-                      ? "bg-hunzo-green/20 text-hunzo-green"
+                      ? "bg-hunzo-green/10 text-hunzo-green"
                       : transaction.status === "Pending"
-                      ? "bg-hunzo-blue/20 text-hunzo-blue"
-                      : "bg-hunzo-red/20 text-hunzo-red"
+                      ? "bg-hunzo-blue/10 text-hunzo-blue"
+                      : "bg-hunzo-red/10 text-hunzo-red"
                   }`}
                 >
                   {transaction.status}
