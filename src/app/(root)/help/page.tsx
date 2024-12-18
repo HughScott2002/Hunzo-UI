@@ -117,7 +117,30 @@ const HelpOptionsData: (HelpIconProps & { id: string })[] = [
     sublabel: "Multi-users access, accounting, and using our API",
   },
 ];
+const BadgeGrid = () => {
+  const badges = [
+    "Send Money",
+    "Transfers",
+    "Dev",
+    "Account Setup",
+    "Security",
+    "Payments",
+    "Support",
+  ];
 
+  return (
+    <div className="flex flex-wrap gap-2">
+      {badges.map((text, index) => (
+        <Badge
+          key={index}
+          className="bg-hunzo-blue text-white text-center w-fit text-base hover:bg-hunzo-blue/90 transition-colors cursor-pointer"
+        >
+          {text}
+        </Badge>
+      ))}
+    </div>
+  );
+};
 const HelpSearchComponent = () => {
   return (
     <div className="bg-hunzo-background-grey h-fit w-full p-10 flex flex-col gap-4 rounded-xl xl:max-w-96">
@@ -133,13 +156,11 @@ const HelpSearchComponent = () => {
       />
       <div className="flex flex-col gap-2">
         <span className="text-hunzo-text-grey text-base">Popular search:</span>
-        <div className="grid grid-cols-[repeat(auto-fit,_auto-fit)] gap-2 3xl:justify-center justify-start">
-          <span className="px-4 py-1 size-fit rounded-lg border-2 border-hunzo-blue hover:bg-hunzo-blue hover:text-white text-nowrap">
+        <BadgeGrid />
+        <div className="grid grid-cols-[repeat(auto-full,auto-full)] gap-2 justify-start">
+          {/* <span className="px-4 py-1 size-fit rounded-lg border-2 border-hunzo-blue hover:bg-hunzo-blue hover:text-white text-nowrap">
             Send Money
-          </span>
-          <Badge className="bg-hunzo-blue text-white text-center w-fit text-base">
-            Badge
-          </Badge>
+          </span> */}
         </div>
       </div>
     </div>

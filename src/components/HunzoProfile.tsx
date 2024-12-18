@@ -17,6 +17,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 type ProfileItemsArray = ProfileItems[];
 type ProfileItems = {
@@ -76,31 +77,35 @@ const HunzoProfile = () => {
         <DropdownMenuSeparator className="text-hunzo-text-grey bg-hunzo-text-grey" />
         <DropdownMenuGroup>
           {profileItems.map((item) => (
-            <DropdownMenuItem
-              className={cn(
-                "flex gap-3 mt-2 py-2 -px-1 rounded-lg cursor-pointer",
-                item.label === "Log out"
-                  ? " hover:px-2 transition-all "
-                  : "hover:bg-hunzo-blue hover:px-2 transition-all hover:text-white "
+            <>
+              {item.label === "Log out" ? (
+                <DropdownMenuItem
+                  className={cn(
+                    "flex gap-3 mt-2 py-2 -px-1 rounded-lg cursor-pointer hover:px-2 transition-all "
+                  )}
+                >
+                  <item.icon className={cn("size-5 text-hunzo-red")} />
+                  <span
+                    className={cn("text-base text-hunzo-red font-semibold")}
+                  >
+                    {item.label}
+                  </span>
+                </DropdownMenuItem>
+              ) : (
+                <Link href={"#"}>
+                  <DropdownMenuItem
+                    className={cn(
+                      "flex gap-3 mt-2 py-2 -px-1 rounded-lg cursor-pointer hover:bg-hunzo-blue hover:px-2 transition-all hover:text-white"
+                    )}
+                  >
+                    <item.icon className={cn("size-5")} />
+                    <span className={cn("text-base font-medium")}>
+                      {item.label}
+                    </span>
+                  </DropdownMenuItem>
+                </Link>
               )}
-            >
-              <item.icon
-                className={cn(
-                  "size-5",
-                  item.label === "Log out" ? "text-hunzo-red" : ""
-                )}
-              />
-              <span
-                className={cn(
-                  "text-base",
-                  item.label === "Log out"
-                    ? "text-hunzo-red font-semibold"
-                    : "font-medium"
-                )}
-              >
-                {item.label}
-              </span>
-            </DropdownMenuItem>
+            </>
           ))}
         </DropdownMenuGroup>
       </DropdownMenuContent>
