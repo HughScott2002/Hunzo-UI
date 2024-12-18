@@ -1,4 +1,5 @@
 "use client";
+import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import {
@@ -136,6 +137,9 @@ const HelpSearchComponent = () => {
           <span className="px-4 py-1 size-fit rounded-lg border-2 border-hunzo-blue hover:bg-hunzo-blue hover:text-white text-nowrap">
             Send Money
           </span>
+          <Badge className="bg-hunzo-blue text-white text-center w-fit text-base">
+            Badge
+          </Badge>
         </div>
       </div>
     </div>

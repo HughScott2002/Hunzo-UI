@@ -8,6 +8,7 @@ import { ElementType, FC, ReactNode } from "react";
 import HunzoProfile from "./HunzoProfile";
 import HunzoSearch from "./HunzoSearch";
 import { CommandShortcut } from "./ui/command";
+import { Badge } from "./ui/badge";
 
 type Controls = { node: any };
 type ControlsArray = Controls[];
@@ -33,7 +34,10 @@ const HunzoHeaderControls = () => {
     <div className="flex justify-end items-center gap-4 ">
       <CommandShortcut className="px-2 rounded-full -mx-3 cursor-default">
         {/* Ctrl+K/  */}
-        ⌘K
+
+        <Badge className="bg-hunzo-blue py-0 text-white text-center w-fit font-medium text-xs">
+          <span className="text-base">⌘</span>K
+        </Badge>
       </CommandShortcut>
       {controls.map((control: Controls, index) => (
         <div

@@ -5,14 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import HunzoRegisterForm from "@/components/HunzoRegisterForm";
-import HunzoCustomLoginInput from "@/components/Hunzo-custom-login-input";
 import { Label } from "@/components/ui/label";
 import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { CircleX } from "lucide-react";
-import Image from "next/image";
 
 // Types
 interface MenuItem {

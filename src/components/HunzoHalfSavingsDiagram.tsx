@@ -22,6 +22,7 @@ import {
 
 import * as Progress from "@radix-ui/react-progress";
 import { FC, useEffect, useState } from "react";
+import { Input } from "./ui/input";
 
 interface SavingsItemProps {
   Icon: LucideIcon | FC;
@@ -109,7 +110,9 @@ const HunzoHalfSavingsDiagram = () => {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="bg-hunzo-background-grey">
-            <DropdownMenuLabel>Date Range</DropdownMenuLabel>
+            <DropdownMenuLabel>
+              <Input type="date" />
+            </DropdownMenuLabel>
             <DropdownMenuSeparator />
             {/* Add date range options here */}
           </DropdownMenuContent>

@@ -1,4 +1,5 @@
 "use client";
+
 import {
   ArrowRightLeft,
   AudioWaveform,
@@ -33,7 +34,6 @@ import { TeamSwitcher } from "./team-switcher";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import React, { FC, ReactNode } from "react";
-import { Separator } from "./ui/separator";
 
 // This is sample data.
 export const sideBarData = {
@@ -70,11 +70,7 @@ export const sideBarData = {
       url: "/contacts",
       icon: Contact,
     },
-    {
-      title: "AI",
-      url: "/ai",
-      icon: BotMessageSquare,
-    },
+
     {
       title: "My Wallets",
       url: "/my-wallets",
@@ -99,6 +95,11 @@ export const sideBarData = {
       title: "Savings",
       url: "/savings",
       icon: PiggyBank,
+    },
+    {
+      title: "AI",
+      url: "/ai",
+      icon: BotMessageSquare,
     },
   ],
 };

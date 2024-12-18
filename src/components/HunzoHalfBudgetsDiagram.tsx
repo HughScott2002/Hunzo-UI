@@ -23,6 +23,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import Link from "next/link";
 interface PieItemProps {
   amount: number;
   label: string;
@@ -108,22 +109,15 @@ const HunzoHalfBudgetsDiagram = () => {
     <Card className="my-4 w-full h-[18rem] rounded-3xl border-2 border-hunzo-background-grey transition-all p-6">
       <CardHeader className="flex flex-row items-center justify-between h-fit w-full p-0 mb-3">
         <h2 className="font-bold text-lg">Budget</h2>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="outline"
-              className="rounded-lg text-xs h-8 bg-hunzo-background-grey font-semibold border-2 border-hunzo-background-grey"
-            >
-              View All
-              <ChevronRight className="ml-1 h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="bg-hunzo-background-grey">
-            <DropdownMenuLabel>Date Range</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            {/* Add date range options here */}
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <Link href={"/savings"}>
+          <Button
+            variant="outline"
+            className="rounded-lg text-xs h-8 bg-hunzo-background-grey font-semibold border-2 border-hunzo-background-grey"
+          >
+            View All
+            <ChevronRight className="ml-1 h-4 w-4" />
+          </Button>
+        </Link>
       </CardHeader>
       <CardContent className="bg-hunzo-background-grey rounded-xl h-[80%] overflow-y-auto gap-2 px-2 p-2 m-0 flex">
         <div className="size-full ">
