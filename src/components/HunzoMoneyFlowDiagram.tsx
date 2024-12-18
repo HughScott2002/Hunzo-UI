@@ -61,7 +61,7 @@ const HunzoMoneyFlowDiagram = () => {
               color: "hsl(var(--primary))",
             },
           }}
-          className="h-[300px]  w-full transition-all"
+          className="h-[300px] w-full transition-all"
         >
           <LineChart
             data={data}

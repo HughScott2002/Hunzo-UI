@@ -53,14 +53,14 @@ const dashboardItems = [
 
 const Dashboard: FC = () => {
   return (
-    <section className="w-full h-full">
+    <section className="w-full h-full ">
       <div className="flex size-full md:gap-2 lg:gap-4 xl:gap-6 transition-all">
         <div className="size-full flex items-start ">
           {/* <HunzoInactiveDevelopment />
            */}
 
           <div className="flex flex-1 flex-col gap-4 sm:p-4 rounded-3xl transition-all ease-in-out">
-            <div className="w-full xl:max-w-[56rem] mx-auto  flex flex-col p-2 gap-2 ">
+            <div className="w-full xl:max-w-[56rem] mx-auto  flex flex-col p-2 gap-2">
               {/* Container to limit width and center */}
               <div className="grid grid-cols-[repeat(auto-fit,13rem)] gap-4 3xl:justify-center justify-start ">
                 {dashboardItems.map((item, index) => (
@@ -72,9 +72,11 @@ const Dashboard: FC = () => {
                   />
                 ))}
               </div>
+              {/* <div className="w-full">
+              </div> */}
               <HunzoMoneyFlowDiagram />
 
-              <div className=" grid grid-cols-[repeat(auto-fit,26rem)] justify-between ">
+              <div className="grid grid-cols-[repeat(auto-fit,26rem)] justify-between ">
                 <HunzoHalfSavingsDiagram />
                 <HunzoHalfBudgetsDiagram />
               </div>
