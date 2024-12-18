@@ -122,10 +122,10 @@ const BadgeGrid = () => {
     "Send Money",
     "Transfers",
     "Dev",
-    "Account Setup",
-    "Security",
-    "Payments",
-    "Support",
+    // "Account Setup",
+    // "Security",
+    // "Payments",
+    // "Support",
   ];
 
   return (
