@@ -7,6 +7,7 @@ import { ChevronRight, CreditCard, RefreshCw, Wallet } from "lucide-react";
 import { cn } from "@/lib/utils";
 import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
 import { Button } from "@/components/ui/button";
+import HunzoWalletCard from "@/components/HunzoWalletCard";
 
 interface WalletType {
   id: string;
@@ -138,10 +139,82 @@ export default function WalletsPage() {
                 key={selectedCard}
                 className="col-span-7 size-full rounded-xl overflow-hidden"
               >
-                {selectedCard ? (
-                  <div className="size-full animate-in slide-in-from-left duration-700 ease-in-out fade-in-60">
-                    <HunzoInactiveDevelopment />
+                {selectedCard === "1" ? (
+                  <div className="size-full  animate-in slide-in-from-left duration-700 ease-in-out fade-in-60 bg-hunzo-background-grey p-6 lg:p-10">
+                    {/* Header Section */}
+                    <div className="mb-6">
+                      <div className="flex justify-between items-center mt-2">
+                        <div>
+                          <h2 className="text-xl font-semibold text-hunzo-pitch-black">
+                            Office Card
+                          </h2>
+                          <p className="text-hunzo-text-grey">Hugh Scott</p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-xl font-semibold">$10,789.00</p>
+                          <p className="text-sm text-hunzo-text-grey">
+                            Balance
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Card Container with Aspect Ratio */}
+                    <div className="w-full max-w-2xl mx-auto">
+                      <div className="relative w-full aspect-[1.586/1]  rounded-xl p-4 md:p-6">
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="min-w-72">
+                            <HunzoWalletCard
+                              balance={"balance"}
+                              cardNumber={"cardNumber"}
+                              currency={"JMD"}
+                              date={"date"}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Additional Details */}
+                    <div className="mt-8 space-y-6 max-w-2xl mx-auto">
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-600">Available Balance</span>
+                        <span className="font-semibold">
+                          $289.2k available • $300k limit
+                        </span>
+                      </div>
+
+                      <div className="grid gap-4 md:grid-cols-2">
+                        <div>
+                          <h3 className="text-lg font-semibold mb-2">
+                            Billing Address
+                          </h3>
+                          <p className="text-gray-600">660 Mission St</p>
+                          <p className="text-gray-600">Floor 4</p>
+                          <p className="text-gray-600">
+                            San Francisco, CA 94105
+                          </p>
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-semibold mb-2">
+                            Card Details
+                          </h3>
+                          <div className="space-y-2">
+                            <div className="flex justify-between">
+                              <span className="text-gray-600">Card Type</span>
+                              <span>Virtual Debit</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-gray-600">Account</span>
+                              <span>Checking ••0297</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                ) : selectedCard === "2" ? (
+                  <HunzoInactiveDevelopment />
                 ) : (
                   <div className="h-full flex items-center justify-center text-gray-500">
                     Select a card to view details
@@ -152,7 +225,7 @@ export default function WalletsPage() {
           </>
         ) : (
           <div className="size-full bg-hunzo-background-grey max-w-7xl flex flex-col items-center justify-center rounded-2xl p-8 text-center">
-            <Wallet className="size-12 text-hunzo-blue mb-4" />
+            <Wallet className="size-10 text-hunzo-blue mb-4" />
             <h2 className="text-2xl font-bold text-hunzo-blue mb-2">
               Can't find any wallets right now?
             </h2>
