@@ -178,21 +178,23 @@ const HelpIconComponent = ({
     <div
       onClick={onClick}
       className={cn(
-        "cursor-pointer flex w-full max-h-60 rounded-xl border-2 transition-all ease-in-out px-4 justify-between items-center gap-2 xl:max-w-[90%]",
+        "cursor-pointer flex w-full  max-h-72 rounded-xl border-2 transition-all ease-in-out px-4 justify-between items-center gap-2 xl:max-w-[90%]",
         active ? "border-hunzo-blue" : "hover:border-hunzo-blue"
       )}
     >
-      <Icon
-        className={cn(
-          "size-12 rounded-full p-2",
-          active ? "bg-hunzo-blue text-white" : "bg-hunzo-text-grey/10"
-        )}
-      />
-      <div className="py-4 flex flex-col">
-        <h3 className="font-bold text-base">{label}</h3>
-        <span className="text-xs text-hunzo-text-grey font-normal text-wrap">
-          {sublabel}
-        </span>
+      <div className="flex items-center gap-2 md:gap-4 lg:gap-6">
+        <Icon
+          className={cn(
+            "size-10 rounded-full p-2  bg-hunzo-red",
+            active ? "bg-hunzo-blue text-white" : "bg-hunzo-text-grey/10"
+          )}
+        />
+        <div className="py-4 flex flex-col">
+          <h3 className="font-bold text-base">{label}</h3>
+          <span className="text-xs text-hunzo-text-grey font-normal text-wrap">
+            {sublabel}
+          </span>
+        </div>
       </div>
       <ChevronRight className="size-10 text-hunzo-text-grey" />
     </div>
@@ -218,7 +220,7 @@ const Page = () => {
       <div className="md:flex justify-center size-full">
         <div className="relative md:px-2 md:w-[40%] lg:px-6 xl:px-10 flex flex-col items-center gap-8 border-r-2">
           <HelpSearchComponent />
-          <div className="flex flex-col gap-6 size-full overflow-y-auto">
+          <div className="flex flex-col gap-6 size-full items-center overflow-y-auto">
             {HelpOptionsData.map((item) => (
               <HelpIconComponent
                 key={item.id}

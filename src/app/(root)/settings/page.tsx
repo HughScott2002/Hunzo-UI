@@ -168,7 +168,7 @@ const MenuItem: React.FC<{
       <div
         className={cn(
           "flex h-12 w-12 items-center justify-center rounded-full bg-hunzo-text-grey/10",
-          item.active ? "text-hunzo-blue" : ""
+          item.active ? "bg-hunzo-blue text-white" : ""
         )}
       >
         <item.icon className="size-5" />
