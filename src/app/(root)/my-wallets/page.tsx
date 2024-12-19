@@ -3,16 +3,9 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import {
-  ChevronRight,
-  ChevronRightCircle,
-  CreditCard,
-  RefreshCw,
-  Wallet,
-} from "lucide-react";
+import { ChevronRight, CreditCard, RefreshCw, Wallet } from "lucide-react";
 import { cn } from "@/lib/utils";
 import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
-import { randomBytes } from "crypto";
 import { Button } from "@/components/ui/button";
 
 interface WalletType {
