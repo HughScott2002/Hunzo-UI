@@ -123,6 +123,18 @@ export const manrope = Manrope({
 // });
 
 // TODO: Custom 404 page
+// TODO: FIX THE AUTH
+// TODO: 1) It doesn't keep the state on a reload
+// TODO: 2) It sends too much data to the backend
+// TODO: 3) It doesn't provide the global state to get the user and its attributes
+// TODO: 4) I dont think it sends the token on each request
+// TODO: 4) Token Updates should be silent
+// TODO: 5) If your token is valid auto sign you in, quickly. If your token is valid and you try to login it should check for a valid token first then auto
+
+// TODO: ADD POLYGLOT SUPPORT
+// TODO: ADD DARK MODE AND MAKE IT LOOK GOOD
+// TODO: FIX THE GODDAMN FONTS
+// TODO: AFTER YOU LOGIN YOU SHOULD GO BACK TO WHERE YOU WHERE BEFORE
 
 export const metadata: Metadata = {
   title: appName,
@@ -137,16 +149,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // TODO: FIX THE AUTH
-  // TODO: 1) It doesn't keep the state on a reload
-  // TODO: 2) It sends too much data to the backend
-  // TODO: 3) It doesn't provide the global state to get the user and its attributes
-  // TODO: 4) I dont think it sends the token on each request
-  // TODO: 4) Token Updates should be silent
-  // TODO: 5) If your token is valid auto sign you in, quickly. If your token is valid and you try to login it should check for a valid token first then auto
-
-  // TODO: ADD POLYGLOT SUPPORT
-  //TODO: FIX THE GODDAMN FONTS
   return (
     <html
       lang="en"

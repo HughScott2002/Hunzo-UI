@@ -167,7 +167,6 @@ function HunzoFooterItem({
       } ${className}`}
     >
       {<Icon className="size-5"></Icon>}
-
       {!isCollapsed && (
         <span className="ml-2 font-manrope font-semibold text-base">
           {label}
