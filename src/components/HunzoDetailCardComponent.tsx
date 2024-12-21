@@ -11,7 +11,41 @@ import {
 import * as Progress from "@radix-ui/react-progress";
 import { cn } from "@/lib/utils";
 
-const HunzoDetailCardComponent = ({}: {}) => {
+const CardButtons = () => {
+  return (
+    <div className="bg-hunzo-yellow mt-auto">
+      <Snowflake />
+      <span className="">Freeze</span>
+    </div>
+  );
+};
+
+const ProgressBar = () => {
+  const [progress, setProgress] = useState(13);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setProgress(66), 500);
+    return () => clearTimeout(timer);
+  }, []);
+  return (
+    <Progress.Root
+      className="relative mt-4 h-4 w-full overflow-hidden rounded-md bg-hunzo-text-grey"
+      style={{
+        // Fix overflow clipping in Safari
+        // https://gist.github.com/domske/b66047671c780a238b51c51ffde8d3a0
+        transform: "translateZ(0)",
+      }}
+      value={progress}
+    >
+      <Progress.Indicator
+        className="ease-in size-full bg-hunzo-blue transition-transform duration-[660ms]"
+        style={{ transform: `translateX(-${100 - progress}%)` }}
+      />
+    </Progress.Root>
+  );
+};
+
+const HunzoDetailCardComponent = ({ cards, id, name }: HunzoWalletType) => {
   const [openDetails, setOpenDetails] = useState(false);
 
   return (
@@ -115,36 +149,3 @@ const HunzoDetailCardComponent = ({}: {}) => {
 };
 
 export default HunzoDetailCardComponent;
-
-const CardButtons = () => {
-  return (
-    <div className="bg-hunzo-yellow mt-auto">
-      <Snowflake />
-      <span className="">Freeze</span>
-    </div>
-  );
-};
-const ProgressBar = () => {
-  const [progress, setProgress] = useState(13);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setProgress(66), 500);
-    return () => clearTimeout(timer);
-  }, []);
-  return (
-    <Progress.Root
-      className="relative mt-4 h-4 w-full overflow-hidden rounded-md bg-hunzo-text-grey"
-      style={{
-        // Fix overflow clipping in Safari
-        // https://gist.github.com/domske/b66047671c780a238b51c51ffde8d3a0
-        transform: "translateZ(0)",
-      }}
-      value={progress}
-    >
-      <Progress.Indicator
-        className="ease-in size-full bg-hunzo-blue transition-transform duration-[660ms]"
-        style={{ transform: `translateX(-${100 - progress}%)` }}
-      />
-    </Progress.Root>
-  );
-};

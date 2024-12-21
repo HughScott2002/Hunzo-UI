@@ -327,3 +327,18 @@ declare interface getBankProps {
 declare interface getBankByAccountIdProps {
   accountId: string;
 }
+
+//Hunzo
+
+declare interface HunzoWalletType {
+  id: string;
+  name: string;
+  cards: HunzoCardType[];
+}
+
+declare interface HunzoCardType {
+  id: string;
+  lastFour: string;
+  type: string;
+  status: "active" | "frozen" | "pending";
+}
