@@ -1,3 +1,5 @@
+"use client";
+
 import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -6,63 +8,178 @@ import {
   DoorClosed,
   EllipsisVertical,
   MessageSquare,
+  Search,
+  Phone,
+  Video,
+  Paperclip,
+  Send,
+  ImageIcon,
+  Smile,
 } from "lucide-react";
 import Image from "next/image";
+import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { cn } from "@/lib/utils";
+
+interface Message {
+  id: string;
+  content: string;
+  sender: string;
+  timestamp: string;
+  isAI?: boolean;
+}
+
+const messages: Message[] = [
+  {
+    id: "1",
+    content: "Hello! How can I help you today?",
+    sender: "Hunzo AI",
+    timestamp: "08:23 AM",
+    isAI: true,
+  },
+  {
+    id: "2",
+    content: "I need help with my account settings.",
+    sender: "You",
+    timestamp: "08:24 AM",
+  },
+  {
+    id: "3",
+    content:
+      "I'd be happy to help you with your account settings. What specific aspect would you like to address?",
+    sender: "Hunzo AI",
+    timestamp: "08:24 AM",
+    isAI: true,
+  },
+];
+
+const recentFiles = [
+  { name: "InvoiceXX.pdf", type: "pdf" },
+  { name: "Invoice00.pdf", type: "pdf" },
+  { name: "Document.docx", type: "docx" },
+];
+
+const MessageBubble = ({ message }: { message: Message }) => {
+  return (
+    <div
+      className={cn(
+        "flex w-full gap-3 mb-4",
+        !message.isAI && "flex-row-reverse"
+      )}
+    >
+      <Avatar className="h-8 w-8">
+        <AvatarImage src={"/placeholder/ai.jpg"} />
+        <AvatarFallback>{message.isAI ? "AI" : "You"}</AvatarFallback>
+      </Avatar>
+      <div
+        className={cn(
+          "max-w-[70%] rounded-2xl px-4 py-2",
+          message.isAI ? "bg-hunzo-blue text-white" : "bg-gray-100"
+        )}
+      >
+        <p className="text-sm">{message.content}</p>
+        <span className="text-xs opacity-70 mt-1 block">
+          {message.timestamp}
+        </span>
+      </div>
+    </div>
+  );
+};
+
 const page = () => {
   return (
-    <section className="w-full h-full">
-      {/* <HunzoInactiveDevelopment /> */}
-      <div className="size-full border-b  grid grid-cols-3">
-        <div className="col-span-2 size-full border-l-2 border-b-2">
-          <div className="w-full h-20  flex items-center justify-start gap-2 border-t-2 border-b-2  px-10">
-            <div className="h-full flex items-center">
-              <Image
-                src={"/placeholder/ai.jpg"}
-                alt={""}
-                width={60}
-                height={60}
-                className="rounded-full"
-              />
-            </div>
-            <div className="flex items-center  justify-between w-full ">
-              <div className="flex flex-col ">
-                <span className="font-bold">Hunzo AI</span>
-                <span className="text-sm text-hunzo-green bg-hu">Online</span>
+    <section className="w-full h-full  overflow-hidden">
+      <div className="size-full">
+        <div className="size-full grid grid-cols-3 ">
+          {/* Main Chat Area */}
+          <div className="col-span-2 size-full border-2 border-gray-200">
+            {/* Chat Header */}
+            <div className="w-full h-20 flex items-center justify-between border-b border-gray-200 px-6">
+              <div className="flex items-center gap-3">
+                <Avatar className="h-12 w-12">
+                  <AvatarImage src="/placeholder/ai.jpg" />
+                  <AvatarFallback>AI</AvatarFallback>
+                </Avatar>
+                <div className="flex flex-col">
+                  <span className="font-semibold text-hunzo-pitch-black">
+                    Hunzo AI
+                  </span>
+                  <span className="text-sm text-hunzo-green">Online</span>
+                </div>
               </div>
-              <EllipsisVertical />
+              <div className="flex items-center gap-4 text-hunzo-text-grey">
+                <Phone className="h-5 w-5 cursor-pointer hover:text-hunzo-blue" />
+                <Video className="h-5 w-5 cursor-pointer hover:text-hunzo-blue" />
+                <EllipsisVertical className="h-5 w-5 cursor-pointer hover:text-hunzo-blue" />
+              </div>
             </div>
-          </div>
-          <div className="h-auto w-full relative p-10">The rest</div>
-        </div>
 
-        <div className=" col-span-1 lg:px-10 lg: px-2 border-2">
-          <div className="w-full h-20 flex items-center justify-end">
-            <CircleX />
-          </div>
-          <div className="flex flex-col justify-center items-center ">
-            <Image
-              src={"/placeholder/ai.jpg"}
-              alt={""}
-              width={100}
-              height={100}
-              className="rounded-full"
-            />
-            <span className="font-bold text-lg">Hunzo AI</span>
-            <span className="text-sm font-normal text-hunzo-text-grey">
-              @hunzoAi
-            </span>
-          </div>
-          <div className="mt-14 ">
-            <div className="flex justify-between">
-              <h3 className="font-semibold text-base ">Recent Converations</h3>
-              <ChevronDown className="text-hunzo-text-grey" />
+            {/* Chat Messages */}
+            <ScrollArea className="h-[calc(100vh-12rem)] w-full px-6 py-4">
+              {messages.map((message) => (
+                <MessageBubble key={message.id} message={message} />
+              ))}
+            </ScrollArea>
+
+            {/* Chat Input */}
+            <div className="absolute bottom-0 w-[93%]  border-t border-gray-200 bg-white p-4">
+              <div className="flex items-center gap-2 px-4">
+                <Paperclip className="h-5 w-5 text-hunzo-text-grey cursor-pointer" />
+                <ImageIcon className="h-5 w-5 text-hunzo-text-grey cursor-pointer" />
+                <Input
+                  placeholder="Type a message..."
+                  className="flex-1 border-none bg-gray-50 focus-visible:ring-0"
+                />
+                <Smile className="h-5 w-5 text-hunzo-text-grey cursor-pointer" />
+                <Send className="h-5 w-5 text-hunzo-blue cursor-pointer" />
+              </div>
             </div>
-            <div className="flex gap-2 items-center">
-              <MessageSquare />
-              <span className="h-full ">X</span>
+          </div>
+
+          {/* Sidebar */}
+          <div className="col-span-1 border-2 border-gray-200 ">
+            {/* Sidebar Header */}
+            <div className="w-full h-20 flex items-center justify-between px-6 border-b border-gray-200">
+              <Search className="h-5 w-5 text-hunzo-text-grey" />
+              <CircleX className="h-5 w-5 text-hunzo-text-grey cursor-pointer" />
             </div>
-            <div>Y</div>
-            <div>Z</div>
+
+            {/* Profile Section */}
+            <div className="px-6 py-8">
+              <div className="flex flex-col items-center text-center">
+                <Avatar className="h-24 w-24 mb-4">
+                  <AvatarImage src="/placeholder/ai.jpg" />
+                  <AvatarFallback>AI</AvatarFallback>
+                </Avatar>
+                <h2 className="font-bold text-lg text-hunzo-pitch-black">
+                  Hunzo AI
+                </h2>
+                <span className="text-sm text-hunzo-text-grey">@hunzoAi</span>
+              </div>
+            </div>
+
+            {/* Recent Conversations */}
+            <div className="px-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-semibold text-hunzo-pitch-black">
+                  Recent Files
+                </h3>
+                <ChevronDown className="h-5 w-5 text-hunzo-text-grey cursor-pointer" />
+              </div>
+              <div className="space-y-4">
+                {recentFiles.map((file, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-3 p-2 hover:bg-gray-50 rounded-lg cursor-pointer"
+                  >
+                    <MessageSquare className="h-5 w-5 text-hunzo-blue" />
+                    <span className="text-sm text-hunzo-text-grey">
+                      {file.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
