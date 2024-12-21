@@ -3,11 +3,18 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ChevronRight, CreditCard, RefreshCw, Wallet } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronRight,
+  CreditCard,
+  RefreshCw,
+  Snowflake,
+  Wallet,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
 import { Button } from "@/components/ui/button";
-import HunzoWalletCard from "@/components/HunzoWalletCard";
+import HunzoDetailCardComponent from "@/components/HunzoDetailCardComponent";
 
 interface WalletType {
   id: string;
@@ -49,7 +56,6 @@ const wallets: WalletType[] = [
 
 export default function WalletsPage() {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
-
   return (
     <section className="w-full h-full">
       <div className="flex size-full justify-center ">
@@ -140,77 +146,9 @@ export default function WalletsPage() {
                 className="col-span-7 size-full rounded-xl overflow-hidden"
               >
                 {selectedCard === "1" ? (
-                  <div className="size-full  animate-in slide-in-from-left duration-700 ease-in-out fade-in-60 bg-hunzo-background-grey p-6 lg:p-10">
-                    {/* Header Section */}
-                    <div className="mb-6">
-                      <div className="flex justify-between items-center mt-2">
-                        <div>
-                          <h2 className="text-xl font-semibold text-hunzo-pitch-black">
-                            Office Card
-                          </h2>
-                          <p className="text-hunzo-text-grey">Hugh Scott</p>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-xl font-semibold">$10,789.00</p>
-                          <p className="text-sm text-hunzo-text-grey">
-                            Balance
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Card Container with Aspect Ratio */}
-                    <div className="w-full max-w-2xl mx-auto">
-                      <div className="relative w-full aspect-[1.586/1]  rounded-xl p-4 md:p-6">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="min-w-72">
-                            <HunzoWalletCard
-                              balance={"balance"}
-                              cardNumber={"cardNumber"}
-                              currency={"JMD"}
-                              date={"date"}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Additional Details */}
-                    <div className="mt-8 space-y-6 max-w-2xl mx-auto">
-                      <div className="flex justify-between items-center">
-                        <span className="text-gray-600">Available Balance</span>
-                        <span className="font-semibold">
-                          $289.2k available • $300k limit
-                        </span>
-                      </div>
-
-                      <div className="grid gap-4 md:grid-cols-2">
-                        <div>
-                          <h3 className="text-lg font-semibold mb-2">
-                            Billing Address
-                          </h3>
-                          <p className="text-gray-600">660 Mission St</p>
-                          <p className="text-gray-600">Floor 4</p>
-                          <p className="text-gray-600">
-                            San Francisco, CA 94105
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="text-lg font-semibold mb-2">
-                            Card Details
-                          </h3>
-                          <div className="space-y-2">
-                            <div className="flex justify-between">
-                              <span className="text-gray-600">Card Type</span>
-                              <span>Virtual Debit</span>
-                            </div>
-                            <div className="flex justify-between">
-                              <span className="text-gray-600">Account</span>
-                              <span>Checking ••0297</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                  <div className="size-full flex flex-col items-center  animate-in slide-in-from-left duration-700 ease-in-out fade-in-60 md:p-4 lg:p-10">
+                    <div className="h-full w-fit bg-hunzo-background-grey px-6 py-4 md:px-10 lg:px-12 md:py-4 lg:py-6 rounded-2xl">
+                      <HunzoDetailCardComponent />
                     </div>
                   </div>
                 ) : selectedCard === "2" ? (

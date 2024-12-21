@@ -14,6 +14,7 @@ import { BellDot, CheckCheck, Settings } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 type NotificationsArray = Notifications[];
 
@@ -172,7 +173,9 @@ const HunzoNotification = () => {
             >
               {isExpanded ? "Show less" : "See all notifications"}
             </Button>
-            <Settings className="size-5 mr-1" />
+            <Link href={"/settings/notifications"}>
+              <Settings className="size-5 mr-1" />
+            </Link>
           </div>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
