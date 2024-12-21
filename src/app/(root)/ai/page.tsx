@@ -27,7 +27,7 @@ const page = () => {
             <div className="flex items-center  justify-between w-full ">
               <div className="flex flex-col ">
                 <span className="font-bold">Hunzo AI</span>
-                <span className="text-sm text-hunzo-green">Online</span>
+                <span className="text-sm text-hunzo-green bg-hu">Online</span>
               </div>
               <EllipsisVertical />
             </div>

@@ -16,6 +16,8 @@ import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
 import { Button } from "@/components/ui/button";
 import HunzoDetailCardComponent from "@/components/HunzoDetailCardComponent";
 
+
+
 const wallets: HunzoWalletType[] = [
   {
     id: "1",
@@ -132,16 +134,18 @@ export default function WalletsPage() {
                 key={selectedCard}
                 className="col-span-7 size-full rounded-xl overflow-hidden"
               >
-                {selectedCard ? (
+                {selectedCard === "1" ? (
                   <div className="size-full flex flex-col items-center  animate-in slide-in-from-left duration-700 ease-in-out fade-in-60 md:p-4 lg:p-10">
                     <div className="h-full w-fit bg-hunzo-background-grey px-6 py-4 md:px-10 lg:px-12 md:py-4 lg:py-6 rounded-2xl">
                       <HunzoDetailCardComponent
-                        id={wallets[parseInt(selectedCard)].id}
-                        name={wallets[parseInt(selectedCard)].name}
-                        cards={wallets[parseInt(selectedCard)].cards}
+                        id={wallets[1].id}
+                        name={wallets[1].name}
+                        cards={wallets[1].cards}
                       />
                     </div>
                   </div>
+                ) : selectedCard === "2" ? (
+                  <HunzoInactiveDevelopment />
                 ) : (
                   <div className="h-full flex items-center justify-center text-gray-500">
                     Select a card to view details
