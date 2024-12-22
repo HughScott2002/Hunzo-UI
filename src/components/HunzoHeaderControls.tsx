@@ -36,7 +36,7 @@ const HunzoHeaderControls = () => {
         {/* Ctrl+K/  */}
 
         <Badge className="bg-hunzo-blue py-0 text-white text-center w-fit font-medium text-xs">
-          <span className="text-base">⌘</span>K
+          <span className="">⌘</span>K
         </Badge>
       </CommandShortcut>
       {controls.map((control: Controls, index) => (

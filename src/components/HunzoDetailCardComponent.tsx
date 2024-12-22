@@ -11,10 +11,11 @@ import {
   RefreshCw,
   Snowflake,
   Trash2,
-  Wallet,
+  Tags,
   Lock,
   Settings2,
   CircleHelp,
+  Building2,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -64,32 +65,31 @@ const CardButtons = ({ buttons }: CardButtonsProps) => {
             <ChevronDown className="size-4 text-white" />
           </div>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="flex flex-col justify-center px-4 py-2 w-40 bg-hunzo-background-grey">
+        <DropdownMenuContent className="flex flex-col justify-center px-4 py-2 w-42 bg-hunzo-background-grey">
           <DropdownMenuItem className="flex gap-2 p-2 items-center">
             <FilePenLine className="size-4 text-hunzo-text-grey" />
-            <span className="text-xs font-medium">Edit nickname</span>
+            <span className="text-sm font-medium">Edit nickname</span>
           </DropdownMenuItem>
           <DropdownMenuItem className="flex gap-2 p-2 items-center">
-            <FilePenLine className="size-4 text-hunzo-text-grey" />
-            <span className="text-xs font-medium">Merchant lock</span>
+            <Building2 className="size-4 text-hunzo-text-grey" />
+            <span className="text-sm font-medium">Merchant lock</span>
           </DropdownMenuItem>
           <DropdownMenuItem className="flex gap-2 p-2 items-center">
-            <FilePenLine className="size-4 text-hunzo-text-grey" />
-
-            <span className="text-xs font-medium">Category lock</span>
+            <Tags className="size-4 text-hunzo-text-grey" />
+            <span className="text-sm font-medium">Category lock</span>
           </DropdownMenuItem>
           <DropdownMenuItem className="flex gap-2 p-2 items-center">
             <Settings2 className="size-4 text-hunzo-text-grey" />
-            <span className="text-xs font-medium">Edit limit</span>
+            <span className="text-sm font-medium">Edit limit</span>
           </DropdownMenuItem>
           <DropdownMenuItem className="flex gap-2 p-2 items-center">
             <Lock className="size-4 text-hunzo-text-grey" />
-            <span className="text-xs font-medium">Reset PIN</span>
+            <span className="text-sm font-medium">Reset PIN</span>
           </DropdownMenuItem>
           <DropdownMenuSeparator className="bg-hunzo-text-grey" />
           <DropdownMenuItem className="flex gap-2 p-2 items-center">
             <Trash2 className="size-4 text-hunzo-text-grey" />
-            <span className="text-xs font-medium">Cancel card</span>
+            <span className="text-sm font-medium">Cancel card</span>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -128,7 +128,7 @@ const HunzoDetailCardComponent = ({ cards, id, name }: HunzoWalletType) => {
   return (
     <>
       {/* Header Section */}
-      <div className="mb-6 transition-all ease-in-out">
+      <div className="mb-6 transition-all ease-in-out bg-hunzo-green">
         <div className="flex justify-between items-center mt-2">
           <div>
             <h2 className="text-lg font-semibold text-hunzo-pitch-black">
@@ -142,7 +142,7 @@ const HunzoDetailCardComponent = ({ cards, id, name }: HunzoWalletType) => {
           </div>
         </div>
         <ProgressBar />
-        <div className="flex justify-center mt-4 text-sm">
+        <div className="flex justify-center mt-4 bg-hunzo-yellow text-sm">
           <div className="flex w-full justify-start items-center ">
             <span className="font-bold ">$5k available</span>
             <Dot />
@@ -233,7 +233,7 @@ const HunzoDetailCardComponent = ({ cards, id, name }: HunzoWalletType) => {
           </div>
         </div>
       </div> */}
-      <div className="w-full  flex justify-center">
+      <div className="w-full py-0 my-0  flex justify-center">
         <div className="size-full  p-4 w-96 max-w-80">
           <HunzoWalletCard
             balance={"balance"}
@@ -244,31 +244,37 @@ const HunzoDetailCardComponent = ({ cards, id, name }: HunzoWalletType) => {
         </div>
       </div>
       {/* Additional Details */}
-      <div className="mt-8 space-y-6 max-w-2xl mx-auto">
+      <div className="mt-4 space-y-6 max-w-2xl mx-auto">
         {/* Here you go */}
         <CardButtons buttons={cardActionButtons} />
-        <div className="flex justify-between items-center">
+        {/* <div className="flex justify-between items-center text-base gap-2">
           <span className="text-gray-600">Available Balance</span>
           <span className="font-semibold">$289.2k available • $300k limit</span>
-        </div>
+        </div> */}
 
-        <div className="grid gap-4 md:grid-cols-2">
-          <div>
-            <h3 className="text-lg font-semibold mb-2">Billing Address</h3>
-            <p className="text-gray-600">660 Mission St</p>
-            <p className="text-gray-600">Floor 4</p>
-            <p className="text-gray-600">San Francisco, CA 94105</p>
+        <div className="flex flex-col gap-8">
+          <div className="text-base">
+            <h3 className="text-sm font-semibold mb-2 text-hunzo-text-grey">
+              Billing Address
+            </h3>
+            <p className="text-hunzo-pitch-black font-medium">660 Mission St</p>
+            <p className="text-hunzo-pitch-black font-medium">Floor 4</p>
+            <p className="text-hunzo-pitch-black font-medium">
+              San Francisco, CA 94105
+            </p>
           </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">Card Details</h3>
-            <div className="space-y-2">
-              <div className="flex justify-between">
-                <span className="text-gray-600">Card Type</span>
-                <span>Virtual Debit</span>
+          <div className="text-base">
+            <h3 className="text-sm font-semibold mb-2 text-hunzo-text-grey">
+              Card Details
+            </h3>
+            <div className="space-y-2 text-hunzo-pitch-black text-medium">
+              <div className="flex justify-between font-medium">
+                <span>Card Type</span>
+                <span className="font-bold">Virtual Debit</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Account</span>
-                <span>Checking ••0297</span>
+              <div className="flex justify-between gap-2 font-medium">
+                <span>Account</span>
+                <span className="font-bold">Checking ••0297</span>
               </div>
             </div>
           </div>
