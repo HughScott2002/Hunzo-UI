@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import HunzoWalletCard from "@/components/HunzoWalletCard";
 import {
   ChevronDown,
   ChevronRight,
   CreditCard,
   Dot,
+  LucideIcon,
   RefreshCw,
   Snowflake,
   Wallet,
@@ -12,16 +13,36 @@ import {
 import * as Progress from "@radix-ui/react-progress";
 import { cn } from "@/lib/utils";
 
+type CardButtonsProps = {
+  buttons: Array<{
+    icon: LucideIcon;
+    label: string;
+  }>;
+};
 
+const cardActionButtons = [
+  { icon: Snowflake, label: "Freeze" },
+  { icon: Snowflake, label: "Freeze" },
+  { icon: Snowflake, label: "Freeze" },
+  { icon: Snowflake, label: "Freeze" },
+  { icon: Snowflake, label: "Freeze" },
+];
 
-// const cardActionButtons = ()
-
-
-const CardButtons = () => {
+const CardButtons = ({ buttons }: CardButtonsProps) => {
   return (
-    <div className="bg-hunzo-yellow mt-auto">
-      <Snowflake />
-      <span className="">Freeze</span>
+    <div className="flex flex-wrap gap-2 w-full justify-center">
+      {buttons.map((button, index) => {
+        const Icon = button.icon;
+        return (
+          <div
+            key={index}
+            className="bg-hunzo-blue mt-auto flex flex-col rounded-lg border-2 p-2 justify-center items-center "
+          >
+            <Icon className="size-6 text-white" />
+            <span className="text-white">{button.label}</span>
+          </div>
+        );
+      })}
     </div>
   );
 };
@@ -126,7 +147,7 @@ const HunzoDetailCardComponent = ({ cards, id, name }: HunzoWalletType) => {
       {/* Additional Details */}
       <div className="mt-8 space-y-6 max-w-2xl mx-auto">
         {/* Here you go */}
-        <CardButtons />
+        <CardButtons buttons={cardActionButtons} />
         <div className="flex justify-between items-center">
           <span className="text-gray-600">Available Balance</span>
           <span className="font-semibold">$289.2k available • $300k limit</span>
