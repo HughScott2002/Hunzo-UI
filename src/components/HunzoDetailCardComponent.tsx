@@ -128,7 +128,7 @@ const HunzoDetailCardComponent = ({ cards, id, name }: HunzoWalletType) => {
   return (
     <>
       {/* Header Section */}
-      <div className="mb-6 transition-all ease-in-out bg-hunzo-green">
+      <div className="mb-6 transition-all ease-in-out">
         <div className="flex justify-between items-center mt-2">
           <div>
             <h2 className="text-lg font-semibold text-hunzo-pitch-black">
@@ -142,14 +142,14 @@ const HunzoDetailCardComponent = ({ cards, id, name }: HunzoWalletType) => {
           </div>
         </div>
         <ProgressBar />
-        <div className="flex justify-center mt-4 bg-hunzo-yellow text-sm">
+        <div className="flex justify-center mt-4  text-sm">
           <div className="flex w-full justify-start items-center ">
             <span className="font-bold ">$5k available</span>
             <Dot />
             <span className="font-bold ">$5k limit</span>
           </div>
           <div className="flex justify-center items-center">
-            <span className="text-nowrap h-full items-center ">
+            <span className="text-nowrap font-medium items-center ">
               Show Details
             </span>
 
@@ -167,7 +167,7 @@ const HunzoDetailCardComponent = ({ cards, id, name }: HunzoWalletType) => {
         </div>
 
         {openDetails && (
-          <div className="w-full text-sm h-fit mb-6  rounded-xl p-6 mt-4 animate-in animate-out slide-in-from-top duration-700 fade-in-60">
+          <div className="cursor-default w-full text-sm h-fit mb-6  rounded-xl p-6 mt-4 animate-in animate-out slide-in-from-top duration-700 fade-in-60">
             <div className="flex py-2  justify-between">
               <span className="text-hunzo-text-grey">Total Monthly Limit</span>
               <span className="text-hunzo-pitch-black font-bold">

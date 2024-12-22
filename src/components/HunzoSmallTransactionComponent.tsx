@@ -42,7 +42,7 @@ const HunzoSmallTransactionComponent: FC<SmallTransactionComponentProps> = ({
       )}
       {/* Name and Types */}
       <div className="flex flex-col flex-1">
-        <span className="text-base font-semibold">{transationLabel}</span>
+        <span className="text-base font-medium">{transationLabel}</span>
         <span className="text-xs font-medium text-hunzo-text-grey">{type}</span>
       </div>
 

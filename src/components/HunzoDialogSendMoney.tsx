@@ -71,14 +71,14 @@ const HunzoDialogSendMoney = () => {
     <>
       <div className="text-base font-bold text-hunzo-pitch-black font-manrope flex my-4">
         <span className="flex-1">CHOOSE METHOD</span>
-        <div className="flex gap-1 items-center justify-center rounded-full px-2 hover:text-hunzo-blue cursor-pointer transition-all ease-in-out">
+        <div className="flex gap-1 items-center justify-center rounded-full px-2 hover:text-hunzo-blue text-hunzo-text-grey cursor-pointer transition-all ease-in-out">
           <span className="font-medium text-sm">Add</span>
           <Plus className="size-4" />
           {/* <ChevronLeft className="size-4" />
     <ChevronRight className="size-4 text-hunzo-blue" /> */}
         </div>
       </div>
-      <div className="grid grid-cols-2 h-fit w-full gap-2">
+      <div className="flex flex-col h-fit w-full gap-2">
         <div className="flex flex-col gap-2">
           {paymentMethods.map((method) => (
             <HunzoCardItem
@@ -89,14 +89,14 @@ const HunzoDialogSendMoney = () => {
             />
           ))}
         </div>
-        <div className="flex flex-col gap-4  px-2 justify-center items-center">
+        {/* <div className="flex flex-col gap-4  px-2 justify-center items-center">
           <HunzoWalletCard
             balance={""}
             cardNumber={""}
             currency={"JMD"}
             date={""}
           />
-        </div>
+        </div> */}
         <Input
           type="number"
           className="w-full h-14 text-hunzo-pitch-black rounded-xl col-span-2"

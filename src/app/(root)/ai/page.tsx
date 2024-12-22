@@ -53,10 +53,10 @@ const messages: Message[] = [
   },
 ];
 
-const recentFiles = [
-  { name: "InvoiceXX.pdf", type: "pdf" },
-  { name: "Invoice00.pdf", type: "pdf" },
-  { name: "Document.docx", type: "docx" },
+const recentConvos = [
+  { name: "How to get your card", type: "pdf" },
+  { name: "Do we do loans?", type: "pdf" },
+  { name: "Suggestions for you", type: "docx" },
 ];
 
 const MessageBubble = ({ message }: { message: Message }) => {
@@ -68,8 +68,14 @@ const MessageBubble = ({ message }: { message: Message }) => {
       )}
     >
       <Avatar className="h-8 w-8">
-        <AvatarImage src={"/placeholder/ai.jpg"} />
-        <AvatarFallback>{message.isAI ? "AI" : "You"}</AvatarFallback>
+        <AvatarImage
+          src={
+            message.isAI ? "/placeholder/ai.jpg" : "/placeholder/image 8.png"
+          }
+        />
+        <AvatarFallback className="bg-hunzo-text-grey/20">
+          {message.isAI ? "AI" : "You"}
+        </AvatarFallback>
       </Avatar>
       <div
         className={cn(
@@ -167,7 +173,7 @@ const page = () => {
                 <ChevronDown className="h-5 w-5 text-hunzo-text-grey cursor-pointer" />
               </div>
               <div className="space-y-4">
-                {recentFiles.map((file, index) => (
+                {recentConvos.map((file, index) => (
                   <div
                     key={index}
                     className="flex items-center gap-3 p-2 hover:bg-gray-50 rounded-lg cursor-pointer"
