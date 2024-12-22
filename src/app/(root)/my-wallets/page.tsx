@@ -16,8 +16,6 @@ import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
 import { Button } from "@/components/ui/button";
 import HunzoDetailCardComponent from "@/components/HunzoDetailCardComponent";
 
-
-
 const wallets: HunzoWalletType[] = [
   {
     id: "1",

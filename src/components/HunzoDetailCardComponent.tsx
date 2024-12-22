@@ -4,12 +4,18 @@ import {
   ChevronDown,
   ChevronRight,
   CreditCard,
+  Dot,
   RefreshCw,
   Snowflake,
   Wallet,
 } from "lucide-react";
 import * as Progress from "@radix-ui/react-progress";
 import { cn } from "@/lib/utils";
+
+
+
+// const cardActionButtons = ()
+
 
 const CardButtons = () => {
   return (
@@ -66,17 +72,21 @@ const HunzoDetailCardComponent = ({ cards, id, name }: HunzoWalletType) => {
         </div>
         <ProgressBar />
         <div className="flex justify-center">
-          <div className="flex bg-hunzo-yellow w-full justify-start items-center">
-            <span>$5k available</span> <span>.</span> <span>$5k limit</span>
+          <div className="flex w-full justify-start items-center">
+            <span className="font-bold text-base">$5k available</span>
+            <span className="flex justify-center items-center">
+              <Dot />
+            </span>
+            <span className="font-bold text-base">$5k limit</span>
           </div>
-          <div className="flex justify-center items-center bg-hunzo-green">
-            <span className="text-nowrap h-full items-center">
+          <div className="flex justify-center items-center">
+            <span className="text-nowrap h-full items-center text-base">
               Show Details
             </span>
 
             <ChevronDown
               className={cn(
-                "size-6 cursor-pointer ease-in-out transition-all duration-700",
+                "size-5 cursor-pointer ease-in-out transition-all duration-700",
                 openDetails ? "rotate-180 " : "rotate-0"
               )}
               onClick={() => {
