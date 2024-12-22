@@ -5,44 +5,94 @@ import {
   ChevronRight,
   CreditCard,
   Dot,
+  FilePenLine,
+  ListCollapse,
   LucideIcon,
   RefreshCw,
   Snowflake,
+  Trash2,
   Wallet,
+  Lock,
+  Settings2,
+  CircleHelp,
 } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 import * as Progress from "@radix-ui/react-progress";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 type CardButtonsProps = {
   buttons: Array<{
     icon: LucideIcon;
     label: string;
+    href: string;
   }>;
 };
 
 const cardActionButtons = [
-  { icon: Snowflake, label: "Freeze" },
-  { icon: Snowflake, label: "Freeze" },
-  { icon: Snowflake, label: "Freeze" },
-  { icon: Snowflake, label: "Freeze" },
-  { icon: Snowflake, label: "Freeze" },
+  { icon: Snowflake, label: "Freeze", href: "/api/freeze" },
+  { icon: ListCollapse, label: "Transactions", href: "/transactions" },
 ];
 
 const CardButtons = ({ buttons }: CardButtonsProps) => {
   return (
-    <div className="flex flex-wrap gap-2 w-full justify-center">
+    <div className="flex flex-wrap gap-2 w-full justify-between rounded-lg bg-hunzo-text-grey p-2">
       {buttons.map((button, index) => {
-        const Icon = button.icon;
         return (
-          <div
-            key={index}
-            className="bg-hunzo-blue mt-auto flex flex-col rounded-lg border-2 p-2 justify-center items-center "
-          >
-            <Icon className="size-6 text-white" />
-            <span className="text-white">{button.label}</span>
-          </div>
+          <Link href={button.href}>
+            <div
+              key={index}
+              className="px-2 mt-auto flex rounded-lg   gap-2 justify-center items-center "
+            >
+              <button.icon className="size-4 text-white" />
+              <span className="text-white text-sm">{button.label}</span>
+            </div>
+          </Link>
         );
       })}
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <div className="px-2 mt-auto flex gap-1 rounded-lg justify-center items-center cursor-pointer">
+            <span className="text-white text-sm">More</span>
+            <ChevronDown className="size-4 text-white" />
+          </div>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="flex flex-col justify-center px-4 py-2 w-40 bg-hunzo-background-grey">
+          <DropdownMenuItem className="flex gap-2 p-2 items-center">
+            <FilePenLine className="size-4 text-hunzo-text-grey" />
+            <span className="text-xs font-medium">Edit nickname</span>
+          </DropdownMenuItem>
+          <DropdownMenuItem className="flex gap-2 p-2 items-center">
+            <FilePenLine className="size-4 text-hunzo-text-grey" />
+            <span className="text-xs font-medium">Merchant lock</span>
+          </DropdownMenuItem>
+          <DropdownMenuItem className="flex gap-2 p-2 items-center">
+            <FilePenLine className="size-4 text-hunzo-text-grey" />
+
+            <span className="text-xs font-medium">Category lock</span>
+          </DropdownMenuItem>
+          <DropdownMenuItem className="flex gap-2 p-2 items-center">
+            <Settings2 className="size-4 text-hunzo-text-grey" />
+            <span className="text-xs font-medium">Edit limit</span>
+          </DropdownMenuItem>
+          <DropdownMenuItem className="flex gap-2 p-2 items-center">
+            <Lock className="size-4 text-hunzo-text-grey" />
+            <span className="text-xs font-medium">Reset PIN</span>
+          </DropdownMenuItem>
+          <DropdownMenuSeparator className="bg-hunzo-text-grey" />
+          <DropdownMenuItem className="flex gap-2 p-2 items-center">
+            <Trash2 className="size-4 text-hunzo-text-grey" />
+            <span className="text-xs font-medium">Cancel card</span>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
   );
 };
@@ -92,22 +142,20 @@ const HunzoDetailCardComponent = ({ cards, id, name }: HunzoWalletType) => {
           </div>
         </div>
         <ProgressBar />
-        <div className="flex justify-center">
-          <div className="flex w-full justify-start items-center">
-            <span className="font-bold text-base">$5k available</span>
-            <span className="flex justify-center items-center">
-              <Dot />
-            </span>
-            <span className="font-bold text-base">$5k limit</span>
+        <div className="flex justify-center mt-4 text-sm">
+          <div className="flex w-full justify-start items-center ">
+            <span className="font-bold ">$5k available</span>
+            <Dot />
+            <span className="font-bold ">$5k limit</span>
           </div>
           <div className="flex justify-center items-center">
-            <span className="text-nowrap h-full items-center text-base">
+            <span className="text-nowrap h-full items-center ">
               Show Details
             </span>
 
             <ChevronDown
               className={cn(
-                "size-5 cursor-pointer ease-in-out transition-all duration-700",
+                "size-4 cursor-pointer ease-in-out transition-all duration-700",
                 openDetails ? "rotate-180 " : "rotate-0"
               )}
               onClick={() => {
@@ -119,21 +167,62 @@ const HunzoDetailCardComponent = ({ cards, id, name }: HunzoWalletType) => {
         </div>
 
         {openDetails && (
-          <div className="w-full h-fit mb-6 bg-white rounded-xl p-6 mt-4 animate-in animate-out slide-in-from-top duration-700 fade-in-60">
-            <div>
-              <span>Total Monthly Limit</span>
-              <span>$300,000.00</span>
+          <div className="w-full text-sm h-fit mb-6  rounded-xl p-6 mt-4 animate-in animate-out slide-in-from-top duration-700 fade-in-60">
+            <div className="flex py-2  justify-between">
+              <span className="text-hunzo-text-grey">Total Monthly Limit</span>
+              <span className="text-hunzo-pitch-black font-bold">
+                $300,000.00
+              </span>
             </div>
             <hr />
-            <div></div>
+            <div className="flex flex-col gap-3 py-2">
+              <div className="flex justify-between items-center ">
+                <div className="flex gap-1 justify-between items-center">
+                  <div className="bg-hunzo-pitch-black rounded-full size-3" />
+                  <span className="text-hunzo-pitch-black font-semibold">
+                    Posted
+                  </span>
+                  <CircleHelp className="size-3" />
+                </div>
+                <div className="font-semibold text-hunzo-text-grey">
+                  <span>-$10,789.00</span>
+                </div>
+              </div>
+
+              <div className="flex justify-between items-center ">
+                <div className="flex gap-1 justify-between items-center">
+                  <div className="bg-hunzo-green/40 rounded-full size-3" />
+                  <span className="text-hunzo-pitch-black font-semibold">
+                    Pending
+                  </span>
+                  <CircleHelp className="size-3" />
+                </div>
+                <div className="font-semibold text-hunzo-text-grey">
+                  <span>$0.00</span>
+                </div>
+              </div>
+
+              <div className="flex justify-between items-center ">
+                <div className="flex gap-1 justify-between items-center">
+                  <div className="bg-hunzo-text-grey rounded-full size-3" />
+                  <span className="text-hunzo-pitch-black font-semibold">
+                    Posted
+                  </span>
+                  <CircleHelp className="size-3 " />
+                </div>
+                <div className="font-semibold text-hunzo-text-grey">
+                  <span className="text-green-600">$289,211.00</span>
+                </div>
+              </div>
+            </div>
           </div>
         )}
       </div>
       {/* Card Container with Aspect Ratio */}
-      <div className="w-full max-w-2xl mx-auto  bg-hunzo-red">
+      {/* <div className="w-full max-w-2xl mx-auto  ">
         <div className="relative w-full aspect-[1.586/1]  rounded-xl p-4 md:p-6">
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="min-w-72">
+            <div className="min-w-72 ">
               <HunzoWalletCard
                 balance={"balance"}
                 cardNumber={"cardNumber"}
@@ -142,6 +231,16 @@ const HunzoDetailCardComponent = ({ cards, id, name }: HunzoWalletType) => {
               />
             </div>
           </div>
+        </div>
+      </div> */}
+      <div className="w-full  flex justify-center">
+        <div className="size-full  p-4 w-96 max-w-80">
+          <HunzoWalletCard
+            balance={"balance"}
+            cardNumber={"cardNumber"}
+            currency={"JMD"}
+            date={"date"}
+          />
         </div>
       </div>
       {/* Additional Details */}
