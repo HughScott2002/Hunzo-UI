@@ -1,0 +1,14 @@
+{
+  "name": "@d3/candlestick-chart/2",
+  "main": "e08a985d76af35ab@334.js",
+  "version": "334.0.0",
+  "homepage": "https://observablehq.com/@d3/candlestick-chart/2",
+  "author": {
+    "name": "D3",
+    "url": "https://observablehq.com/@d3"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4 - 5"
+  }
+}
