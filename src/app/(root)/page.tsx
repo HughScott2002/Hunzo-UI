@@ -11,10 +11,6 @@ import HunzoTopDashComponent from "@/components/HunzoTopDashComponent";
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
 import { FC } from "react";
 
-//TODO: Spilt up this large File
-//TODO: Fix the Recent Activity Overflow UI Problem
-//TODO: Add Credit Score
-
 type Checked = DropdownMenuCheckboxItemProps["checked"];
 
 /**

@@ -122,7 +122,6 @@ export const manrope = Manrope({
 //   display: "swap",
 // });
 
-// TODO: Custom 404 page
 // TODO: FIX THE AUTH
 // TODO: 1) It doesn't keep the state on a reload
 // TODO: 2) It sends too much data to the backend

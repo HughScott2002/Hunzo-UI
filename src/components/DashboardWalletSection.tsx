@@ -12,6 +12,7 @@ import { Button } from "./ui/button";
 import HunzoRequestPayment from "./HunzoRequestPayment";
 import HunzoSendMoney from "./HunzoSendMoney";
 import Link from "next/link";
+import HunzoFX from "./HunzoFX";
 
 interface IconComponent {
   className?: string;
@@ -124,8 +125,9 @@ const HunzoDashboardWalletSection = () => {
       <div className="flex gap-6 w-full justify-center ">
         <HunzoSendMoney trigger={triggerSendMoneyButton} />
         <HunzoRequestPayment trigger={triggerRequestPaymentButton} />
+        <HunzoFX trigger={triggerExchangeButton} />
 
-        <Link href="/fx">{triggerExchangeButton}</Link>
+        {/* <Link href="/fx">{triggerExchangeButton}</Link> */}
         <Link href={"/my-wallets"}>{triggerMoreButton}</Link>
       </div>
     </div>

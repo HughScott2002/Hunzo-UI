@@ -18,6 +18,7 @@ import Link from "next/link";
 import BankCard from "./BankCard";
 import { useAuth } from "./AuthContext";
 import NewWalletCard from "./NewWalletCard";
+
 //TODO: Wallets need to be fetched from the backend
 //TODO: Budgets need to be fetched from the backend
 
