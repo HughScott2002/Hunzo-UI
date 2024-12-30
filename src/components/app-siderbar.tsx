@@ -86,16 +86,16 @@ export const sideBarData = {
       //   },
       // ],
     },
-    {
-      title: "FX Exchange",
-      url: "/fx",
-      icon: BadgePoundSterling,
-    },
-    {
-      title: "Savings",
-      url: "/savings",
-      icon: PiggyBank,
-    },
+    // {
+    //   title: "FX Exchange",
+    //   url: "/fx",
+    //   icon: BadgePoundSterling,
+    // },
+    // {
+    //   title: "Savings",
+    //   url: "/savings",
+    //   icon: PiggyBank,
+    // },
     {
       title: "AI",
       url: "/ai",
