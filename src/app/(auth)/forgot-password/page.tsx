@@ -9,7 +9,7 @@ import React, { FC } from "react";
 
 //TODO: Implement the forget password page
 const Forgot = () => {
-  return <HunzoInactiveDevelopment />;
+  return <HunzoInactiveDevelopment/>;
 };
 
 export default Forgot;

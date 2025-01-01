@@ -66,30 +66,30 @@ const CardButtons = ({ buttons }: CardButtonsProps) => {
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="flex flex-col justify-center px-4 py-2 w-42 bg-hunzo-background-grey">
-          <DropdownMenuItem className="flex gap-2 p-2 items-center">
-            <FilePenLine className="size-4 text-hunzo-text-grey" />
-            <span className="text-sm font-medium">Edit nickname</span>
+          <DropdownMenuItem className="flex gap-2 p-2 items-center hover:px-2 hover:text-hunzo-blue">
+            <FilePenLine className="size-4 " />
+            <span className="text-sm font-normal">Edit nickname</span>
           </DropdownMenuItem>
-          <DropdownMenuItem className="flex gap-2 p-2 items-center">
-            <Building2 className="size-4 text-hunzo-text-grey" />
-            <span className="text-sm font-medium">Merchant lock</span>
+          <DropdownMenuItem className="flex gap-2 p-2 items-center hover:px-2 hover:text-hunzo-blue">
+            <Building2 className="size-4" />
+            <span className="text-sm font-normal">Merchant lock</span>
           </DropdownMenuItem>
-          <DropdownMenuItem className="flex gap-2 p-2 items-center">
-            <Tags className="size-4 text-hunzo-text-grey" />
-            <span className="text-sm font-medium">Category lock</span>
+          <DropdownMenuItem className="flex gap-2 p-2 items-center hover:px-2 hover:text-hunzo-blue">
+            <Tags className="size-4" />
+            <span className="text-sm font-normal">Category lock</span>
           </DropdownMenuItem>
-          <DropdownMenuItem className="flex gap-2 p-2 items-center">
-            <Settings2 className="size-4 text-hunzo-text-grey" />
-            <span className="text-sm font-medium">Edit limit</span>
+          <DropdownMenuItem className="flex gap-2 p-2 items-center hover:px-2 hover:text-hunzo-blue">
+            <Settings2 className="size-4" />
+            <span className="text-sm font-normal">Edit limit</span>
           </DropdownMenuItem>
-          <DropdownMenuItem className="flex gap-2 p-2 items-center">
-            <Lock className="size-4 text-hunzo-text-grey" />
-            <span className="text-sm font-medium">Reset PIN</span>
+          <DropdownMenuItem className="flex gap-2 p-2 items-center hover:px-2 hover:text-hunzo-blue">
+            <Lock className="size-4" />
+            <span className="text-sm font-normal">Reset PIN</span>
           </DropdownMenuItem>
           <DropdownMenuSeparator className="bg-hunzo-text-grey" />
-          <DropdownMenuItem className="flex gap-2 p-2 items-center">
-            <Trash2 className="size-4 text-hunzo-text-grey" />
-            <span className="text-sm font-medium">Cancel card</span>
+          <DropdownMenuItem className="flex gap-2 p-2 items-center hover:px-2 hover:text-hunzo-blue">
+            <Trash2 className="size-4" />
+            <span className="text-sm font-normal">Cancel card</span>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -236,10 +236,10 @@ const HunzoDetailCardComponent = ({ cards, id, name }: HunzoWalletType) => {
       <div className="w-full py-0 my-0  flex justify-center">
         <div className="size-full  p-4 w-96 max-w-80">
           <HunzoWalletCard
-            balance={"balance"}
-            cardNumber={"cardNumber"}
+            balance={"13,543.32"}
+            cardNumber={"**** **** **** 7854"}
             currency={"JMD"}
-            date={"date"}
+            date={"11/22"}
           />
         </div>
       </div>
