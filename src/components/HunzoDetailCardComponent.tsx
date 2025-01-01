@@ -44,7 +44,7 @@ const cardActionButtons = [
 
 const CardButtons = ({ buttons }: CardButtonsProps) => {
   return (
-    <div className="flex flex-wrap gap-2 w-full justify-between rounded-lg bg-hunzo-text-grey p-2">
+    <div className="flex flex-wrap gap-2 w-full justify-between rounded-lg bg-hunzo-blueoK p-2">
       {buttons.map((button, index) => {
         return (
           <Link href={button.href}>
@@ -234,7 +234,7 @@ const HunzoDetailCardComponent = ({ cards, id, name }: HunzoWalletType) => {
         </div>
       </div> */}
       <div className="w-full py-0 my-0  flex justify-center">
-        <div className="size-full  p-4 w-96 max-w-80">
+        <div className="size-full  p-4 w-[100%] max-w-80 bg-hunzo-red">
           <HunzoWalletCard
             balance={"13,543.32"}
             cardNumber={"**** **** **** 7854"}

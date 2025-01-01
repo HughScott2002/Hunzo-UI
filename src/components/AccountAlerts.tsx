@@ -10,7 +10,8 @@ export default function AccountAlerts() {
   const [isVisible, setIsVisible] = useState(true);
   const { user } = useAuth();
 
-  const status: string = user?.kycStatus || "";
+  // const status: string = user?.kycStatus || "";
+  const status: string = "approved";
 
   if (!isVisible && status !== "rejected") return null;
 
@@ -49,20 +50,22 @@ export default function AccountAlerts() {
         "Congratulations! Your account has been successfully activated. You now have full access to all our features. Enjoy using our platform!",
       className: "border-green-500 bg-green-50 text-green-900",
       icon: (
-        <svg
-          className="animate-pulse h-6 w-6 text-green-600"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
+        <div className="h-full w-fit flex justify-center items-center ">
+          <svg
+            className="animate-pulse h-8 w-8 bg-hunzo-red "
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </div>
       ),
     },
     rejected: {
@@ -94,10 +97,10 @@ export default function AccountAlerts() {
   return (
     <Alert
       variant="default"
-      className={`fixed top-4 right-4 w-80 md:w-96 lg:w-[50%] z-50 p-4 ${className}`}
+      className={`fixed top-4 right-4 w-80 md:w-96 lg:w-[30%] z-50 p-4 ${className}`}
     >
-      <div className="flex items-start space-x-4">
-        <div className="flex-shrink-0 mt-0.5">{icon}</div>
+      <div className="flex items-start space-x-4 ">
+        <div className="flex-shrink-0 mt-0.5 h-full">{icon}</div>
         <div className="flex-grow">
           <AlertTitle className="text-lg font-semibold">{title}</AlertTitle>
           <AlertDescription className="mt-2">
