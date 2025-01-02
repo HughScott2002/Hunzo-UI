@@ -13,22 +13,6 @@ import {
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import {
-  AlertCircle,
-  Key,
-  LogIn,
-  LogOut,
-  Mail,
-  Smartphone,
-} from "lucide-react";
-import {
   activeSessions,
   ActiveSessionsTable,
   activityHistory,
