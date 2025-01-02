@@ -342,3 +342,34 @@ declare interface HunzoCardType {
   type: string;
   status: "active" | "frozen" | "pending";
 }
+
+declare interface TwoFactorMethod {
+  method: string;
+  addedOn: string;
+  recentActivity: string;
+  action: string;
+}
+
+declare interface ActiveSession {
+  browser: string;
+  country: string;
+  recentActivity: string;
+  ipAddress: string;
+}
+
+declare interface RememberedDevice {
+  deviceName: string;
+  country: string;
+  recentActivity: string;
+  ipAddress: string;
+}
+
+declare interface ActivityEvent {
+  event: string;
+  icon: "alert" | "login" | "key" | "logout" | "smartphone" | "mail";
+  isError?: boolean;
+  source: string;
+  ipAddress: string;
+  dateTime: string;
+  country: string;
+}
