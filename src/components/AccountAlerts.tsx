@@ -5,13 +5,14 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { X } from "lucide-react";
 import { useAuth } from "./AuthContext";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export default function AccountAlerts() {
   const [isVisible, setIsVisible] = useState(true);
   const { user } = useAuth();
 
-  // const status: string = user?.kycStatus || "";
-  const status: string = "approved";
+  const status: string = user?.kycStatus || "";
+  // const status: string = "approved";
 
   if (!isVisible && status !== "rejected") return null;
 
@@ -52,7 +53,7 @@ export default function AccountAlerts() {
       icon: (
         <div className="h-full w-fit flex justify-center items-center ">
           <svg
-            className="animate-pulse h-8 w-8 bg-hunzo-red "
+            className="animate-pulse h-8 w-8 "
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -116,15 +117,18 @@ export default function AccountAlerts() {
             )}
           </AlertDescription>
         </div>
-        {status === "approved" && (
-          <button
-            onClick={() => setIsVisible(false)}
-            className="flex-shrink-0 text-green-700 hover:text-green-900 transition-colors"
-            aria-label="Dismiss"
-          >
-            <X className="h-5 w-5" />
-          </button>
-        )}
+        <button
+          onClick={() => setIsVisible(false)}
+          className={cn(
+            "flex-shrink-0  transition-colors",
+            status === "approved"
+              ? "text-green-700 hover:text-green-900"
+              : "text-yellow-700 hover:text-yellow-900"
+          )}
+          aria-label="Dismiss"
+        >
+          <X className="h-5 w-5" />
+        </button>
       </div>
     </Alert>
   );
