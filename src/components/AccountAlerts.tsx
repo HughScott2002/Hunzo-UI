@@ -20,7 +20,7 @@ export default function AccountAlerts() {
     pending: {
       title: "Account Pending",
       description:
-        "Your account is currently in the activation process. You'll soon have access to all our amazing features. We're working diligently to verify your information and ensure everything is set up correctly. Thank you for your patience!",
+        "Your account is currently in the activation process. We're working to verify your information and ensure everything is set up correctly.",
       className: "border-yellow-500 bg-yellow-50 text-yellow-900",
       icon: (
         <svg
@@ -98,7 +98,7 @@ export default function AccountAlerts() {
   return (
     <Alert
       variant="default"
-      className={`fixed top-4 right-4 w-80 md:w-96 lg:w-[30%] z-50 p-4 ${className}`}
+      className={`fixed top-4 right-4 w-80 sm:w-[70%] lg:w-[30%] md:w-[50%] z-50 p-4 ${className}`}
     >
       <div className="flex items-start space-x-4 ">
         <div className="flex-shrink-0 mt-0.5 h-full">{icon}</div>

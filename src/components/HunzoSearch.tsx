@@ -78,10 +78,10 @@ const HunzoSearch = () => {
           <DialogDescription>
             <div className="text-base font-bold text-hunzo-pitch-black font-manrope flex">
               <span className="flex-1">QUICK NAVIGATE</span>
-              <div className="flex gap-2 items-center justify-center">
+              {/* <div className="flex gap-2 items-center justify-center">
                 <ChevronLeft className="size-4" />
                 <ChevronRight className="size-4" />
-              </div>
+              </div> */}
             </div>
             <div className="flex justify-between my-4 ">
               {quickNavItems.map(({ icon: Icon, label, href }) => (

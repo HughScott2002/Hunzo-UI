@@ -48,7 +48,7 @@ export default function WalletsPage() {
       <div className="flex size-full justify-center ">
         {wallets ? (
           <>
-            <div className="md:h-full h-fit w-full max-w-7xl grid grid-row-12 md:grid-cols-12  md:gap-2 lg:gap-6  lg:p-6  rounded-2xl">
+            <div className="md:h-full h-fit w-full max-w-7xl grid grid-row-12 md:grid-cols-12 md:gap-2 lg:gap-6 lg:p-6 rounded-2xl ">
               {/* Wallets and Cards List */}
               <div className="col-span-5 rounded-xl  xl:px-6 py-6 mb-0 md:h-full h-fit w-full overflow-hidden ">
                 <ScrollArea className="md:h-full w-full ">
