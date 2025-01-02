@@ -6,6 +6,7 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
+  DialogOverlay,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
@@ -51,7 +52,7 @@ const HunzoLoginAndSecuritySection = () => {
           <div className="flex justify-between items-start">
             <div>
               <h4 className="text-lg font-semibold">Password</h4>
-              <span className="text-hunzo-text-grey">
+              <span className="text-hunzo-text-grey text-sm">
                 Set a unique password to protect your account
               </span>
             </div>
@@ -66,7 +67,7 @@ const HunzoLoginAndSecuritySection = () => {
               <h4 className="text-lg font-semibold">
                 Two-factor authentication
               </h4>
-              <span className="text-hunzo-text-grey">
+              <span className="text-hunzo-text-grey text-sm">
                 Two-factor authentication (2FA) helps accounts secure by adding
                 an extra layer of protection beyond a password. By default, we
                 require you to set up a 2FA app that can generate 2FA codes, but
@@ -84,7 +85,7 @@ const HunzoLoginAndSecuritySection = () => {
           <div className="flex justify-between items-start mb-6">
             <div>
               <h4 className="text-lg font-semibold">Active sessions</h4>
-              <span className="text-hunzo-text-grey">
+              <span className="text-hunzo-text-grey text-sm">
                 All sessions currently logged in with jane@demo.mercurycom:
               </span>
             </div>
@@ -100,7 +101,7 @@ const HunzoLoginAndSecuritySection = () => {
           <div className="flex justify-between items-start mb-6">
             <div>
               <h4 className="text-lg font-semibold">Remembered devices</h4>
-              <span className="text-hunzo-text-grey">
+              <span className="text-hunzo-text-grey text-sm">
                 Two-factor authentication on these devices has been remembered
                 for 30 days.
               </span>
@@ -117,7 +118,7 @@ const HunzoLoginAndSecuritySection = () => {
           <div className="flex justify-between items-start mb-6">
             <div>
               <h4 className="text-lg font-semibold">Activity history</h4>
-              <span className="text-hunzo-text-grey">
+              <span className="text-hunzo-text-grey text-sm">
                 Here are the last 30 days of activity on your account:
               </span>
             </div>
@@ -138,6 +139,8 @@ const ChangePasswordComponent = () => {
         </Button>
       </DialogTrigger>
 
+      <DialogOverlay className="bg-hunzo-pitch-black/80" />
+
       <DialogContent className="bg-hunzo-background-grey">
         <DialogHeader>
           <DialogTitle>Change Password</DialogTitle>
@@ -149,23 +152,15 @@ const ChangePasswordComponent = () => {
         <div className="grid gap-4 py-4">
           <div className="grid gap-2">
             <Label htmlFor="current">Current Password</Label>
-            <Input
-              id="current"
-              type="password"
-              placeholder="Enter current password"
-            />
+            <Input id="current" type="password" value={"123456789"} />
           </div>
           <div className="grid gap-2">
             <Label htmlFor="new">New Password</Label>
-            <Input id="new" type="password" placeholder="Enter new password" />
+            <Input id="new" type="password" />
           </div>
           <div className="grid gap-2">
             <Label htmlFor="confirm">Confirm New Password</Label>
-            <Input
-              id="confirm"
-              type="password"
-              placeholder="Confirm new password"
-            />
+            <Input id="confirm" type="password" />
           </div>
         </div>
         <div className="flex justify-end gap-4">

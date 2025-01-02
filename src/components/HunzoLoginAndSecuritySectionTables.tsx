@@ -14,6 +14,7 @@ import {
   LogOut,
   Mail,
   Smartphone,
+  X,
 } from "lucide-react";
 const iconMap = {
   alert: AlertCircle,
@@ -150,7 +151,7 @@ export const activityHistory: ActivityEvent[] = [
 export const TwoFactorTable = ({ methods }: { methods: TwoFactorMethod[] }) => (
   <Table>
     <TableHeader>
-      <TableRow>
+      <TableRow className="font-bold text-sm">
         <TableHead>Method</TableHead>
         <TableHead>Added on</TableHead>
         <TableHead>Must recent activity</TableHead>
@@ -181,7 +182,7 @@ export const ActiveSessionsTable = ({
 }) => (
   <Table>
     <TableHeader>
-      <TableRow>
+      <TableRow className="font-bold text-sm">
         <TableHead>Browser</TableHead>
         <TableHead>Country</TableHead>
         <TableHead>Most recent activity</TableHead>
@@ -198,7 +199,7 @@ export const ActiveSessionsTable = ({
           <TableCell>{session.ipAddress}</TableCell>
           <TableCell>
             <Button variant="ghost" className="p-0">
-              ×
+              <X className="size-4" />
             </Button>
           </TableCell>
         </TableRow>
@@ -213,7 +214,7 @@ export const RememberedDevicesTable = ({
   devices: RememberedDevice[];
 }) => (
   <Table>
-    <TableHeader>
+    <TableHeader className="font-bold text-sm">
       <TableRow>
         <TableHead>Device name</TableHead>
         <TableHead>Country</TableHead>
@@ -231,7 +232,7 @@ export const RememberedDevicesTable = ({
           <TableCell>{device.ipAddress}</TableCell>
           <TableCell>
             <Button variant="ghost" className="p-0">
-              ×
+              <X className="size-4" />
             </Button>
           </TableCell>
         </TableRow>
@@ -247,7 +248,7 @@ export const ActivityHistoryTable = ({
 }) => (
   <Table>
     <TableHeader>
-      <TableRow>
+      <TableRow className="font-bold text-sm">
         <TableHead>Event</TableHead>
         <TableHead>Source</TableHead>
         <TableHead>IP address</TableHead>

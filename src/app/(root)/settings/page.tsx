@@ -53,7 +53,7 @@ const initialMenuItems: MenuItem[] = [
 const ProfileCompletionCard: React.FC<
   ProfileCompletion & { onDismiss: () => void }
 > = ({ percentage, title, description, onDismiss }) => (
-  <Card className="bg-hunzo-blue p-6 text-white mx-10">
+  <Card className="bg-hunzo-blue p-6 text-white mx-10 max-w-96">
     <div className="w-full h-fit flex justify-end">
       <CircleX className="cursor-pointer" onClick={onDismiss} />
     </div>
@@ -165,13 +165,15 @@ const Page = () => {
   return (
     <div className="size-full">
       <div className="lg:flex size-full border-t-2">
-        <div className="lg:w-[40%] w-full lg:border-r-2 lg:py-8 pt-4">
+        <div className="lg:w-[40%] xl:w-[30%] w-full lg:border-r-2 lg:py-8 pt-4">
           {/* <ProfileCompletionCard {...profileCompletion} /> */}
           {showCompletion && (
-            <ProfileCompletionCard
-              {...profileCompletion}
-              onDismiss={handleDismiss}
-            />
+            <div className="w-full flex justify-center items-center">
+              <ProfileCompletionCard
+                {...profileCompletion}
+                onDismiss={handleDismiss}
+              />
+            </div>
           )}
           <div className="mt-8 transition-all ease-in-out">
             {menuItems.map((item) => (
