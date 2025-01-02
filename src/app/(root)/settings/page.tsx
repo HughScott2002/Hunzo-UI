@@ -8,6 +8,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { CircleX } from "lucide-react";
 import HunzoSettingsPersonalInformationSection from "@/components/HunzoSettingsPersonalInformationSection";
+import HunzoLoginAndSecuritySection from "@/components/HunzoLoginAndSecuritySection";
 
 // Types
 interface MenuItem {
@@ -23,8 +24,6 @@ interface ProfileCompletion {
   title: string;
   description: string;
 }
-
-
 
 const initialMenuItems: MenuItem[] = [
   {
@@ -125,7 +124,6 @@ const MenuItem: React.FC<{
   </div>
 );
 
-
 // Components
 
 const Page = () => {
@@ -150,7 +148,7 @@ const Page = () => {
       case "personal-info":
         return <HunzoSettingsPersonalInformationSection />;
       case "security":
-        return <HunzoInactiveDevelopment />;
+        return <HunzoLoginAndSecuritySection />;
       case "debits":
         return <HunzoInactiveDevelopment />;
       default:
