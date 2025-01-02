@@ -261,10 +261,10 @@ export const ActivityHistoryTable = ({
         const Icon = iconMap[event.icon];
         return (
           <TableRow key={index}>
-            <TableCell className="flex items-center gap-2">
+            <TableCell className="flex items-center gap-4">
               <Icon
                 className={`h-4 w-4 ${
-                  event.isError ? "text-red-500" : "text-gray-500"
+                  event.isError ? "text-red-500" : "text-hunzo-blue"
                 }`}
               />
               {event.event}
