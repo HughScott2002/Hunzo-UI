@@ -54,7 +54,7 @@ const sidebarLinks = [
 //TODO: Fix the logo wallet and account selector
 const user = {
   name: "Hugh",
-  email: "hughscott2002@msila.coooooooooooooooooooooooooooooooooooooom",
+  email: "hughscott2002@msila.coom",
   image: "https://github.com/shadcn.png",
 };
 
