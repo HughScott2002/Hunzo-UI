@@ -8,7 +8,6 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-siderbar";
 import HunzoHeaderControls from "@/components/HunzoHeaderControls";
 
-//TODO: Fix the Seach bar up top
 export default function RootLayout({
   children,
 }: Readonly<{
