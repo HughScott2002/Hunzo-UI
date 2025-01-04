@@ -7,7 +7,7 @@ import { useAuth } from "./AuthContext";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-export default function AccountAlerts() {
+export default function HunzoAccountAlerts() {
   const [isVisible, setIsVisible] = useState(true);
   const { user } = useAuth();
 

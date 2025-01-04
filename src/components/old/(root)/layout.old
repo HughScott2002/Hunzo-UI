@@ -7,7 +7,7 @@
 // import { useRouter } from "next/navigation";
 // import { useEffect, useState } from "react";
 // import ProtectedRouteWrapper from "@/components/ProtectedRouteWrapper";
-// import AccountAlerts from "@/components/AccountAlerts";
+// import HunzoAccountAlerts from "@/components/HunzoAccountAlerts";
 // import NewSidebar from "@/components/NewSidebar";
 // import New2Sidebar from "@/components/New2Sidebar";
 // import HeaderSearch from "@/components/HeaderSearch";
@@ -55,7 +55,7 @@
 //       <main className="flex h-screen w-full font-inter">
 //         {/* <Sidebar user={TestUser} /> */}
 //         {/* <New2Sidebar /> */}
-//         {/* <AccountAlerts /> */}
+//         {/* <HunzoAccountAlerts /> */}
 //         <NewSidebar
 //           isExpanded={isExpanded}
 //           isMobile={isMobile}

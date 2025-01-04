@@ -7,7 +7,7 @@ import { CommandPalette } from "@/components/CommandPalette";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import ProtectedRouteWrapper from "@/components/ProtectedRouteWrapper";
-import AccountAlerts from "@/components/AccountAlerts";
+import HunzoAccountAlerts from "@/components/HunzoAccountAlerts";
 import NewSidebar from "@/components/NewSidebar";
 import New2Sidebar from "@/components/New2Sidebar";
 import HeaderSearch from "@/components/HeaderSearch";

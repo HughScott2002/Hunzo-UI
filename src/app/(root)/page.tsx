@@ -1,4 +1,4 @@
-import AccountAlerts from "@/components/AccountAlerts";
+import HunzoAccountAlerts from "@/components/HunzoAccountAlerts";
 import HunzoDashboardWalletSection from "@/components/DashboardWalletSection";
 import HunzoBalanceGraph from "@/components/HunzoBalanceGraph";
 import HunzoDashboardRecentActivity from "@/components/HunzoDashboardRecentActivity";
@@ -47,7 +47,7 @@ const Dashboard: FC = () => {
         <div className="size-full flex items-start ">
           <div className="flex flex-1 flex-col gap-4 sm:p-4 rounded-3xl transition-all ease-in-out">
             <div className="w-full xl:max-w-[56rem] mx-auto flex flex-col p-2 gap-2">
-              <AccountAlerts />
+              <HunzoAccountAlerts />
               {/* Container to limit width and center */}
               <div className="grid grid-cols-[repeat(auto-fit,13rem)] gap-4 3xl:justify-center justify-start ">
                 {dashboardItems.map((item, index) => (
