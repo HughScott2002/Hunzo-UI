@@ -133,7 +133,7 @@ const BadgeGrid = () => {
       {badges.map((text, index) => (
         <Badge
           key={index}
-          className="bg-hunzo-blue text-white text-center w-fit text-base hover:bg-hunzo-blue/90 transition-colors cursor-pointer"
+          className="bg-hunzo-blue text-white text-center w-fit text-sm hover:bg-hunzo-blue/90 transition-colors cursor-pointer"
         >
           {text}
         </Badge>
@@ -145,23 +145,18 @@ const HelpSearchComponent = () => {
   return (
     <div className="bg-hunzo-background-grey h-fit w-full p-10 flex flex-col gap-4 rounded-xl xl:max-w-96">
       <div className="flex flex-col gap-2">
-        <h1 className="font-bold text-xl">Hey, need some help?</h1>
+        <h1 className="font-bold text-lg">Hey, need some help?</h1>
         <span className="text-hunzo-text-grey text-base">
           Type your question or search keyword
         </span>
       </div>
       <Input
-        className="w-full h-14 rounded-xl text-base"
-        placeholder="🔍 Search"
+        className="w-full h-12 rounded-xl text-base"
+        placeholder="Search"
       />
       <div className="flex flex-col gap-2">
         <span className="text-hunzo-text-grey text-base">Popular search:</span>
         <BadgeGrid />
-        <div className="grid grid-cols-[repeat(auto-full,auto-full)] gap-2 justify-start">
-          {/* <span className="px-4 py-1 size-fit rounded-lg border-2 border-hunzo-blue hover:bg-hunzo-blue hover:text-white text-nowrap">
-            Send Money
-          </span> */}
-        </div>
       </div>
     </div>
   );
@@ -191,7 +186,7 @@ const HelpIconComponent = ({
         />
         <div className="py-4 flex flex-col">
           <h3 className="font-bold text-base">{label}</h3>
-          <span className="text-xs text-hunzo-text-grey font-normal text-wrap">
+          <span className="text-sm text-hunzo-text-grey font-normal text-wrap">
             {sublabel}
           </span>
         </div>
@@ -204,7 +199,7 @@ const HelpIconComponent = ({
 const RightSideComponent = ({ label, sublabel }: ContentItem) => {
   return (
     <div className="rounded-xl h-fit border-2 p-6 flex flex-col gap-2">
-      <h3 className="font-semibold">{label}</h3>
+      <h3 className="font-semibold text-base">{label}</h3>
       <span className="font-light text-hunzo-text-grey text-sm text-balance">
         {sublabel}
       </span>

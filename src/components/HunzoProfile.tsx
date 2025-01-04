@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { themesFeatureFlag } from "@/lib/featureFlags";
 
 type ProfileItemsArray = ProfileItems[];
 type ProfileItems = {
@@ -63,15 +64,25 @@ const HunzoProfile = () => {
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="bg-hunzo-background-grey w-50 p-6 mr-12 ">
-        <DropdownMenuLabel className="flex items-center pb-4 w-full h-full -px-1">
-          <div className="flex flex-1 flex-col">
-            <span className="text-lg font-bold capitalize">Hugh Scott</span>
-            <span className="text-hunzo-text-grey text-sm font-semibold">
-              Personal Account
-            </span>
-          </div>
-          <div className="pl-12 py-3">
-            <Moon />
+        <DropdownMenuLabel className="flex pb-4 w-full h-full -px-1 ">
+          <div className="flex justify-between items-center  w-full">
+            <div className="h-[70%] w-1 bg-hunzo-blue ">&nbsp;</div>
+
+            <div className=" flex w-full h-full gap-2">
+              <div className="flex flex-col flex-grow  pl-4 ">
+                <span className="text-base font-bold capitalize">
+                  Hugh Scott
+                </span>
+                <span className="text-hunzo-text-grey text-xs font-semibold">
+                  Personal Account
+                </span>
+              </div>
+              {themesFeatureFlag && (
+                <div className="flex justify-center items-center w-fit px-0">
+                  <Moon className="" />
+                </div>
+              )}
+            </div>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="text-hunzo-text-grey bg-hunzo-text-grey" />
@@ -85,9 +96,7 @@ const HunzoProfile = () => {
                   )}
                 >
                   <item.icon className={cn("size-5 text-hunzo-red")} />
-                  <span
-                    className={cn("text-base text-hunzo-red font-semibold")}
-                  >
+                  <span className={cn("text-sm text-hunzo-red font-semibold")}>
                     {item.label}
                   </span>
                 </DropdownMenuItem>
@@ -99,7 +108,7 @@ const HunzoProfile = () => {
                     )}
                   >
                     <item.icon className={cn("size-5")} />
-                    <span className={cn("text-base font-medium")}>
+                    <span className={cn("text-sm font-medium")}>
                       {item.label}
                     </span>
                   </DropdownMenuItem>

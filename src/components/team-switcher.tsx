@@ -16,7 +16,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import Image from "next/image";
-import { newAccoutsFeatureFag } from "@/lib/featureFlags";
+import { newAccoutsFeatureFlag } from "@/lib/featureFlags";
 import { useState } from "react";
 
 export function TeamSwitcher({
@@ -34,13 +34,13 @@ export function TeamSwitcher({
   return (
     <SidebarMenu>
       <SidebarMenuItem>
-        {!newAccoutsFeatureFag && (
-          <SidebarTitle newAccoutsFeatureFag={newAccoutsFeatureFag} />
+        {!newAccoutsFeatureFlag && (
+          <SidebarTitle newAccoutsFeatureFlag={newAccoutsFeatureFlag} />
         )}
-        {newAccoutsFeatureFag && (
+        {newAccoutsFeatureFlag && (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <SidebarTitle newAccoutsFeatureFag={newAccoutsFeatureFag} />
+              <SidebarTitle newAccoutsFeatureFlag={newAccoutsFeatureFlag} />
             </DropdownMenuTrigger>
             <DropdownMenuContent
               className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg bg-hunzo-background-grey"
@@ -84,9 +84,9 @@ export function TeamSwitcher({
 }
 
 function SidebarTitle({
-  newAccoutsFeatureFag,
+  newAccoutsFeatureFlag,
 }: {
-  newAccoutsFeatureFag: boolean;
+  newAccoutsFeatureFlag: boolean;
 }) {
   return (
     <SidebarMenuButton
@@ -112,7 +112,7 @@ function SidebarTitle({
         </h1>
         {/* <span className="truncate text-xs">{activeTeam.plan}</span> */}
       </div>
-      {newAccoutsFeatureFag && (
+      {newAccoutsFeatureFlag && (
         <ChevronsUpDown className="ml-auto text-hunzo-grey hover:text-hunzo-blue" />
       )}
     </SidebarMenuButton>

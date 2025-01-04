@@ -40,20 +40,20 @@ const initialMenuItems: MenuItem[] = [
     description: "Amet, est purus, a lobortis sit.",
     active: false,
   },
-  {
-    id: "debits",
-    icon: CreditCardIcon,
-    title: "Direct Debits",
-    description: "Set up and manage your direct debit",
-    active: false,
-  },
+  // {
+  //   id: "debits",
+  //   icon: CreditCardIcon,
+  //   title: "Direct Debits",
+  //   description: "Set up and manage your direct debit",
+  //   active: false,
+  // },
 ];
 
 // Components
 const ProfileCompletionCard: React.FC<
   ProfileCompletion & { onDismiss: () => void }
 > = ({ percentage, title, description, onDismiss }) => (
-  <Card className="bg-hunzo-blue p-6 text-white mx-10 max-w-96">
+  <Card className="bg-hunzo-blue p-6 text-white mx-4 max-w-96">
     <div className="w-full h-fit flex justify-end">
       <CircleX className="cursor-pointer" onClick={onDismiss} />
     </div>
