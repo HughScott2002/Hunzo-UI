@@ -37,7 +37,7 @@ const initialMenuItems: MenuItem[] = [
     id: "security",
     icon: LockIcon,
     title: "Login and Security",
-    description: "Amet, est purus, a lobortis sit.",
+    description: "Keep your Account Safe",
     active: false,
   },
   // {
