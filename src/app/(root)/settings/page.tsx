@@ -30,7 +30,7 @@ const initialMenuItems: MenuItem[] = [
     id: "personal-info",
     icon: UserIcon,
     title: "Personal Information",
-    description: "View your detail to receiving money",
+    description: "Customize your personal information",
     active: true,
   },
   {
