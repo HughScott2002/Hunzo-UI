@@ -168,7 +168,7 @@ const page = () => {
             <div className="px-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-hunzo-pitch-black">
-                  Recent Files
+                  Recent Conversations
                 </h3>
                 <ChevronDown className="h-5 w-5 text-hunzo-text-grey cursor-pointer" />
               </div>
