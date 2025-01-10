@@ -30,6 +30,7 @@ export function NavMain({
     icon?: LucideIcon | React.FC;
     items?: {
       title: string;
+      amount: string;
       url: string;
     }[];
   }[];
@@ -74,11 +75,13 @@ export function NavMain({
                     <SidebarMenuSubItem key={subItem.title}>
                       <Link href={subItem.url}>
                         <SidebarMenuSubButton asChild>
-                          <div className="flex flex-col bg-hunzo-red justify-start items-start text-hunzo-text-grey ml-4 text-base font-bold hover:text-hunzo-blue">
-                            <span className="bg-hunzo-yellow w-full">
+                          <div className="grid grid-rows-2 size-full gap-1 justify-start items-start ml-4 text-base">
+                            <span className="w-full h-fit font-bold text-base   pb-0">
                               {subItem.title}
                             </span>
-                            <span className="w-full">$60000</span>
+                            <span className="w-full h-fit font-semibold -mt-3 text-hunzo-blue text-sm">
+                              {subItem.amount}
+                            </span>
                           </div>
                         </SidebarMenuSubButton>
                       </Link>
