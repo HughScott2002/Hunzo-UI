@@ -75,16 +75,20 @@ export const sideBarData = {
       title: "My Wallets",
       url: "/my-wallets",
       icon: Wallet,
-      // items: [
-      //   {
-      //     title: "New Wallet",
-      //     url: "/my-wallets",
-      //   },
-      //   {
-      //     title: "Manage Wallets",
-      //     url: "/my-wallets",
-      //   },
-      // ],
+      items: [
+        {
+          title: "Primary",
+          url: "/my-wallets",
+        },
+        {
+          title: "Savings",
+          url: "/my-wallets",
+        },
+        {
+          title: "Savings",
+          url: "/my-wallets",
+        },
+      ],
     },
     // {
     //   title: "FX Exchange",

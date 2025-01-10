@@ -74,9 +74,12 @@ export function NavMain({
                     <SidebarMenuSubItem key={subItem.title}>
                       <Link href={subItem.url}>
                         <SidebarMenuSubButton asChild>
-                          <span className="text-hunzo-text-grey ml-4 text-base font-bold hover:text-hunzo-blue">
-                            {subItem.title}
-                          </span>
+                          <div className="flex flex-col bg-hunzo-red justify-start items-start text-hunzo-text-grey ml-4 text-base font-bold hover:text-hunzo-blue">
+                            <span className="bg-hunzo-yellow w-full">
+                              {subItem.title}
+                            </span>
+                            <span className="w-full">$60000</span>
+                          </div>
                         </SidebarMenuSubButton>
                       </Link>
                     </SidebarMenuSubItem>
