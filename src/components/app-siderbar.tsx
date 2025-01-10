@@ -70,7 +70,6 @@ export const sideBarData = {
       url: "/contacts",
       icon: Contact,
     },
-
     {
       title: "My Wallets",
       url: "/my-wallets",
