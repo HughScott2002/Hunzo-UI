@@ -1,32 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   ChevronDown,
-  ChevronRight,
   CircleHelp,
-  CircleIcon,
-  CreditCard,
-  RefreshCw,
-  Snowflake,
-  Wallet,
   ArrowUpDown,
-  Settings2,
-  Download,
   Plus,
   ShieldCheck,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
-import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
 import { Button } from "@/components/ui/button";
-import HunzoDetailCardComponent from "@/components/HunzoDetailCardComponent";
-import { Separator } from "@/components/ui/separator";
-import { Table, TableBody, TableHead, TableRow } from "@/components/ui/table";
-import { Tabs, TabsTrigger } from "@/components/ui/tabs";
-import { TabsList } from "@radix-ui/react-tabs";
-import SearchInput from "@/components/SearchInput";
 import {
   Tooltip,
   TooltipContent,
@@ -184,7 +165,7 @@ export default function WalletsPage() {
       <div className="max-w-4xl w-full rounded-2xl  py-20">
         <div>
           <div className="mb-6 w-full flex justify-between">
-            <div>
+             <div>
               <div className=" flex gap-2 items-center pl-1">
                 <span className="text-sm">Available</span>
                 <TooltipProvider>
