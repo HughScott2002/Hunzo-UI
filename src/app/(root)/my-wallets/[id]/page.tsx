@@ -1,9 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Copy, Info } from "lucide-react";
+import { ChevronRight, Copy, CreditCard, Info } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { HunzoTransactionsTable } from "@/components/test-transactions-table";
+import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const formatCurrency = (amount: number, includeSign = true) => {
@@ -23,7 +25,6 @@ export default function Page({ params }: { params: { slug: string } }) {
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Ops / Payroll {params.slug}</h1>
       </div>
-
       <div className="md:flex  size-full gap-6 justify-between ">
         {/* Left Column */}
         <div className="space-y-6 border rounded-lg md:w-[70%] h-full">
