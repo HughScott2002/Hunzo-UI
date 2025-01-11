@@ -78,18 +78,18 @@ export const sideBarData = {
         {
           title: "Primary",
           amount: "$6084.50",
-          url: "/my-wallets/A",
+          url: "/my-wallets/eedAefe",
         },
         {
           title: "Savings",
           amount: "$6084.50",
 
-          url: "/my-wallets/B",
+          url: "/my-wallets/dwdBfe",
         },
         {
           title: "Savings",
           amount: "$6084.50",
-          url: "/my-wallets/C",
+          url: "/my-wallets/efefC",
         },
       ],
     },

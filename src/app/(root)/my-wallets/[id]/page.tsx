@@ -17,15 +17,16 @@ export default function Page({ params }: { params: { slug: string } }) {
     return includeSign ? (amount < 0 ? `-${formatted}` : formatted) : formatted;
   };
 
+  console.log(params.slug);
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Ops / Payroll {params.slug}</h1>
       </div>
 
-      <div className="flex w-full gap-6 justify-between ">
+      <div className="md:flex  size-full gap-6 justify-between ">
         {/* Left Column */}
-        <div className="space-y-6 border rounded-lg w-[70%] h-full">
+        <div className="space-y-6 border rounded-lg md:w-[70%] h-full">
           <div className="pt-6 px-6 space-y-6">
             <div className="flex justify-between">
               <div>
@@ -46,18 +47,24 @@ export default function Page({ params }: { params: { slug: string } }) {
             <div className="space-y-4">
               <div className="flex justify-between">
                 <div>
-                  <div className="text-sm text-muted-foreground">Type</div>
-                  <div>Checking</div>
+                  <div className="text-xs text-hunzo-pitch-black font-bold">
+                    Type
+                  </div>
+                  <div className="text-base">Checking</div>
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Current</div>
-                  <div>{formatCurrency(2023267.12, false)}</div>
+                  <div className="text-xs text-hunzo-pitch-black font-bold">
+                    Current
+                  </div>
+                  <div className="text-base">
+                    {formatCurrency(2023267.12, false)}
+                  </div>
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-xs text-hunzo-pitch-black font-bold">
                     Pending outgoing
                   </div>
-                  <div>{formatCurrency(0, false)}</div>
+                  <div className="text-base">{formatCurrency(0, false)}</div>
                 </div>
               </div>
             </div>
@@ -73,28 +80,24 @@ export default function Page({ params }: { params: { slug: string } }) {
           </div>
         </div>
         {/* Right Column */}
-        <div className="rounded-lg border p-6 space-y-6 w-[30%] h-full">
+        <div className="rounded-lg border p-6 space-y-6 md:w-[30%] h-full">
           <div className="space-y-4">
             <div className="flex justify-between items-center">
-              <div className="text-sm text-muted-foreground">
-                Routing number
-              </div>
+              <div className="text-sm font-bold">Routing number</div>
               <div className="flex items-center gap-2">
-                <span>132456789</span>
+                <span className="text-xs">132456789</span>
                 <Copy className="h-4 w-4 cursor-pointer" />
               </div>
             </div>
             <div className="flex justify-between items-center">
-              <div className="text-sm text-muted-foreground">
-                Account number
-              </div>
+              <div className="text-sm font-bold">Account number</div>
               <div className="flex items-center gap-2">
-                <span>• • • • • 1038</span>
+                <span className="text-xs">• • • • • 1038</span>
                 <Copy className="h-4 w-4 cursor-pointer" />
               </div>
             </div>
-            <div className="space-y-1">
-              <div className="text-sm text-muted-foreground">Bank</div>
+            <div className="space-y-1 text-xs">
+              <div className="text-sm font-bold">Bank</div>
               <div>Choice Financial Group</div>
               <div>4501 23rd Avenue S</div>
               <div>Fargo, ND 58104</div>
