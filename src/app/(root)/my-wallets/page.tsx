@@ -6,7 +6,6 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   ChevronDown,
   ChevronRight,
-  
   CircleHelp,
   CircleIcon,
   CreditCard,
@@ -17,6 +16,7 @@ import {
   Settings2,
   Download,
   Plus,
+  ShieldCheck,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
@@ -183,20 +183,56 @@ export default function WalletsPage() {
     <section className="w-full h-full flex justify-center ">
       <div className="max-w-4xl w-full rounded-2xl  py-20">
         <div>
-          <div className="mb-6">
-            <div className=" flex gap-2 items-center pl-1">
-              <span className="text-sm">Available</span>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger>Hover</TooltipTrigger>
-                  <TooltipContent>
-                    <CircleHelp className="text-hunzo-text-grey size-4" />
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+          <div className="mb-6 w-full flex justify-between">
+            <div>
+              <div className=" flex gap-2 items-center pl-1">
+                <span className="text-sm">Available</span>
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <CircleHelp className="text-hunzo-text-grey size-4" />
+                    </TooltipTrigger>
+                    <TooltipContent side="right" className="bg-hunzo-blue">
+                      <span className="text-xs text-white">
+                        The balcace of all your Wallets
+                      </span>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+              <div className="text-3xl font-semibold text-hunzo-pitch-black flex gap-1">
+                <span>{formatCurrency(totalBalance)}</span>
+                <div className="flex items-start">
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <ShieldCheck className="bg-hunzo-green/40 rounded-full size-6 p-1 fill-hunzo-green" />
+                      </TooltipTrigger>
+                      <TooltipContent side="right" className="bg-hunzo-blue">
+                        <span className="text-xs text-white">
+                          Your money is in the Vault
+                        </span>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
+              </div>
             </div>
-            <div className="text-3xl font-semibold text-hunzo-pitch-black">
-              {formatCurrency(totalBalance)}
+            <div className="flex gap-4">
+              <Button
+                variant="outline"
+                className="flex items-center justify-center gap-1 mt-4 border-2 hover:text-white hover:bg-hunzo-blue hover:border-hunzo-blue transition-colors ease-in-out"
+              >
+                <Plus className="size-4" />
+                <span>New account</span>
+              </Button>
+              {/* <Button
+                variant="outline"
+                className="flex gap-1 mt-4 border-2 hover:text-white hover:bg-hunzo-blue hover:border-hunzo-blue transition-colors ease-in-out"
+              >
+                <Plus className="size-4" />
+                <span>Create account</span>
+              </Button> */}
             </div>
           </div>
 
@@ -266,14 +302,6 @@ export default function WalletsPage() {
               </tbody>
             </table>
           </div>
-
-          <Button
-            variant="outline"
-            className="flex gap-1 mt-4 border-2 hover:text-white hover:bg-hunzo-blue hover:border-hunzo-blue transition-colors ease-in-out"
-          >
-            <Plus className="size-4" />
-            <span>Create account</span>
-          </Button>
         </div>
       </div>
     </section>
