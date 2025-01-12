@@ -15,10 +15,10 @@ type Controls = { node: any };
 type ControlsArray = Controls[];
 const controls: ControlsArray = [
   {
-    node: HunzoQR,
+    node: HunzoSearch,
   },
   {
-    node: HunzoSearch,
+    node: HunzoQR,
   },
   {
     node: HunzoNotification,

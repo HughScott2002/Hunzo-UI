@@ -10,8 +10,11 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { quickNavItems } from "@/lib/utils";
-import { QrCodeIcon } from "lucide-react";
+import { Copy, QrCodeIcon } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+
+//TODO: QR and Links need to be fetched from the backend
 
 const HunzoQR = () => {
   return (
@@ -25,7 +28,7 @@ const HunzoQR = () => {
       <DialogContent className="sm:max-w-[425px] bg-hunzo-background-grey">
         <DialogHeader>
           <DialogTitle className="w-full flex items-center justify-center text-lg font-manrope text-hunzo-dark-blue font-bold mb-4">
-            SEARCH
+            Q.R. CODE & LINK
           </DialogTitle>
           <DialogDescription>
             <div className="text-base font-bold text-hunzo-pitch-black font-manrope flex">
@@ -48,16 +51,23 @@ const HunzoQR = () => {
           </DialogDescription>
         </DialogHeader>
 
-        <div>
+        <div className="flex justify-center">
           {/* <Input className="w-full h-12 rounded-lg px-6 text-lg" /> */}
+          <Image
+            src={"/placeholder/qr.png"}
+            alt="QR"
+            width={300}
+            height={300}
+          />
         </div>
         {/* <SearchInput type={"desktop"} /> */}
         <DialogFooter>
           <Button
             type="submit"
-            className="w-full h-fit bg-hunzo-blue text-white hover:text-hunzo-pitch-black hover:bg-white border-2 hover:border-hunzo-blue mt-2"
+            className="flex justify-center gap-2 w-full h-fit bg-hunzo-blue text-white hover:text-hunzo-pitch-black hover:bg-white border-2 hover:border-hunzo-blue mt-2"
           >
-            <span className="font-semibold">Search</span>
+            <span className="font-semibold">http://localhost:3000/</span>
+            <Copy className="size-4" />
           </Button>
         </DialogFooter>
       </DialogContent>
