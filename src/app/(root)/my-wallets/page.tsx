@@ -1,38 +1,21 @@
 "use client";
 
-import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   ChevronDown,
-  ChevronRight,
   CircleHelp,
-  CircleIcon,
-  CreditCard,
-  RefreshCw,
-  Snowflake,
-  Wallet,
   ArrowUpDown,
-  Settings2,
-  Download,
   Plus,
   ShieldCheck,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
-import HunzoInactiveDevelopment from "@/components/HunzoInactiveDevelopment";
 import { Button } from "@/components/ui/button";
-import HunzoDetailCardComponent from "@/components/HunzoDetailCardComponent";
-import { Separator } from "@/components/ui/separator";
-import { Table, TableBody, TableHead, TableRow } from "@/components/ui/table";
-import { Tabs, TabsTrigger } from "@/components/ui/tabs";
-import { TabsList } from "@radix-ui/react-tabs";
-import SearchInput from "@/components/SearchInput";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import Link from "next/link";
+import { Router } from "next/router";
 
 const wallets: HunzoWalletType[] = [
   {
@@ -181,9 +164,9 @@ export default function WalletsPage() {
   );
   return (
     <section className="w-full h-full flex justify-center ">
-      <div className="max-w-4xl w-full rounded-2xl  py-20">
+      <div className="max-w-4xl w-full rounded-2xl  py-20 ">
         <div>
-          <div className="mb-6 w-full flex justify-between">
+          <div className="mb-10 w-full flex justify-between items-center">
             <div>
               <div className=" flex gap-2 items-center pl-1">
                 <span className="text-sm">Available</span>
@@ -218,7 +201,7 @@ export default function WalletsPage() {
                 </div>
               </div>
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-4 h-full">
               <Button
                 variant="outline"
                 className="flex items-center justify-center gap-1 mt-4 border-2 hover:text-white hover:bg-hunzo-blue hover:border-hunzo-blue transition-colors ease-in-out"
@@ -250,11 +233,13 @@ export default function WalletsPage() {
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-hunzo-background-grey">
+              {/* <Link href={"/my-wallets/2"}> */}
+              <tbody className="divide-y divide-hunzo-background-grey ">
                 {accounts.map((account) => (
                   <tr
                     key={account.id}
-                    className="hover:bg-hunzo-background-grey"
+                    className="hover:bg-hunzo-background-grey "
+                    // onClick={}
                   >
                     <TableCell>
                       <div className="flex items-center">
@@ -300,6 +285,7 @@ export default function WalletsPage() {
                   </tr>
                 ))}
               </tbody>
+              {/* </Link> */}
             </table>
           </div>
         </div>
@@ -313,13 +299,13 @@ export default function WalletsPage() {
 //   return (
 //     <section className="w-full h-full">
 //       <div className="flex size-full justify-center ">
-//         {wallets ? (
+// {wallets ? (
 //           <>
 //             <div className="md:h-full h-fit w-full max-w-7xl grid grid-row-12 md:grid-cols-12 md:gap-2 lg:gap-6 lg:p-6 rounded-2xl ">
 //               {/* Wallets and Cards List */}
 //               <div className="col-span-5 rounded-xl  xl:px-6 py-6 mb-0 md:h-full h-fit w-full overflow-hidden ">
 //                 <ScrollArea className="md:h-full w-full ">
-//                   {wallets.map((wallet) => (
+// {wallets.map((wallet) => (
 //                     <div key={wallet.id} className="mb-8">
 //                       <div className="flex items-center gap-2 mb-4">
 //                         <h2 className="text-lg font-semibold">{wallet.name}</h2>
