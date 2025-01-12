@@ -19,6 +19,7 @@ import {
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { themesFeatureFlag } from "@/lib/featureFlags";
+import { useAuth } from "./AuthContext";
 
 type ProfileItemsArray = ProfileItems[];
 type ProfileItems = {
@@ -49,6 +50,10 @@ const profileItems: ProfileItemsArray = [
 ];
 
 const HunzoProfile = () => {
+  const { logout } = useAuth();
+  function handleLogout() {
+    logout();
+  }
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -94,6 +99,7 @@ const HunzoProfile = () => {
                   className={cn(
                     "flex gap-3 mt-2 py-2 -px-1 rounded-lg cursor-pointer hover:px-2 transition-all "
                   )}
+                  onClick={handleLogout}
                 >
                   <item.icon className={cn("size-5 text-hunzo-red")} />
                   <span className={cn("text-sm text-hunzo-red font-semibold")}>
