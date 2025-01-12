@@ -63,7 +63,7 @@ const HunzoProfile = () => {
           <ChevronDown className="w-4 h-4 mr-1" />
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="bg-hunzo-background-grey w-50 p-6 mr-12 ">
+      <DropdownMenuContent className="bg-hunzo-background-grey w-56 p-6 mr-12 ">
         <DropdownMenuLabel className="flex pb-4 w-full h-full -px-1 ">
           <div className="flex justify-between items-center  w-full">
             <div className="h-[70%] w-1 bg-hunzo-blue ">&nbsp;</div>
@@ -101,7 +101,7 @@ const HunzoProfile = () => {
                   </span>
                 </DropdownMenuItem>
               ) : (
-                <Link href={"#"}>
+                <Link href={"/settings"}>
                   <DropdownMenuItem
                     className={cn(
                       "flex gap-3 mt-2 py-2 -px-1 rounded-lg cursor-pointer hover:bg-hunzo-blue hover:px-2 transition-all hover:text-white"

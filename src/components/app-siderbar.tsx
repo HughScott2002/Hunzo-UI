@@ -15,6 +15,7 @@ import {
   Wallet,
   BadgePoundSterling,
   BotMessageSquare,
+  Ghost,
 } from "lucide-react";
 import { NavMain } from "@/components/nav-main";
 import {
@@ -34,6 +35,8 @@ import { TeamSwitcher } from "./team-switcher";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import React, { FC, ReactNode } from "react";
+import { Button } from "./ui/button";
+import { useAuth } from "./AuthContext";
 
 // This is sample data.
 export const sideBarData = {
@@ -135,6 +138,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 }
 
 function HunzoSidebarFooter(): ReactNode {
+  const { logout } = useAuth();
+  function handleLogout() {
+    logout();
+  }
   return (
     <footer className="flex flex-col items-center gap-1 ">
       <HunzoFooterItem label="Toggle Sidebar" Icon={SidebarTrigger} />
@@ -144,11 +151,17 @@ function HunzoSidebarFooter(): ReactNode {
       <Link href="/settings" className="w-full h-full">
         <HunzoFooterItem label="Settings" Icon={Settings} />
       </Link>
-      <HunzoFooterItem
-        label="Logout"
-        className="text-hunzo-red"
-        Icon={LogOut}
-      />
+      <Button
+        onClick={handleLogout}
+        className="p-0 m-0 w-full"
+        variant={"ghost"}
+      >
+        <HunzoFooterItem
+          label="Logout"
+          className="text-hunzo-red"
+          Icon={LogOut}
+        />
+      </Button>
     </footer>
   );
 }

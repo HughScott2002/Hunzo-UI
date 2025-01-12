@@ -51,6 +51,7 @@ const sidebarLinks = [
   { icon: SendHorizontal, route: "/payment-transfer", label: "Transfer Funds" },
   { icon: LinkIcon, route: "/connect-bank", label: "Connect Bank" },
 ];
+
 //TODO: Fix the logo wallet and account selector
 const user = {
   name: "Hugh",

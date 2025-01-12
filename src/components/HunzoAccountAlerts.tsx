@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 export default function HunzoAccountAlerts() {
   const [isVisible, setIsVisible] = useState(true);
   const { user } = useAuth();
-
+  console.log(user);
   const status: string = user?.kycStatus || "";
   // const status: string = "approved";
 
@@ -20,7 +20,7 @@ export default function HunzoAccountAlerts() {
     pending: {
       title: "Account Pending",
       description:
-        "Your account is currently in the activation process. We're working to verify your information and ensure everything is set up correctly.",
+        "Your account is currently in the activation process. We're working to verify your information and ensure everything is set up correctly. ",
       className: "border-yellow-500 bg-yellow-50 text-yellow-900",
       icon: (
         <svg
