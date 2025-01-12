@@ -6,7 +6,20 @@ declare type SearchParamProps = {
 };
 
 // ========================================
-
+declare interface HunzoWalletData {
+  walletId: string;
+  accountId: string;
+  type: string;
+  balance: number;
+  currency: string;
+  status: string;
+  isDefault: boolean;
+  dailyLimit: number;
+  monthlyLimit: number;
+  lastActivity: null | string;
+  createdAt: string;
+  updatedAt: string;
+}
 declare type RegisterParams = {
   firstName: string;
   lastName: string;

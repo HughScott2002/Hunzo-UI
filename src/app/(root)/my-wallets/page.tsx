@@ -14,112 +14,48 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import Link from "next/link";
-import { Router } from "next/router";
+import { useAuth } from "@/components/AuthContext";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { getWallets } from "@/lib/fetch";
 
-const wallets: HunzoWalletType[] = [
-  {
-    id: "1",
-    name: "Personal Wallet",
-    cards: [
-      { id: "1", lastFour: "1234", type: "Office Card", status: "active" },
-      { id: "2", lastFour: "5678", type: "Grocery/Meals", status: "active" },
-      { id: "3", lastFour: "9012", type: "Travel Card", status: "frozen" },
-    ],
-  },
-  {
-    id: "2",
-    name: "Savings Wallet",
-    cards: [
-      { id: "4", lastFour: "3456", type: "Office supplies", status: "active" },
-      {
-        id: "5",
-        lastFour: "7890",
-        type: "Summer Intern Card",
-        status: "pending",
-      },
-    ],
-  },
-];
+//TODO: Add Cacheing
 
-interface Account {
-  id: string;
-  name: string;
-  subtext?: string;
-  balance: number;
-  autoTransfer?: {
-    text: string;
-    subtext?: string;
-  };
-}
-
-const accounts: Account[] = [
+const fauxData: HunzoWalletData[] = [
   {
-    id: "credit-card",
-    name: "Credit Card",
-    subtext: "Mercury IO",
-    balance: 12505.87,
-    autoTransfer: {
-      text: "Autopay from Ops / Payroll",
-      subtext: "Every 22nd of the month or if <80% of limit left",
-    },
+    walletId: "9ce02711-57f2-461e-afbb-f10734e61240",
+    accountId: "65f72280-56f2-4ba6-923d-e868b6a3e30e",
+    type: "PRIMARY",
+    balance: 2332.09,
+    currency: "USD",
+    status: "inactive",
+    isDefault: true,
+    dailyLimit: 5000,
+    monthlyLimit: 20000,
+    lastActivity: null,
+    createdAt: "2025-01-12T19:12:51.585934173Z",
+    updatedAt: "2025-01-12T19:12:51.585937454Z",
   },
   {
-    id: "treasury",
-    name: "Treasury",
-    balance: 200000.0,
-  },
-  {
-    id: "ops-payroll",
-    name: "Ops / Payroll",
-    subtext: "Checking • • 1038",
-    balance: 2023267.12,
-    autoTransfer: {
-      text: "Restore to $2,000,000",
-      subtext: "Next transfer: Jan 15",
-    },
-  },
-  {
-    id: "ap",
-    name: "AP",
-    subtext: "Checking • • 1794",
-    balance: 226767.82,
-    autoTransfer: {
-      text: "2 auto transfer rules affect this account",
-    },
-  },
-  {
-    id: "ar",
-    name: "AR",
-    subtext: "Checking • • 4296",
-    balance: 0.0,
-    autoTransfer: {
-      text: "2 auto transfer rules affect this account",
-    },
-  },
-  {
-    id: "checking",
-    name: "Checking • • 0297",
-    balance: 1374471.14,
-    autoTransfer: {
-      text: "Create Rule",
-    },
-  },
-  {
-    id: "savings",
-    name: "Savings • • 7658",
-    balance: 1320201.0,
-    autoTransfer: {
-      text: "Receives 40% of the balance of 'AR'",
-      subtext: "After each transaction",
-    },
+    walletId: "9ce02711-57f2-461e-afbb-f10734e61240",
+    accountId: "65f72280-56f2-4ba6-923d-e868b6a3e30e",
+    type: "PRIMARY",
+    balance: 234234,
+    currency: "USD",
+    status: "active",
+    isDefault: false,
+    dailyLimit: 5000,
+    monthlyLimit: 20000,
+    lastActivity: null,
+    createdAt: "2025-01-12T19:12:51.585934173Z",
+    updatedAt: "2025-01-12T19:12:51.585937454Z",
   },
 ];
 
 const tableHeaders = [
-  { label: "Account", icon: ArrowUpDown },
+  { label: "Type", icon: ArrowUpDown },
   { label: "Balance", icon: ChevronDown },
-  { label: "Auto transfers", icon: ChevronDown },
+  { label: "Status", icon: ChevronDown },
 ];
 
 function TableHeader({ children }: { children: React.ReactNode }) {
@@ -149,26 +85,43 @@ const TableHeaderMaker = ({ label, icon: Icon }: TableHeaderMakerProps) => {
 };
 
 export default function WalletsPage() {
-  const formatCurrency = (amount: number) => {
+  const [wallets, setWallets] = useState<HunzoWalletData[]>(fauxData);
+  const { user } = useAuth();
+  const router = useRouter();
+
+  const formatCurrency = (amount: number, currency: string) => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "USD",
+      currency: currency,
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     }).format(amount);
   };
 
-  const totalBalance = accounts.reduce(
-    (sum, account) => sum + account.balance,
-    0
-  );
+  const handleWalletClick = (walletId: string) => {
+    router.push(`/my-wallets/${walletId}`);
+  };
+
+  const totalBalance = wallets.reduce((sum, wallet) => sum + wallet.balance, 0);
+
+  useEffect(() => {
+    async function fetchWallets() {
+      const data = await getWallets(user?.id);
+      if (data.length > 0) {
+        setWallets(data);
+      }
+    }
+
+    fetchWallets();
+  }, [user?.id]);
+
   return (
     <section className="w-full h-full flex justify-center ">
-      <div className="max-w-4xl w-full rounded-2xl  py-20 ">
+      <div className="max-w-4xl w-full rounded-2xl py-20 ">
         <div>
           <div className="mb-10 w-full flex justify-between items-center">
             <div>
-              <div className=" flex gap-2 items-center pl-1">
+              <div className="flex gap-2 items-center pl-1">
                 <span className="text-sm">Available</span>
                 <TooltipProvider>
                   <Tooltip>
@@ -177,14 +130,14 @@ export default function WalletsPage() {
                     </TooltipTrigger>
                     <TooltipContent side="right" className="bg-hunzo-blue">
                       <span className="text-xs text-white">
-                        The balcace of all your Wallets
+                        The balance of all your Wallets
                       </span>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
               </div>
               <div className="text-3xl font-semibold text-hunzo-pitch-black flex gap-1">
-                <span>{formatCurrency(totalBalance)}</span>
+                <span>{formatCurrency(totalBalance, "USD")}</span>
                 <div className="flex items-start">
                   <TooltipProvider>
                     <Tooltip>
@@ -209,13 +162,6 @@ export default function WalletsPage() {
                 <Plus className="size-4" />
                 <span>New account</span>
               </Button>
-              {/* <Button
-                variant="outline"
-                className="flex gap-1 mt-4 border-2 hover:text-white hover:bg-hunzo-blue hover:border-hunzo-blue transition-colors ease-in-out"
-              >
-                <Plus className="size-4" />
-                <span>Create account</span>
-              </Button> */}
             </div>
           </div>
 
@@ -233,59 +179,46 @@ export default function WalletsPage() {
                   ))}
                 </tr>
               </thead>
-              {/* <Link href={"/my-wallets/2"}> */}
-              <tbody className="divide-y divide-hunzo-background-grey ">
-                {accounts.map((account) => (
+              <tbody className="divide-y divide-hunzo-background-grey">
+                {wallets.map((wallet, index) => (
                   <tr
-                    key={account.id}
-                    className="hover:bg-hunzo-background-grey "
-                    // onClick={}
+                    className="hover:bg-hunzo-background-grey cursor-pointer transition-colors"
+                    onClick={() => {
+                      router.push(`/my-wallets/${wallet.walletId}`);
+                    }}
                   >
                     <TableCell>
                       <div className="flex items-center">
                         <div className="size-12 flex-shrink-0 rounded-xl bg-gray-200" />
-                        <div className="ml-4 ">
+                        <div className="ml-4">
                           <div className="font-bold text-hunzo-pitch-black text-base">
-                            {account.name}
+                            {wallet.type}
                           </div>
-                          {account.subtext && (
-                            <div className="text-hunzo-text-grey text-sm">
-                              {account.subtext}
-                            </div>
-                          )}
+                          <div className="text-hunzo-text-grey text-sm">
+                            {wallet.currency}
+                          </div>
                         </div>
                       </div>
                     </TableCell>
                     <TableCell>
-                      <span className="font-bold text-hunzo-pitch-black ">
-                        {formatCurrency(account.balance)}
+                      <span className="font-bold text-hunzo-pitch-black">
+                        {formatCurrency(wallet.balance, wallet.currency)}
                       </span>
                     </TableCell>
                     <TableCell>
-                      {account.autoTransfer ? (
-                        <div className="">
-                          <div className="font-medium text-hunzo-pitch-black">
-                            {account.autoTransfer.text}
-                          </div>
-                          {account.autoTransfer.subtext && (
-                            <div className="text-sm text-hunzo-text-grey">
-                              {account.autoTransfer.subtext}
-                            </div>
-                          )}
-                        </div>
-                      ) : (
-                        <Button
-                          variant="outline"
-                          className="border-2 hover:text-white hover:bg-hunzo-blue hover:border-hunzo-blue transition-colors ease-in-out"
-                        >
-                          Create Rule
-                        </Button>
-                      )}
+                      <span
+                        className={`px-4 py-2 inline-flex text-sm leading-5 font-bold rounded-lg cursor-default capitalize ${
+                          wallet.status.toLocaleLowerCase() === "active"
+                            ? "bg-hunzo-green/10 text-hunzo-green"
+                            : "bg-hunzo-red/10 text-hunzo-red"
+                        }`}
+                      >
+                        {wallet.status}
+                      </span>
                     </TableCell>
                   </tr>
                 ))}
               </tbody>
-              {/* </Link> */}
             </table>
           </div>
         </div>
@@ -293,139 +226,3 @@ export default function WalletsPage() {
     </section>
   );
 }
-
-// export default function WalletsPage() {
-//   const [selectedCard, setSelectedCard] = useState<string | null>(null);
-//   return (
-//     <section className="w-full h-full">
-//       <div className="flex size-full justify-center ">
-// {wallets ? (
-//           <>
-//             <div className="md:h-full h-fit w-full max-w-7xl grid grid-row-12 md:grid-cols-12 md:gap-2 lg:gap-6 lg:p-6 rounded-2xl ">
-//               {/* Wallets and Cards List */}
-//               <div className="col-span-5 rounded-xl  xl:px-6 py-6 mb-0 md:h-full h-fit w-full overflow-hidden ">
-//                 <ScrollArea className="md:h-full w-full ">
-// {wallets.map((wallet) => (
-//                     <div key={wallet.id} className="mb-8">
-//                       <div className="flex items-center gap-2 mb-4">
-//                         <h2 className="text-lg font-semibold">{wallet.name}</h2>
-//                       </div>
-//                       <div className="space-y-3">
-//                         {wallet.cards.map((card) => (
-//                           <Card
-//                             key={card.id}
-//                             className={cn(
-//                               "cursor-pointer transition-colors hover:bg-gray-50",
-//                               selectedCard === card.id &&
-//                                 "border-hunzo-blue bg-blue-50/50"
-//                             )}
-//                             onClick={() => {
-//                               setSelectedCard(card.id);
-//                               console.log(selectedCard);
-//                             }}
-//                           >
-//                             <CardContent className="p-4 transition-all ease-in-out">
-//                               <div className="flex items-center gap-3">
-//                                 <div
-//                                   className={cn(
-//                                     "flex h-10 w-10 items-center justify-center rounded-full bg-gray-100",
-//                                     card.id === selectedCard
-//                                       ? "bg-hunzo-blue"
-//                                       : ""
-//                                   )}
-//                                 >
-//                                   <CreditCard
-//                                     className={cn(
-//                                       "h-5 w-5 ",
-//                                       card.id === selectedCard
-//                                         ? "text-white bg-hunzo-blue"
-//                                         : ""
-//                                     )}
-//                                   />
-//                                 </div>
-//                                 <div className="flex-1">
-//                                   <p className="font-medium">
-//                                     •••• {card.lastFour}
-//                                   </p>
-//                                   <p className="text-sm text-gray-500">
-//                                     {card.type}
-//                                   </p>
-//                                 </div>
-//                                 <div className="flex items-center gap-2">
-//                                   <span
-//                                     className={cn(
-//                                       "h-2 w-2 rounded-full",
-//                                       card.status === "active" &&
-//                                         "bg-hunzo-green",
-//                                       card.status === "frozen" &&
-//                                         "bg-hunzo-blue",
-//                                       card.status === "pending" &&
-//                                         "bg-hunzo-yellow"
-//                                     )}
-//                                   />
-//                                   <span className="text-sm capitalize text-gray-500">
-//                                     {card.status}
-//                                   </span>
-//                                   {card.id === selectedCard && (
-//                                     <ChevronRight className="animate-in slide-in-from-right duration-700 " />
-//                                   )}
-//                                 </div>
-//                               </div>
-//                             </CardContent>
-//                           </Card>
-//                         ))}
-//                       </div>
-//                     </div>
-//                   ))}
-//                 </ScrollArea>
-//               </div>
-
-//               {/* Card Details */}
-//               <div
-//                 key={selectedCard}
-//                 className="col-span-7 size-full rounded-xl overflow-hidden"
-//               >
-//                 {selectedCard === "1" ? (
-//                   <div className="size-full flex flex-col items-center  animate-in slide-in-from-left duration-700 ease-in-out fade-in-60 md:p-4 lg:p-10">
-//                     <div className="h-full w-fit bg-hunzo-background-grey px-6 py-4 md:px-10 lg:px-12 md:py-4 lg:py-6 rounded-2xl">
-//                       <HunzoDetailCardComponent
-//                         id={wallets[1].id}
-//                         name={wallets[1].name}
-//                         cards={wallets[1].cards}
-//                       />
-//                     </div>
-//                   </div>
-//                 ) : selectedCard === "2" ? (
-//                   <HunzoInactiveDevelopment />
-//                 ) : (
-//                   <div className="h-full flex items-center justify-center text-gray-500">
-//                     Select a card to view details
-//                   </div>
-//                 )}
-//               </div>
-//             </div>
-//           </>
-//         ) : (
-//           <div className="size-full bg-hunzo-background-grey max-w-7xl flex flex-col items-center justify-center rounded-2xl p-8 text-center">
-//             <Wallet className="size-10 text-hunzo-blue mb-4" />
-//             <h2 className="text-2xl font-bold text-hunzo-blue mb-2">
-//               Can't find any wallets right now?
-//             </h2>
-//             <p className="text-lg text-gray-600 mb-6">
-//               We're working on it. Please check back soon.
-//             </p>
-//             <Button
-//               className="bg-hunzo-blue hover:bg-hunzo-blue/90 text-white"
-//               onClick={() => {
-//                 /* Add refresh logic here */
-//               }}
-//             >
-//               <RefreshCw className="mr-2 size-4" />
-//               <span className="text-sm">Refresh</span>
-//             </Button>
-//           </div>
-//         )}
-//       </div>
-//     </section>
-//   );
-// }

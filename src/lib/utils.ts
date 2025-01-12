@@ -45,12 +45,6 @@ export const quickNavItems: QuickNavItem[] = [
   },
 ];
 
-
-
-
-
-
-
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
