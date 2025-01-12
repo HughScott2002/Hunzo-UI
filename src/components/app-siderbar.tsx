@@ -39,6 +39,8 @@ import { Button } from "./ui/button";
 import { useAuth } from "./AuthContext";
 
 // This is sample data.
+//TODO: FIX THE WALLET ITEMS
+
 export const sideBarData = {
   teams: [
     {
@@ -77,24 +79,24 @@ export const sideBarData = {
       title: "My Wallets",
       url: "/my-wallets",
       icon: Wallet,
-      items: [
-        {
-          title: "Primary",
-          amount: "$6084.50",
-          url: "/my-wallets/eedAefe",
-        },
-        {
-          title: "Savings",
-          amount: "$6084.50",
+      // items: [
+      //   {
+      //     title: "Primary",
+      //     amount: "$6084.50",
+      //     url: "/my-wallets/eedAefe",
+      //   },
+      //   {
+      //     title: "Savings",
+      //     amount: "$6084.50",
 
-          url: "/my-wallets/dwdBfe",
-        },
-        {
-          title: "Savings",
-          amount: "$6084.50",
-          url: "/my-wallets/efefC",
-        },
-      ],
+      //     url: "/my-wallets/dwdBfe",
+      //   },
+      //   {
+      //     title: "Savings",
+      //     amount: "$6084.50",
+      //     url: "/my-wallets/efefC",
+      //   },
+      // ],
     },
     // {
     //   title: "FX Exchange",
