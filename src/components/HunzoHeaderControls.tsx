@@ -9,10 +9,14 @@ import HunzoProfile from "./HunzoProfile";
 import HunzoSearch from "./HunzoSearch";
 import { CommandShortcut } from "./ui/command";
 import { Badge } from "./ui/badge";
+import HunzoQR from "./HunzoQR";
 
 type Controls = { node: any };
 type ControlsArray = Controls[];
 const controls: ControlsArray = [
+  {
+    node: HunzoQR,
+  },
   {
     node: HunzoSearch,
   },

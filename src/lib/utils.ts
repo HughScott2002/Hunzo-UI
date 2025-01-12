@@ -1,8 +1,55 @@
 /* eslint-disable no-prototype-builtins */
 import { type ClassValue, clsx } from "clsx";
+import {
+  ArrowRightLeft,
+  BotMessageSquare,
+  Contact,
+  LucideIcon,
+  Settings,
+  Wallet,
+} from "lucide-react";
 import qs from "query-string";
 import { twMerge } from "tailwind-merge";
 import { z } from "zod";
+
+declare type QuickNavItem = {
+  icon: LucideIcon;
+  label: string;
+  href: string;
+};
+export const quickNavItems: QuickNavItem[] = [
+  {
+    icon: ArrowRightLeft,
+    label: "Transfers",
+    href: "/transactions",
+  },
+  {
+    icon: Contact,
+    label: "Contacts",
+    href: "/contacts",
+  },
+  {
+    icon: Wallet,
+    label: "Wallet",
+    href: "/my-wallets",
+  },
+  {
+    icon: BotMessageSquare,
+    label: "AI",
+    href: "/ai",
+  },
+  {
+    icon: Settings,
+    label: "Settings",
+    href: "/settings",
+  },
+];
+
+
+
+
+
+
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
