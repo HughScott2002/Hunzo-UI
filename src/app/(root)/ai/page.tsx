@@ -98,9 +98,9 @@ const page = () => {
       <div className="size-full">
         <div className="size-full grid grid-cols-3 ">
           {/* Main Chat Area */}
-          <div className="col-span-2 size-full border-2 border-gray-200">
+          <div className="col-span-2 size-full border-y-2 border-l-2 border-gray-200">
             {/* Chat Header */}
-            <div className="w-full h-20 flex items-center justify-between border-b border-gray-200 px-6">
+            <div className="w-full h-20 flex items-center justify-between border-b-2 border-gray-200 px-6">
               <div className="flex items-center gap-3">
                 <Avatar className="h-12 w-12">
                   <AvatarImage src="/placeholder/ai.jpg" />
@@ -128,7 +128,7 @@ const page = () => {
             </ScrollArea>
 
             {/* Chat Input */}
-            <div className="absolute bottom-0 w-[93%]  border-t border-gray-200 bg-white p-4">
+            <div className="absolute bottom-0 w-[93%]  border-t-2 border-gray-200 bg-white p-4">
               <div className="flex items-center gap-2 px-4">
                 <Paperclip className="h-5 w-5 text-hunzo-text-grey cursor-pointer" />
                 <ImageIcon className="h-5 w-5 text-hunzo-text-grey cursor-pointer" />
@@ -145,7 +145,7 @@ const page = () => {
           {/* Sidebar */}
           <div className="col-span-1 border-2 border-gray-200 ">
             {/* Sidebar Header */}
-            <div className="w-full h-20 flex items-center justify-between px-6 border-b border-gray-200">
+            <div className="w-full h-20 flex items-center justify-between px-6 border-b-2 border-gray-200">
               <Search className="h-5 w-5 text-hunzo-text-grey" />
               <CircleX className="h-5 w-5 text-hunzo-text-grey cursor-pointer" />
             </div>

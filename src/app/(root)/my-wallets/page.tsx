@@ -186,6 +186,7 @@ export default function WalletsPage() {
                     onClick={() => {
                       router.push(`/my-wallets/${wallet.walletId}`);
                     }}
+                    key={wallet.walletId}
                   >
                     <TableCell>
                       <div className="flex items-center">
