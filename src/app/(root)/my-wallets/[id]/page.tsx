@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, Copy, CreditCard, Info } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { HunzoTransactionsTable } from "@/components/test-transactions-table";
-import { Card, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
+import { getWallets } from "@/lib/fetch";
 
-export default function Page({ params }: { params: { slug: string } }) {
+//TODO: FIX THE WALLET
+
+export default function Page({ params }: { params: { id: string } }) {
   const formatCurrency = (amount: number, includeSign = true) => {
     const formatted = new Intl.NumberFormat("en-US", {
       style: "currency",
@@ -18,12 +20,27 @@ export default function Page({ params }: { params: { slug: string } }) {
 
     return includeSign ? (amount < 0 ? `-${formatted}` : formatted) : formatted;
   };
+  const slug = params.id;
+  console.log(slug);
 
-  console.log(params.slug);
+  const [wallet, setWallet] = useState<HunzoWalletData[]>();
+  useEffect(() => {
+    async function fetchWallets() {
+      const data = await getWallets(slug);
+      console.log(data);
+      if (data.length > 0) {
+        setWallet([data]);
+      }
+      console.log(wallet);
+    }
+    console.log(wallet);
+    fetchWallets();
+  }, [slug, wallet]);
+
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold">Ops / Payroll {params.slug}</h1>
+        <h1 className="text-2xl font-semibold">Wallet {wallet?.balance}</h1>
       </div>
       <div className="md:flex  size-full gap-6 justify-between ">
         {/* Left Column */}

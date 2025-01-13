@@ -17,7 +17,7 @@ import {
 import { useAuth } from "@/components/AuthContext";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { getWallets } from "@/lib/fetch";
+import { getListWallets } from "@/lib/fetch";
 
 //TODO: Add Cacheing
 
@@ -85,7 +85,7 @@ const TableHeaderMaker = ({ label, icon: Icon }: TableHeaderMakerProps) => {
 };
 
 export default function WalletsPage() {
-  const [wallets, setWallets] = useState<HunzoWalletData[]>(fauxData);
+  const [wallets, setListWallets] = useState<HunzoWalletData[]>(fauxData);
   const { user } = useAuth();
   const router = useRouter();
 
@@ -98,17 +98,14 @@ export default function WalletsPage() {
     }).format(amount);
   };
 
-  const handleWalletClick = (walletId: string) => {
-    router.push(`/my-wallets/${walletId}`);
-  };
 
   const totalBalance = wallets.reduce((sum, wallet) => sum + wallet.balance, 0);
 
   useEffect(() => {
     async function fetchWallets() {
-      const data = await getWallets(user?.id);
+      const data = await getListWallets(user?.id);
       if (data.length > 0) {
-        setWallets(data);
+        setListWallets(data);
       }
     }
 
@@ -186,7 +183,7 @@ export default function WalletsPage() {
                     onClick={() => {
                       router.push(`/my-wallets/${wallet.walletId}`);
                     }}
-                    key={wallet.walletId}
+                    key={index}
                   >
                     <TableCell>
                       <div className="flex items-center">
