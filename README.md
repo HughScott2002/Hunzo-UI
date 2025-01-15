@@ -9,8 +9,7 @@
     <path fill-rule="evenodd" clip-rule="evenodd" d="M16.9418 34.1006C16.0363 34.1006 15.3022 33.3665 15.3022 32.4611L15.3022 21.5308C15.3022 20.6253 16.0363 19.8913 16.9418 19.8913C17.8473 19.8913 18.5813 20.6253 18.5813 21.5308L18.5813 32.4611C18.5813 33.3665 17.8473 34.1006 16.9418 34.1006Z" fill="#FFD166"/>
   </svg>
   <h1>Hunzo UI</h1>
-
-  
+ 
 </div>
 
 # Digital Banking Platform Demo
@@ -73,6 +72,7 @@ src/
 This project is licensed under CC BY-NC-ND 4.0. See [LICENSE](LICENSE) for details.
 
 ---
+
 Created by [Hugh Scott](https://github.com/HughScott2002/) • [View Demo](https://github.com/HughScott2002/Hunzo-UI)
 
 ### Additional Information
@@ -81,5 +81,6 @@ Created by [Hugh Scott](https://github.com/HughScott2002/) • [View Demo](https
   [https://creativecommons.org/licenses/by-nc-nd/4.0/](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
 ---
+
 **Repository**: [https://github.com/HughScott2002/Hunzo-UI](https://github.com/HughScott2002/Hunzo-UI)
 **Creator**: Hugh Scott ([https://github.com/HughScott2002/](https://github.com/HughScott2002/))
