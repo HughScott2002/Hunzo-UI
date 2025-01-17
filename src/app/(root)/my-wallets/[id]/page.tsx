@@ -7,7 +7,7 @@ import { HunzoTransactionsTable } from "@/components/test-transactions-table";
 import { useEffect, useState } from "react";
 import { getWallets } from "@/lib/fetch";
 
-//TODO: FIX THE SINGLE  WALLET FETCHING
+//TODO: FIX THE SINGLE WALLET FETCHING
 
 export default function Page({ params }: { params: { id: string } }) {
   const formatCurrency = (amount: number, includeSign = true) => {
