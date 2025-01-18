@@ -24,6 +24,19 @@ import {
 } from "./HunzoLoginAndSecuritySectionTables";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 
+// http://localhost/api/users/auth/security/sessions
+
+// {
+//   "activeSessions": [
+//       {
+//           "createdAt": "2025-01-18 02:38:17.954212733 +0000 UTC m=+1718.111082045",
+//           "deviceInfo": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0",
+//           "id": "faeee6cf-79e1-425c-9a0d-09116e324bb2",
+//           "lastLoginAt": "2025-01-18 02:38:17.954212667 +0000 UTC m=+1718.111081979"
+//       }
+//   ]
+// }
+
 const HunzoLoginAndSecuritySection = () => {
   return (
     <div className="size-full flex flex-col gap-2 overflow-hidden">
