@@ -107,6 +107,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
       if (response.ok) {
         const data = await response.json();
+        console.log("HERE");
+        console.log(data);
+        console.log("HERE");
         if (data.user) {
           setUser(data.user);
           setLastRefresh(Date.now());
