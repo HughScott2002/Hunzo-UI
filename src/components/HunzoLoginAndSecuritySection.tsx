@@ -36,6 +36,7 @@ import { ScrollArea } from "@radix-ui/react-scroll-area";
 //       }
 //   ]
 // }
+// TODO: Change jane@demo.mercurycom to the users Email
 
 const HunzoLoginAndSecuritySection = () => {
   return (
@@ -60,7 +61,7 @@ const HunzoLoginAndSecuritySection = () => {
             </div>
           </div>
           {/* Two Factor Authentication Section */}
-          <div className="w-full rounded-2xl mb-8">
+          {/* <div className="w-full rounded-2xl mb-8">
             <div className="flex justify-between items-start">
               <div>
                 <h4 className="text-lg font-semibold">
@@ -78,14 +79,14 @@ const HunzoLoginAndSecuritySection = () => {
             <div className="mt-6">
               <TwoFactorTable methods={twoFactorMethods} />
             </div>
-          </div>
+          </div> */}
           {/* Active Sessions Section */}
           <div className="w-full rounded-2xl mb-8">
             <div className="flex justify-between items-start mb-6">
               <div>
                 <h4 className="text-lg font-semibold">Active sessions</h4>
                 <span className="text-hunzo-text-grey text-sm">
-                  All sessions currently logged in with jane@demo.mercurycom:
+                  All sessions currently logged in with change@mail.com:
                 </span>
               </div>
               <Button className="bg-hunzo-background-grey rounded-full text-hunzo-blue font-semibold">
@@ -93,22 +94,6 @@ const HunzoLoginAndSecuritySection = () => {
               </Button>
             </div>
             <ActiveSessionsTable sessions={activeSessions} />
-          </div>
-          {/* Remembered Devices Section */}
-          <div className="w-full rounded-2xl mb-8">
-            <div className="flex justify-between items-start mb-6">
-              <div>
-                <h4 className="text-lg font-semibold">Remembered devices</h4>
-                <span className="text-hunzo-text-grey text-sm">
-                  Two-factor authentication on these devices has been remembered
-                  for 30 days.
-                </span>
-              </div>
-              <Button className="bg-hunzo-background-grey rounded-full text-hunzo-blue font-semibold">
-                Forget Other Devices
-              </Button>
-            </div>
-            <RememberedDevicesTable devices={rememberedDevices} />
           </div>
           {/* Activity History Section */}
           <div className="w-full rounded-2xl">

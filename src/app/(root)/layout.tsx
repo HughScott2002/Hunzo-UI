@@ -34,6 +34,8 @@ export default function RootLayout({
                       ? "FX"
                       : name === "ai"
                       ? "AI"
+                      : name.includes("my-wallets/")
+                      ? ""
                       : name}
                   </h1>
                 </div>
