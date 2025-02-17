@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { HunzoTransactionsTable } from "@/components/test-transactions-table";
 import { useEffect, useState } from "react";
 import { getWallets } from "@/lib/fetch";
-import { Skeleton } from "@/components/ui/skeleton";
+import WalletIdSkeleton from "@/components/WalletIdSeleton";
 //TODO: FIX THE SINGLE WALLET FETCHING
 
 export default function Page({ params }: { params: { id: string } }) {
@@ -23,91 +23,27 @@ export default function Page({ params }: { params: { id: string } }) {
   const [wallet, setWallet] = useState<HunzoWalletData | null>(null);
 
   useEffect(() => {
-    async function fetchWallets() {
-      const data = await getWallets(params.id);
-      if (data && data.length > 0) {
-        setWallet(data[0]); // Set first wallet from array
+    async function fetchWallet() {
+      const data: HunzoWalletData[] = await getWallets(params.id);
+      if (data) {
+        // Type assertion to handle the mismatch
+        setWallet(data as unknown as HunzoWalletData);
       }
     }
-
-    fetchWallets();
-  }, [params.id]); // Remove wallet from dependencies
+    fetchWallet();
+  }, [params.id]);
 
   if (!wallet) {
-    return (
-      <div className="max-w-6xl mx-auto p-6 space-y-6">
-        <div className="flex items-center justify-between">
-          <Skeleton className="h-8 w-48 bg-hunzo-text-grey animate-pulse" />
-        </div>
-
-        <div className="md:flex size-full gap-6 justify-between">
-          <div className="space-y-6 border rounded-lg md:w-[70%] h-full">
-            <div className="pt-6 px-6 space-y-6">
-              <div className="flex justify-between">
-                <div>
-                  <Skeleton className="h-4 w-24 mb-2 bg-hunzo-text-grey animate-pulse" />
-                  <Skeleton className="h-8 w-36 bg-hunzo-text-grey animate-pulse" />
-                </div>
-                <div className="flex gap-4">
-                  <Skeleton className="h-10 w-24 bg-hunzo-text-grey animate-pulse" />
-                  <Skeleton className="h-10 w-24 bg-hunzo-text-grey animate-pulse" />
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex justify-between">
-                  {[1, 2, 3].map((i) => (
-                    <div key={i}>
-                      <Skeleton className="h-4 w-24 mb-2 bg-hunzo-text-grey animate-pulse" />
-                      <Skeleton className="h-6 w-32 bg-hunzo-text-grey animate-pulse" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="flex border-t items-center justify-between px-6 py-4">
-              <Skeleton className="h-4 w-48 bg-hunzo-text-grey animate-pulse" />
-              <Skeleton className="h-4 w-36 bg-hunzo-text-grey animate-pulse" />
-            </div>
-          </div>
-
-          <div className="rounded-lg border p-6 space-y-6 md:w-[30%]">
-            <div className="space-y-4">
-              {[1, 2].map((i) => (
-                <div key={i} className="flex justify-between items-center">
-                  <Skeleton className="h-4 w-24 bg-hunzo-text-grey animate-pulse" />
-                  <Skeleton className="h-4 w-32 bg-hunzo-text-grey animate-pulse" />
-                </div>
-              ))}
-              <div className="space-y-2">
-                <Skeleton className="h-4 w-16 bg-hunzo-text-grey animate-pulse" />
-                {[1, 2, 3].map((i) => (
-                  <Skeleton
-                    key={i}
-                    className="h-4 w-48 bg-hunzo-text-grey animate-pulse"
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <div className="flex justify-between">
-            <Skeleton className="h-6 w-48 bg-hunzo-text-grey animate-pulse" />
-            <Skeleton className="h-6 w-24 bg-hunzo-text-grey animate-pulse" />
-          </div>
-          <Skeleton className="h-[200px] w-full bg-hunzo-text-grey animate-pulse" />
-        </div>
-      </div>
-    );
+    return <WalletIdSkeleton />;
   }
 
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold">Wallet {wallet?.balance}</h1>
+        <h1 className="text-2xl font-semibold">
+          <span className="text-hunzo-blue font-bold">{wallet?.type}</span>{" "}
+          {/* WALLET */}
+        </h1>
       </div>
       <div className="md:flex  size-full gap-6 justify-between ">
         {/* Left Column */}
@@ -116,11 +52,11 @@ export default function Page({ params }: { params: { id: string } }) {
             <div className="flex justify-between">
               <div>
                 <div className="flex gap-2 items-center text-muted-foreground">
-                  <span>Available</span>
+                  <span>Available Balance</span>
                   <Info className="h-4 w-4" />
                 </div>
                 <h2 className="text-3xl font-semibold">
-                  {formatCurrency(2023267.12, false)}
+                  {formatCurrency(wallet?.balance, false)}
                 </h2>
               </div>
               <div className="flex gap-4">
@@ -135,7 +71,7 @@ export default function Page({ params }: { params: { id: string } }) {
                   <div className="text-xs text-hunzo-pitch-black font-bold">
                     Type
                   </div>
-                  <div className="text-base">Checking</div>
+                  <div className="text-base">{wallet?.type}</div>
                 </div>
                 <div>
                   <div className="text-xs text-hunzo-pitch-black font-bold">

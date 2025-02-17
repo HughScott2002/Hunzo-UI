@@ -1,6 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton";
 
-const WalletIdSeleton = () => (
+const WalletIdSkeleton = () => (
   <div className="max-w-6xl mx-auto p-6 space-y-6">
     <div className="flex items-center justify-between">
       <Skeleton className="h-8 w-48 bg-hunzo-text-grey animate-pulse" />
@@ -69,4 +69,4 @@ const WalletIdSeleton = () => (
   </div>
 );
 
-export default WalletIdSeleton;
+export default WalletIdSkeleton;
