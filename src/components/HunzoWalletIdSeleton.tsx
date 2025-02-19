@@ -5,7 +5,6 @@ const WalletIdSkeleton = () => (
     <div className="flex items-center justify-between">
       <Skeleton className="h-8 w-48 bg-hunzo-text-grey animate-pulse" />
     </div>
-
     <div className="md:flex size-full gap-6 justify-between">
       <div className="space-y-6 border rounded-lg md:w-[70%] h-full">
         <div className="pt-6 px-6 space-y-6">
@@ -58,7 +57,7 @@ const WalletIdSkeleton = () => (
         </div>
       </div>
     </div>
-
+    s
     <div className="space-y-4">
       <div className="flex justify-between">
         <Skeleton className="h-6 w-48 bg-hunzo-text-grey animate-pulse" />

@@ -98,7 +98,6 @@ export default function WalletsPage() {
     }).format(amount);
   };
 
-
   const totalBalance = wallets.reduce((sum, wallet) => sum + wallet.balance, 0);
 
   useEffect(() => {
@@ -116,7 +115,7 @@ export default function WalletsPage() {
     <section className="w-full h-full flex justify-center ">
       <div className="max-w-4xl w-full rounded-2xl py-20 ">
         <div>
-          <div className="mb-10 w-full flex justify-between items-center">
+          <div className="mb-10 w-full flex justify-between items-center ">
             <div>
               <div className="flex gap-2 items-center pl-1">
                 <span className="text-sm">Available</span>
@@ -151,11 +150,8 @@ export default function WalletsPage() {
                 </div>
               </div>
             </div>
-            <div className="flex gap-4 h-full">
-              <Button
-                variant="outline"
-                className="flex items-center justify-center gap-1 mt-4 border-2 hover:text-white hover:bg-hunzo-blue hover:border-hunzo-blue transition-colors ease-in-out"
-              >
+            <div className="flex gap-4 h-full items-center">
+              <Button className="bg-hunzo-background-grey rounded-lg flex gap-1 text-hunzo-blue font-semibold">
                 <Plus className="size-4" />
                 <span>New account</span>
               </Button>
