@@ -3,6 +3,7 @@ import { Skeleton } from "./ui/skeleton";
 import { ArrowLeftRight, ChevronRight, Copy, Info, Plus } from "lucide-react";
 import { Button } from "./ui/button";
 import { HunzoTransactionsTable } from "@/components/test-transactions-table";
+import HunzoLogo from "./HunzoLogo";
 
 interface HunzoWalletIdProps {
   wallet: HunzoWalletData | null;
@@ -12,13 +13,14 @@ const HunzoWalletId = ({ wallet, formatCurrency }: HunzoWalletIdProps) => {
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-8">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold">
+        <h1 className=" flex gap-2 text-2xl font-semibold">
+          <HunzoLogo size={8} />
           <span className="text-hunzo-blue font-bold">{wallet?.type}</span>
         </h1>
       </div>
       <div className="md:flex size-full gap-6 justify-between">
         {/* Left Column */}
-        <div className="space-y-6 border rounded-lg md:w-[70%] h-full">
+        <div className="space-y-6 border rounded-lg md:w-[70%] ">
           <div className="pt-6 px-6 space-y-6">
             <div className="flex justify-between">
               <div>
@@ -61,7 +63,7 @@ const HunzoWalletId = ({ wallet, formatCurrency }: HunzoWalletIdProps) => {
             </div>
           </div>
           {/* Bottom Left Holder */}
-          <div className="flex border-t items-center justify-between px-6 py-4">
+          <div className="flex border-t justify-between px-6 pt-6">
             <div className="flex items-center gap-2 text-green-600">
               <div className="h-2 w-2 bg-green-600 rounded-full" />
               Restore to {formatCurrency(2000000)}
@@ -71,28 +73,28 @@ const HunzoWalletId = ({ wallet, formatCurrency }: HunzoWalletIdProps) => {
         </div>
         {/* Right Column */}
         <div className="rounded-lg border p-6 space-y-6 md:w-[30%]">
-          <div className="space-y-4">
+          <div className="space-y-4 ">
             {[1].map((i) => (
               <div key={i} className="flex justify-between items-center">
                 <div className="text-sm font-bold">Routing number</div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs">132456789</span>
+                  <span className="text-sm">132456789</span>
                   <Copy className="h-4 w-4 cursor-pointer text-hunzo-blue" />
                 </div>
                 {/* <Skeleton className="h-4 w-24 bg-hunzo-text-grey animate-pulse" /> */}
                 {/* <Skeleton className="h-4 w-32 bg-hunzo-text-grey animate-pulse" /> */}
               </div>
             ))}
-            <div className="flex justify-between items-center ">
+            <div className="flex justify-between items-center">
               <div className="text-sm font-bold">Account number</div>
               <div className="flex items-center gap-2">
-                <span className="text-xs">• • • • • 1038</span>
+                <span className="text-sm">• • • • • 1038</span>
                 <Copy className="h-4 w-4 cursor-pointer text-hunzo-blue" />
               </div>
             </div>
             <div className="space-y-1 text-xs flex w-full justify-between">
               <div className="text-sm font-bold">Bank</div>
-              <div className="h-full">
+              <div className="h-full text-sm">
                 <div>Choice Financial Group</div>
                 <div>4501 23rd Avenue S</div>
                 <div>Fargo, ND 58104</div>

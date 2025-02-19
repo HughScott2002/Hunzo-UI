@@ -118,3 +118,5 @@ function SidebarTitle({
     </SidebarMenuButton>
   );
 }
+
+function HunzoLogo({}) {}
