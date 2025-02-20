@@ -13,9 +13,9 @@ const HunzoWalletId = ({ wallet, formatCurrency }: HunzoWalletIdProps) => {
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-8">
       <div className="flex items-center justify-between">
-        <h1 className=" flex gap-2 text-2xl font-semibold">
-          <HunzoLogo size={8} />
+        <h1 className=" flex justify-between w-full px-2 gap-2 text-2xl font-semibold">
           <span className="text-hunzo-blue font-bold">{wallet?.type}</span>
+          <HunzoLogo size={8} />
         </h1>
       </div>
       <div className="md:flex size-full gap-6 justify-between">
