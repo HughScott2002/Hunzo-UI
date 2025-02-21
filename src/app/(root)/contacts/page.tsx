@@ -13,11 +13,11 @@ const page = () => {
           <SearchInput type={"desktop"} />
         </div>
         <div className="flex justify-end gap-4">
-          <Button className="h-full text-sm px-4 flex justify-center items-center gap-2 bg-hunzo-blue text-white rounded-md border-2 hover:border-hunzo-blue">
+          <Button className="bg-hunzo-blue rounded-lg flex gap-1 text-hunzo-background-grey font-semibold">
             <Plus className="size-4" />
-            AddNew
+            Add New
           </Button>
-          <Button className="h-full text-sm px-4 flex justify-center items-center gap-2 bg-hunzo-background-grey rounded-md border-2 hover:border-hunzo-blue">
+          <Button className="bg-hunzo-background-grey rounded-lg flex gap-1 text-hunzo-blue font-semibold">
             <Settings2 className="size-4" />
             Filters
           </Button>

@@ -1,6 +1,7 @@
 import SearchInput from "@/components/SearchInput";
 import { HunzoTransactionsTable } from "@/components/test-transactions-table";
-import { Download, Settings2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Download, Plus, Settings2 } from "lucide-react";
 
 const Transactions = () => {
   return (
@@ -10,14 +11,14 @@ const Transactions = () => {
           <SearchInput type={"desktop"} />
         </div>
         <div className="flex justify-end gap-4">
-          <div className="h-full text-sm  px-4 flex justify-center items-center gap-2 bg-hunzo-background-grey rounded-md border-2 hover:border-hunzo-blue">
+          <Button className="bg-hunzo-background-grey rounded-lg flex gap-1 text-hunzo-blue font-semibold">
             <Settings2 className="size-4" />
             Filters
-          </div>
-          <div className="h-full text-sm  px-4 flex justify-center items-center gap-2 bg-hunzo-background-grey rounded-md border-2 hover:border-hunzo-blue">
+          </Button>
+          <Button className="bg-hunzo-background-grey rounded-lg flex gap-1 text-hunzo-blue font-semibold">
             <Download className="size-4" />
             Exports
-          </div>
+          </Button>
         </div>
       </header>
       <HunzoTransactionsTable />
